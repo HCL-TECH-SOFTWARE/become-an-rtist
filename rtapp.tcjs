@@ -1,0 +1,42 @@
+let tc = TCF.define(TCF.CPP_TRANSFORM);
+tc.pocoLoc = 'D:\\poco-1.9.0';
+tc.sources = [
+    'platform:/resource/IoTBecomeAnRTist/MainModel.emx#_q2STEB1dEemFppq5PtQEow'
+];
+tc.createTargetProject = true;
+tc.compilationMakeType = MakeType.GNU_make;
+tc.targetConfiguration = 'RPI9T.ARM-gnu-6.3';
+tc.targetServicesLibrary = 'D:\\rsarte\\TargetRTS\\Raspberry-TargetRTS\\TargetRTS_gcc603';
+tc.topCapsule = 'platform:/resource/IoTBecomeAnRTist/MainModel.emx#_-TGREB1dEemFppq5PtQEow';
+tc.targetProject = '/IoTBecomeAnRTist_target';
+tc.prerequisites = [
+    'platform:/resource/LibHttpServer/httpServerLib.tcjs'
+];
+tc.compileArguments = '$(DEBUG_TAG) -fexceptions -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=1';
+tc.inclusionPaths = [
+    'D:\\rsarte\\TargetRTS\\Raspberry-TargetRTS\\TargetRTS\\src\\target\\RPI9'
+];
+tc.linkArguments = '-std=c++11 -ldl -lrt -LD:/eclipse-workspace/rtist_demo/Poco_Foundation/Debug -lPoco_Foundation -LD:/eclipse-workspace/rtist_demo/Poco_Net/Debug -lPoco_Net';
+tc.threads = [
+{
+    name: 'MainThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+},
+{
+    name: 'TimerThread',
+    implClass: 'RTTimerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_TIMER_PRIORITY',
+},
+{
+    name: 'WebServerThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+    logical: [
+        'WebServerThread'
+    ]
+}
+];
