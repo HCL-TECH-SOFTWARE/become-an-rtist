@@ -426,6 +426,25 @@
       <ownedAttribute xmi:type="uml:Port" xmi:id="_ZXIPECO0Eem0UtZqFR6jHw" name="frame" visibility="public" aggregation="composite" isBehavior="true" isService="false">
         <type xmi:type="uml:Collaboration" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_16ot9rIlEduJc5NEaBCMOw?RTClasses/Frame/Frame?"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="_73fTsCPTEem0UtZqFR6jHw" name="currentDrawingFilename" visibility="private" type="_5TgPcCOQEem0UtZqFR6jHw"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_kPAwECPfEem0UtZqFR6jHw" name="timer" visibility="public" aggregation="composite" isBehavior="true">
+        <type xmi:type="uml:Collaboration" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_18QelrIlEduJc5NEaBCMOw?RTClasses/Timing/Timing?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_yXZnECPfEem0UtZqFR6jHw" name="maxTime" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_1zxnUCPfEem0UtZqFR6jHw" value="20">
+          <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_3XD_ACPfEem0UtZqFR6jHw" name="secCount" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_9CsaMCPhEem0UtZqFR6jHw" name="score" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_o6-fwCRqEem0UtZqFR6jHw" name="countdownTimer" visibility="private">
+        <type xmi:type="uml:Class" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_45A541C803DD37E929080053?RTClasses/RTTimerId?"/>
+      </ownedAttribute>
       <ownedConnector xmi:id="_SpG6YB1-EemFppq5PtQEow" name="CameraEvents~, CameraEvents" kind="assembly">
         <end xmi:id="_SpIIgB1-EemFppq5PtQEow" role="_N5S8UB1-EemFppq5PtQEow"/>
         <end xmi:id="_SpIvkB1-EemFppq5PtQEow" role="_AQVzUB1-EemFppq5PtQEow" partWithPort="_qwj4AB19EemFppq5PtQEow"/>
@@ -479,7 +498,7 @@
                   <children xmi:type="notation:BasicDecorationNode" xmi:id="_pHYSsB2IEemFppq5PtQEow" type="Name"/>
                   <children xmi:type="notation:BasicDecorationNode" xmi:id="_pHYSsR2IEemFppq5PtQEow" type="Parent"/>
                   <children xmi:type="notation:ListCompartment" xmi:id="_pHYSsh2IEemFppq5PtQEow" visible="false" type="Activities"/>
-                  <children xmi:type="notation:ListCompartment" xmi:id="_pHYSsx2IEemFppq5PtQEow" visible="false" type="InternalTransitionCompartment"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_pHYSsx2IEemFppq5PtQEow" type="InternalTransitionCompartment"/>
                   <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_79GwoB2KEemFppq5PtQEow" visible="false" type="Region" element="_7pyMAB2KEemFppq5PtQEow" collapsed="true" verticalAlignment="false"/>
                   <children xmi:type="umlnotation:UMLShape" xmi:id="_79HXsB2KEemFppq5PtQEow" element="_7pzaIB2KEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
                     <children xmi:type="notation:DecorationNode" xmi:id="_79H-wB2KEemFppq5PtQEow" type="NameLabel">
@@ -488,7 +507,7 @@
                       <children xmi:type="notation:BasicDecorationNode" xmi:id="_79Il0B2KEemFppq5PtQEow" type="Parent"/>
                       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_79H-wR2KEemFppq5PtQEow" y="-149"/>
                     </children>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_79HXsR2KEemFppq5PtQEow" x="761" y="-85"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_79HXsR2KEemFppq5PtQEow" x="1269" y="-84"/>
                   </children>
                   <children xmi:type="umlnotation:UMLShape" xmi:id="_79Il0R2KEemFppq5PtQEow" element="_7pzaIR2KEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
                     <children xmi:type="notation:DecorationNode" xmi:id="_79Il0x2KEemFppq5PtQEow" type="NameLabel">
@@ -497,7 +516,7 @@
                       <children xmi:type="notation:BasicDecorationNode" xmi:id="_79JM4h2KEemFppq5PtQEow" type="Parent"/>
                       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_79Il1B2KEemFppq5PtQEow" y="-149"/>
                     </children>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_79Il0h2KEemFppq5PtQEow" x="2430" y="508"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_79Il0h2KEemFppq5PtQEow" x="2938" y="508"/>
                   </children>
                   <children xmi:type="umlnotation:UMLShape" xmi:id="_L8wtcB2aEemFppq5PtQEow" element="_L8uRMB2aEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
                     <children xmi:type="notation:DecorationNode" xmi:id="_L8wtch2aEemFppq5PtQEow" type="NameLabel">
@@ -506,7 +525,7 @@
                       <children xmi:type="notation:BasicDecorationNode" xmi:id="_L8xUgh2aEemFppq5PtQEow" type="Parent"/>
                       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L8wtcx2aEemFppq5PtQEow" y="-149"/>
                     </children>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L8wtcR2aEemFppq5PtQEow" x="360" y="953"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_L8wtcR2aEemFppq5PtQEow" x="-85" y="1651"/>
                   </children>
                   <children xmi:type="umlnotation:UMLShape" xmi:id="_V06eUB2aEemFppq5PtQEow" element="_V05QMB2aEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
                     <children xmi:type="notation:DecorationNode" xmi:id="_V06eUh2aEemFppq5PtQEow" type="NameLabel">
@@ -515,9 +534,9 @@
                       <children xmi:type="notation:BasicDecorationNode" xmi:id="_V07FYB2aEemFppq5PtQEow" type="Parent"/>
                       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V06eUx2aEemFppq5PtQEow" y="-149"/>
                     </children>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V06eUR2aEemFppq5PtQEow" x="-105" y="682"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V06eUR2aEemFppq5PtQEow" x="-84" y="682"/>
                   </children>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pHXEkR2IEemFppq5PtQEow" x="3441" y="3474"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pHXEkR2IEemFppq5PtQEow" x="2933" y="3474" width="3022" height="2176"/>
                 </children>
               </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="_-UjCkx1dEemFppq5PtQEow" type="Name"/>
@@ -561,7 +580,7 @@
                 <children xmi:type="notation:BasicDecorationNode" xmi:id="_V0_95B2aEemFppq5PtQEow" type="Stereotype"/>
                 <children xmi:type="notation:BasicDecorationNode" xmi:id="_V0_95R2aEemFppq5PtQEow" type="TransitionLabel"/>
                 <children xmi:type="notation:ListCompartment" xmi:id="_V0_95h2aEemFppq5PtQEow" type="Triggers"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V0_94x2aEemFppq5PtQEow" y="-149"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_V0_94x2aEemFppq5PtQEow" x="75" y="-730"/>
               </children>
               <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V0_94R2aEemFppq5PtQEow" points="[0, 0, 444, 254]$[-444, -254, 0, 0]"/>
             </edges>
@@ -718,8 +737,14 @@
             <connectionPoint xmi:id="_V05QMB2aEemFppq5PtQEow" kind="entryPoint"/>
             <entry xmi:type="uml:OpaqueBehavior" xmi:id="_5awVYB2aEemFppq5PtQEow" name="Entry">
               <language>C++</language>
-              <body>currentWord = &quot;apple&quot;;&#xD;
-webServer_out.newWord(currentWord).send();</body>
+              <body>int i = rand() % (words.size() - 1);&#xD;
+currentWord = words[i];&#xD;
+webServer_out.newWord(currentWord).send();&#xD;
+&#xD;
+// Start timer&#xD;
+secCount = 0;&#xD;
+countdownTimer = timer.informEvery(RTTimespec(1, 0));&#xD;
+webServer_out.remainingTime(maxTime - secCount);</body>
             </entry>
             <region xmi:id="_7pyMAB2KEemFppq5PtQEow" name="Region1">
               <subvertex xmi:type="uml:State" xmi:id="_8dF4QB2KEemFppq5PtQEow" name="WaitForDrawing"/>
@@ -727,7 +752,13 @@ webServer_out.newWord(currentWord).send();</body>
               <subvertex xmi:type="uml:State" xmi:id="_Gj1ewB2LEemFppq5PtQEow" name="AnalyzeDrawing">
                 <entry xmi:type="uml:OpaqueBehavior" xmi:id="_qXYvwB2NEemFppq5PtQEow" name="Entry">
                   <language>C++</language>
-                  <body>imageRecognizer.analyzeImage().send();</body>
+                  <body>if (currentDrawingFilename == &quot;no-photo&quot;) {&#xD;
+	std::cout &lt;&lt; &quot;Failed to take photo of drawing!&quot; &lt;&lt; std::endl;&#xD;
+}&#xD;
+else {&#xD;
+	std::cout &lt;&lt; &quot;Photo of drawing stored at &quot; + currentDrawingFilename &lt;&lt; std::endl;&#xD;
+	imageRecognizer.analyzeImage(currentDrawingFilename).send();&#xD;
+}</body>
                 </entry>
               </subvertex>
               <subvertex xmi:type="uml:Pseudostate" xmi:id="_uZCnUB2NEemFppq5PtQEow" name="" kind="choice"/>
@@ -739,9 +770,15 @@ webServer_out.newWord(currentWord).send();</body>
               <transition xmi:id="_Mzb0kB2LEemFppq5PtQEow" name="doneDrawing" source="_8dF4QB2KEemFppq5PtQEow" target="_Gj1ewB2LEemFppq5PtQEow">
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cYCK4B2LEemFppq5PtQEow" name="Effect">
                   <language>C++</language>
-                  <body>camera.takePhoto().send();</body>
+                  <body>currentDrawingFilename = &quot;no-photo&quot;;&#xD;
+RTMessage reply;&#xD;
+camera.takePhoto().invoke(&amp;reply);&#xD;
+if (reply.isValid()) {&#xD;
+	currentDrawingFilename = *((StdString*) reply.getData());&#xD;
+}</body>
                 </effect>
                 <trigger xmi:id="_UaxZYB2LEemFppq5PtQEow" name="" event="_2MzR0B19EemFppq5PtQEow" port="_aRSMsB1-EemFppq5PtQEow"/>
+                <trigger xmi:id="_HYPPgCPTEem0UtZqFR6jHw" name="" event="_HAuHYCPTEem0UtZqFR6jHw" port="_mfBqAB2AEemFppq5PtQEow"/>
               </transition>
               <transition xmi:id="_wOS4wB2NEemFppq5PtQEow" name="doneAnalyzing" source="_Gj1ewB2LEemFppq5PtQEow" target="_uZCnUB2NEemFppq5PtQEow">
                 <trigger xmi:id="_zk9SkB2NEemFppq5PtQEow" name="" event="_VZqYoB2NEemFppq5PtQEow" port="_7itowB2MEemFppq5PtQEow"/>
@@ -767,10 +804,31 @@ webServer_out.newWord(currentWord).send();</body>
                 </ownedRule>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_YKjDgB2bEemFppq5PtQEow" name="Effect">
                   <language>C++</language>
-                  <body>webServer_out.imageSuccessfullyRecognized().send();</body>
+                  <body>score += maxTime - secCount;&#xD;
+webServer_out.imageSuccessfullyRecognized().send();</body>
                 </effect>
               </transition>
               <transition xmi:id="_0IDssB2aEemFppq5PtQEow" name="" kind="local" source="_V05QMB2aEemFppq5PtQEow" target="_8dF4QB2KEemFppq5PtQEow"/>
+              <transition xmi:id="_cjfZYCPgEem0UtZqFR6jHw" name="timerTick" kind="internal" source="_pHUoUB2IEemFppq5PtQEow" target="_pHUoUB2IEemFppq5PtQEow" guard="_-aHVkCPgEem0UtZqFR6jHw">
+                <ownedRule xmi:id="_-aHVkCPgEem0UtZqFR6jHw">
+                  <specification xmi:type="uml:OpaqueExpression" xmi:id="_-aH8oCPgEem0UtZqFR6jHw" name="Guard">
+                    <language>C++</language>
+                    <body>return secCount &lt; maxTime;</body>
+                  </specification>
+                </ownedRule>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_1CNyECPgEem0UtZqFR6jHw" name="Effect">
+                  <language>C++</language>
+                  <body>secCount++;&#xD;
+&#xD;
+// Show remaining time in the web app&#xD;
+webServer_out.remainingTime(maxTime - secCount).send();&#xD;
+&#xD;
+std::cout &lt;&lt; secCount &lt;&lt; std::endl;</body>
+                </effect>
+                <trigger xmi:id="_g3TX8CPgEem0UtZqFR6jHw" name="" port="_kPAwECPfEem0UtZqFR6jHw">
+                  <event xmi:type="uml:CallEvent" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_18o5ErIlEduJc5NEaBCMOw?RTClasses/Timing/timeout?"/>
+                </trigger>
+              </transition>
             </region>
           </subvertex>
           <transition xmi:id="_-TmnYB1dEemFppq5PtQEow" name="Initial" source="_-TerkB1dEemFppq5PtQEow" target="_-TmAUB1dEemFppq5PtQEow">
@@ -779,17 +837,39 @@ webServer_out.newWord(currentWord).send();</body>
             </eAnnotations>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_BNZAACOVEem0UtZqFR6jHw" name="Effect">
               <language>C++</language>
-              <body>frame.incarnate(theWebServer_in, EmptyActorClass, (const void*) 0, (const RTObject_class*) 0, WebServerThread, 0);&#xD;
+              <body>// Start capsule for incoming web server message in its own thread since it is blocking&#xD;
+frame.incarnate(theWebServer_in, EmptyActorClass, (const void*) 0, (const RTObject_class*) 0, WebServerThread, 0);&#xD;
 &#xD;
+// Seed random generator&#xD;
+std::srand(std::time(0));&#xD;
+&#xD;
+// Load list of words from file system&#xD;
 loadWords();</body>
             </effect>
           </transition>
           <transition xmi:id="_v6C5UB2IEemFppq5PtQEow" name="gameStarted" source="_-TmAUB1dEemFppq5PtQEow" target="_7pzaIB2KEemFppq5PtQEow">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_DOueoCPiEem0UtZqFR6jHw" name="Effect">
+              <language>C++</language>
+              <body>score = 0;</body>
+            </effect>
             <trigger xmi:id="_-HP-4B2IEemFppq5PtQEow" name="" event="_UfzKsB2IEemFppq5PtQEow" port="_mfBqAB2AEemFppq5PtQEow"/>
             <trigger xmi:id="_hoAhoB2JEemFppq5PtQEow" name="" event="_2MzR0B19EemFppq5PtQEow" port="_aRSMsB1-EemFppq5PtQEow"/>
           </transition>
-          <transition xmi:id="_BtGOwB2KEemFppq5PtQEow" name="gameOver" source="_7pzaIR2KEemFppq5PtQEow" target="_-TmAUB1dEemFppq5PtQEow">
-            <trigger xmi:id="_mTUkwB2KEemFppq5PtQEow" name="" event="_MYsOwB2KEemFppq5PtQEow" port="_mfBqAB2AEemFppq5PtQEow"/>
+          <transition xmi:id="_BtGOwB2KEemFppq5PtQEow" name="gameOver" source="_7pzaIR2KEemFppq5PtQEow" target="_-TmAUB1dEemFppq5PtQEow" guard="_aDJjkCPgEem0UtZqFR6jHw">
+            <ownedRule xmi:id="_aDJjkCPgEem0UtZqFR6jHw">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_aDKKoCPgEem0UtZqFR6jHw" name="Guard">
+                <language>C++</language>
+                <body>return secCount == maxTime;</body>
+              </specification>
+            </ownedRule>
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_N5HaMCPhEem0UtZqFR6jHw" name="Effect">
+              <language>C++</language>
+              <body>webServer_out.gameOver(score).send();&#xD;
+timer.cancelTimer(countdownTimer);</body>
+            </effect>
+            <trigger xmi:id="_Puk8cCPgEem0UtZqFR6jHw" name="" port="_kPAwECPfEem0UtZqFR6jHw">
+              <event xmi:type="uml:CallEvent" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_18o5ErIlEduJc5NEaBCMOw?RTClasses/Timing/timeout?"/>
+            </trigger>
           </transition>
           <transition xmi:id="_V086kB2aEemFppq5PtQEow" name="drawAnotherWord" source="_L8uRMB2aEemFppq5PtQEow" target="_V05QMB2aEemFppq5PtQEow"/>
         </region>
@@ -820,17 +900,86 @@ std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; wor
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_qwXqwB19EemFppq5PtQEow" name="State Machine">
         <eAnnotations xmi:id="_qwfmkB19EemFppq5PtQEow" source="uml2.diagrams" references="_qwfmkR19EemFppq5PtQEow">
           <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_qwfmkR19EemFppq5PtQEow" type="Statechart" element="_qwXqwB19EemFppq5PtQEow" measurementUnit="Himetric">
-            <children xmi:type="umlnotation:UMLFrame" xmi:id="_qwfmkh19EemFppq5PtQEow" type="Statemachine" element="_qwXqwB19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="16250871" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label" alignment="Horizontal">
-              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_qwfmkx19EemFppq5PtQEow" type="Region" element="_qwYR0B19EemFppq5PtQEow" verticalAlignment="false"/>
+            <children xmi:type="umlnotation:UMLFrame" xmi:id="_qwfmkh19EemFppq5PtQEow" type="Statemachine" element="_qwXqwB19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label" alignment="Horizontal">
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_qwfmkx19EemFppq5PtQEow" type="Region" element="_qwYR0B19EemFppq5PtQEow" verticalAlignment="false">
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_PqnSMCPPEem0UtZqFR6jHw" element="_qwY44B19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_PqnSMiPPEem0UtZqFR6jHw" type="NameLabel">
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_Pqn5QCPPEem0UtZqFR6jHw" type="Stereotype"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_Pqn5QSPPEem0UtZqFR6jHw" type="Name"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_Pqn5QiPPEem0UtZqFR6jHw" type="Parent"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PqnSMyPPEem0UtZqFR6jHw" y="-149"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PqnSMSPPEem0UtZqFR6jHw" x="6489" y="511"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_PqogUCPPEem0UtZqFR6jHw" element="_qwY44R19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_PqogUiPPEem0UtZqFR6jHw" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_PqogUyPPEem0UtZqFR6jHw" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_PqogVCPPEem0UtZqFR6jHw" type="Stereotype"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_PqpHYCPPEem0UtZqFR6jHw" type="Name"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_PqpHYSPPEem0UtZqFR6jHw" type="Parent"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_PqpHYiPPEem0UtZqFR6jHw" visible="false" type="Activities"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_PqpHYyPPEem0UtZqFR6jHw" type="InternalTransitionCompartment"/>
+                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_Vt8GkCPPEem0UtZqFR6jHw" visible="false" type="Region" element="_Vt0KwCPPEem0UtZqFR6jHw" collapsed="true" verticalAlignment="false"/>
+                  <children xmi:type="umlnotation:UMLShape" xmi:id="_Vt8toCPPEem0UtZqFR6jHw" element="_Vt0x0CPPEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                    <children xmi:type="notation:DecorationNode" xmi:id="_Vt8toiPPEem0UtZqFR6jHw" type="NameLabel">
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vt8tpCPPEem0UtZqFR6jHw" type="Stereotype"/>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vt8tpSPPEem0UtZqFR6jHw" type="Name"/>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vt8tpiPPEem0UtZqFR6jHw" type="Parent"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vt8toyPPEem0UtZqFR6jHw" y="-149"/>
+                    </children>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vt8toSPPEem0UtZqFR6jHw" x="761" y="-85"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PqogUSPPEem0UtZqFR6jHw" x="5854" y="2204"/>
+                </children>
+              </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="_qwfmlB19EemFppq5PtQEow" type="Name"/>
-              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qwfmlR19EemFppq5PtQEow" x="635" y="635"/>
+              <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qwfmlR19EemFppq5PtQEow" x="635" y="635" width="14732" height="9672"/>
             </children>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_PqtY0CPPEem0UtZqFR6jHw" element="_qwZf8B19EemFppq5PtQEow" source="_PqnSMCPPEem0UtZqFR6jHw" target="_Vt8toCPPEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_Pqt_4SPPEem0UtZqFR6jHw" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_Pqt_4yPPEem0UtZqFR6jHw" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_Pqt_5CPPEem0UtZqFR6jHw" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_Pqt_5SPPEem0UtZqFR6jHw" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Pqt_4iPPEem0UtZqFR6jHw" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_Pqt_4CPPEem0UtZqFR6jHw" points="[0, 0, 0, -1270]$[0, 1270, 0, 0]"/>
+              <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Pq0GgCPPEem0UtZqFR6jHw" id="(0.4988179669030733,1.0)"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Vt97wCPPEem0UtZqFR6jHw" id="(1.0,1.0)"/>
+            </edges>
           </contents>
         </eAnnotations>
         <region xmi:id="_qwYR0B19EemFppq5PtQEow" name="Region1">
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_qwY44B19EemFppq5PtQEow"/>
-          <subvertex xmi:type="uml:State" xmi:id="_qwY44R19EemFppq5PtQEow" name="State1"/>
-          <transition xmi:id="_qwZf8B19EemFppq5PtQEow" name="Initial" source="_qwY44B19EemFppq5PtQEow" target="_qwY44R19EemFppq5PtQEow">
+          <subvertex xmi:type="uml:State" xmi:id="_qwY44R19EemFppq5PtQEow" name="Idle">
+            <connectionPoint xmi:id="_Vt0x0CPPEem0UtZqFR6jHw" kind="entryPoint"/>
+            <region xmi:id="_Vt0KwCPPEem0UtZqFR6jHw" name="Region1">
+              <transition xmi:id="_Vt1Y4CPPEem0UtZqFR6jHw" name="takePhoto" kind="internal" source="_qwY44R19EemFppq5PtQEow" target="_qwY44R19EemFppq5PtQEow">
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_e0rMICPQEem0UtZqFR6jHw" name="Effect">
+                  <language>C++</language>
+                  <body>// Generate image file name based on current timestamp&#xD;
+std::time_t t = std::time(nullptr);&#xD;
+std::tm* tm = std::gmtime(&amp;t);&#xD;
+std::stringstream timestamp;&#xD;
+std::string month = (1 + tm->tm_mon) &lt; 10 ? &quot;0&quot; + (1 + tm->tm_mon) : &quot;&quot; + (1 + tm->tm_mon);&#xD;
+std::string day = (1 + tm->tm_mday) &lt; 10 ? &quot;0&quot; + (1 + tm->tm_mday) : &quot;&quot; + (1 + tm->tm_mday);&#xD;
+std::string hour = (1 + tm->tm_hour) &lt; 10 ? &quot;0&quot; + (1 + tm->tm_hour) : &quot;&quot; + (1 + tm->tm_hour);&#xD;
+std::string min = (1 + tm->tm_min) &lt; 10 ? &quot;0&quot; + (1 + tm->tm_min) : &quot;&quot; + (1 + tm->tm_min);&#xD;
+std::string sec = (1 + tm->tm_sec) &lt; 10 ? &quot;0&quot; + (1 + tm->tm_sec) : &quot;&quot; + (1 + tm->tm_sec);&#xD;
+timestamp &lt;&lt; (1900 + tm->tm_year) &lt;&lt; month &lt;&lt; day &lt;&lt; &quot;_&quot; &lt;&lt; hour &lt;&lt; min &lt;&lt; sec;&#xD;
+std::string filename = &quot;/home/pi/become-an-rtist/camera-snaps/&quot; + timestamp.str() + &quot;.jpg&quot;;&#xD;
+std::string command = &quot;raspistill -o &quot; + filename;&#xD;
+&#xD;
+system(command.c_str());&#xD;
+&#xD;
+// Reply to caller with the image file name&#xD;
+game.imageFilename(filename).reply();</body>
+                </effect>
+                <trigger xmi:id="_XhSTgCPPEem0UtZqFR6jHw" name="" event="_D2PjAB1-EemFppq5PtQEow" port="_AQVzUB1-EemFppq5PtQEow"/>
+              </transition>
+            </region>
+          </subvertex>
+          <transition xmi:id="_qwZf8B19EemFppq5PtQEow" name="Initial" source="_qwY44B19EemFppq5PtQEow" target="_Vt0x0CPPEem0UtZqFR6jHw">
             <eAnnotations xmi:id="_qwaHAB19EemFppq5PtQEow" source="uml2.alias">
               <details xmi:id="_qwaHAR19EemFppq5PtQEow" key="Initial"/>
             </eAnnotations>
@@ -905,10 +1054,16 @@ std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; wor
         <eAnnotations xmi:id="_AQT-Ix1-EemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <details xmi:id="_AQUlMB1-EemFppq5PtQEow" key="ProtocolRole"/>
         </eAnnotations>
+        <ownedOperation xmi:id="_X9q7QSPUEem0UtZqFR6jHw" name="imageFilename">
+          <ownedParameter xmi:id="_ZncVcCPUEem0UtZqFR6jHw" name="data" type="_5TgPcCOQEem0UtZqFR6jHw"/>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_AQUlMh1-EemFppq5PtQEow" supplier="_AQT-Ih1-EemFppq5PtQEow" client="_AQRh4B1-EemFppq5PtQEow"/>
       <packagedElement xmi:type="uml:AnyReceiveEvent" xmi:id="_AQVMQB1-EemFppq5PtQEow" name="*"/>
       <packagedElement xmi:type="uml:CallEvent" xmi:id="_D2PjAB1-EemFppq5PtQEow" operation="_D2R_QB1-EemFppq5PtQEow">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_X9pGECPUEem0UtZqFR6jHw" operation="_X9q7QSPUEem0UtZqFR6jHw">
         <name xsi:nil="true"/>
       </packagedElement>
     </packagedElement>
@@ -929,7 +1084,7 @@ std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; wor
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="__aabcB1-EemFppq5PtQEow" name="State Machine">
         <eAnnotations xmi:id="__aeF0B1-EemFppq5PtQEow" source="uml2.diagrams" references="__aeF0R1-EemFppq5PtQEow">
           <contents xmi:type="umlnotation:UMLDiagram" xmi:id="__aeF0R1-EemFppq5PtQEow" type="Statechart" element="__aabcB1-EemFppq5PtQEow" measurementUnit="Himetric">
-            <children xmi:type="umlnotation:UMLFrame" xmi:id="__aeF0h1-EemFppq5PtQEow" type="Statemachine" fontName="Segoe UI" fontHeight="8" fillColor="16250871" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label" alignment="Horizontal">
+            <children xmi:type="umlnotation:UMLFrame" xmi:id="__aeF0h1-EemFppq5PtQEow" type="Statemachine" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label" alignment="Horizontal">
               <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="__aeF0x1-EemFppq5PtQEow" type="Region" verticalAlignment="false">
                 <children xmi:type="umlnotation:UMLShape" xmi:id="_KYZxwCMLEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
                   <children xmi:type="notation:DecorationNode" xmi:id="_KYcOACMLEem0UtZqFR6jHw" type="NameLabel">
@@ -998,6 +1153,26 @@ httpGet(&quot;newWord?word=&quot; + w);</body>
                 </effect>
                 <trigger xmi:id="_LmaJECMjEem0UtZqFR6jHw" name="" event="_wbE44B1_EemFppq5PtQEow" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
+              <transition xmi:id="_ge7ewCPhEem0UtZqFR6jHw" name="remainingTime" kind="internal">
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_rW4fwCPhEem0UtZqFR6jHw" name="Effect">
+                  <language>C++</language>
+                  <body>unsigned int t = *(rtdata);&#xD;
+httpGet(&quot;remainingTime?time=&quot; + std::to_string(t));</body>
+                </effect>
+                <trigger xmi:id="_tSFBICPhEem0UtZqFR6jHw" name="" event="_aveooCPhEem0UtZqFR6jHw" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
+              </transition>
+              <transition xmi:id="_vFuJACPhEem0UtZqFR6jHw" name="gameOver" kind="internal">
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_2H39ICPhEem0UtZqFR6jHw" name="Effect">
+                  <language>C++</language>
+                  <body>unsigned int score = *(rtdata);&#xD;
+httpGet(&quot;gameOver?score=&quot; + std::to_string(score));</body>
+                </effect>
+                <trigger xmi:id="_xt2o4CPhEem0UtZqFR6jHw" name="" event="_T3Z9kCPhEem0UtZqFR6jHw" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
+              </transition>
             </region>
           </subvertex>
           <transition xmi:id="_O9DC4B1_EemFppq5PtQEow" name="Initial" target="_Dpn4sCMjEem0UtZqFR6jHw">
@@ -1013,11 +1188,11 @@ configureServer(&quot;192.168.8.101&quot;, 5000);</body>
         <extendedStateMachine href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_o7cN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine?"/>
       </ownedBehavior>
     </packagedElement>
-    <packagedElement xmi:type="uml:Package" xmi:id="_chEokB1_EemFppq5PtQEow" name="webServerEvents">
-      <packagedElement xmi:type="uml:Collaboration" xmi:id="_chHE0B1_EemFppq5PtQEow" name="webServerEvents" clientDependency="_chJhEB1_EemFppq5PtQEow _chJhER1_EemFppq5PtQEow">
+    <packagedElement xmi:type="uml:Package" xmi:id="_chEokB1_EemFppq5PtQEow" name="WebServerEvents">
+      <packagedElement xmi:type="uml:Collaboration" xmi:id="_chHE0B1_EemFppq5PtQEow" name="WebServerEvents" clientDependency="_chJhEB1_EemFppq5PtQEow _chJhER1_EemFppq5PtQEow">
         <interfaceRealization xmi:id="_chJhEB1_EemFppq5PtQEow" name="" supplier="_chI6AB1_EemFppq5PtQEow" client="_chHE0B1_EemFppq5PtQEow" contract="_chI6AB1_EemFppq5PtQEow"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:Interface" xmi:id="_chI6AB1_EemFppq5PtQEow" name="webServerEvents">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_chI6AB1_EemFppq5PtQEow" name="WebServerEvents">
         <eAnnotations xmi:id="_chI6AR1_EemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <details xmi:id="_chI6Ah1_EemFppq5PtQEow" key="ProtocolRole"/>
         </eAnnotations>
@@ -1026,13 +1201,23 @@ configureServer(&quot;192.168.8.101&quot;, 5000);</body>
         </ownedOperation>
         <ownedOperation xmi:id="_I0Gd8R2bEemFppq5PtQEow" name="failedToRecognizeImage"/>
         <ownedOperation xmi:id="_MkZfwR2bEemFppq5PtQEow" name="imageSuccessfullyRecognized"/>
+        <ownedOperation xmi:id="_T3bLsSPhEem0UtZqFR6jHw" name="gameOver">
+          <ownedParameter xmi:id="_VU-HwCPhEem0UtZqFR6jHw" name="data">
+            <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+          </ownedParameter>
+        </ownedOperation>
+        <ownedOperation xmi:id="_avgd0SPhEem0UtZqFR6jHw" name="remainingTime">
+          <ownedParameter xmi:id="_cTDUMCPhEem0UtZqFR6jHw" name="data">
+            <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
-      <packagedElement xmi:type="uml:Interface" xmi:id="_chI6Ax1_EemFppq5PtQEow" name="webServerEvents~">
+      <packagedElement xmi:type="uml:Interface" xmi:id="_chI6Ax1_EemFppq5PtQEow" name="WebServerEvents~">
         <eAnnotations xmi:id="_chI6BB1_EemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <details xmi:id="_chI6BR1_EemFppq5PtQEow" key="ProtocolRole"/>
         </eAnnotations>
         <ownedOperation xmi:id="_Uf1m8R2IEemFppq5PtQEow" name="startGame"/>
-        <ownedOperation xmi:id="_MYtc4R2KEemFppq5PtQEow" name="outOfTime"/>
+        <ownedOperation xmi:id="_HAxKsSPTEem0UtZqFR6jHw" name="doneDrawing"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_chJhER1_EemFppq5PtQEow" supplier="_chI6Ax1_EemFppq5PtQEow" client="_chHE0B1_EemFppq5PtQEow"/>
       <packagedElement xmi:type="uml:AnyReceiveEvent" xmi:id="_chJhEh1_EemFppq5PtQEow" name="*"/>
@@ -1042,13 +1227,19 @@ configureServer(&quot;192.168.8.101&quot;, 5000);</body>
       <packagedElement xmi:type="uml:CallEvent" xmi:id="_UfzKsB2IEemFppq5PtQEow" operation="_Uf1m8R2IEemFppq5PtQEow">
         <name xsi:nil="true"/>
       </packagedElement>
-      <packagedElement xmi:type="uml:CallEvent" xmi:id="_MYsOwB2KEemFppq5PtQEow" operation="_MYtc4R2KEemFppq5PtQEow">
-        <name xsi:nil="true"/>
-      </packagedElement>
       <packagedElement xmi:type="uml:CallEvent" xmi:id="_I0EowB2bEemFppq5PtQEow" operation="_I0Gd8R2bEemFppq5PtQEow">
         <name xsi:nil="true"/>
       </packagedElement>
       <packagedElement xmi:type="uml:CallEvent" xmi:id="_MkXqkB2bEemFppq5PtQEow" operation="_MkZfwR2bEemFppq5PtQEow">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_HAuHYCPTEem0UtZqFR6jHw" operation="_HAxKsSPTEem0UtZqFR6jHw">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_T3Z9kCPhEem0UtZqFR6jHw" operation="_T3bLsSPhEem0UtZqFR6jHw">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_aveooCPhEem0UtZqFR6jHw" operation="_avgd0SPhEem0UtZqFR6jHw">
         <name xsi:nil="true"/>
       </packagedElement>
     </packagedElement>
@@ -1063,23 +1254,86 @@ configureServer(&quot;192.168.8.101&quot;, 5000);</body>
         </contents>
       </eAnnotations>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_0jyu0B2MEemFppq5PtQEow" name="game" visibility="public" type="_0jvrgB2MEemFppq5PtQEow" aggregation="composite" isBehavior="true"/>
+      <ownedAttribute xmi:id="_RIMQMCPfEem0UtZqFR6jHw" name="fileToAnalyze" visibility="private" type="_5TgPcCOQEem0UtZqFR6jHw"/>
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_tDGkkB2MEemFppq5PtQEow" name="State Machine">
         <eAnnotations xmi:id="_tDIZwR2MEemFppq5PtQEow" source="uml2.diagrams" references="_tDIZwh2MEemFppq5PtQEow">
           <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_tDIZwh2MEemFppq5PtQEow" type="Statechart" element="_tDGkkB2MEemFppq5PtQEow" measurementUnit="Himetric">
-            <children xmi:type="umlnotation:UMLFrame" xmi:id="_tDIZwx2MEemFppq5PtQEow" type="Statemachine" element="_tDGkkB2MEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="16250871" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label" alignment="Horizontal">
-              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_tDIZxB2MEemFppq5PtQEow" type="Region" element="_tDGkkR2MEemFppq5PtQEow" verticalAlignment="false"/>
+            <children xmi:type="umlnotation:UMLFrame" xmi:id="_tDIZwx2MEemFppq5PtQEow" type="Statemachine" element="_tDGkkB2MEemFppq5PtQEow" fontName="Segoe UI" transparency="0" lineWidth="1" showStereotype="Label" alignment="Horizontal">
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_tDIZxB2MEemFppq5PtQEow" type="Region" element="_tDGkkR2MEemFppq5PtQEow" verticalAlignment="false">
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_rOvXwCPeEem0UtZqFR6jHw" element="_tDGkkh2MEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_rOv-0CPeEem0UtZqFR6jHw" type="NameLabel">
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_rOwl4CPeEem0UtZqFR6jHw" type="Stereotype"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_rOwl4SPeEem0UtZqFR6jHw" type="Name"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_rOwl4iPeEem0UtZqFR6jHw" type="Parent"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rOv-0SPeEem0UtZqFR6jHw" y="-149"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rOvXwSPeEem0UtZqFR6jHw" x="4711" y="321"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_rOxM8CPeEem0UtZqFR6jHw" element="_tDHLoB2MEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_rOxM8iPeEem0UtZqFR6jHw" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_rOxM8yPeEem0UtZqFR6jHw" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_rOxM9CPeEem0UtZqFR6jHw" type="Stereotype"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_rOxM9SPeEem0UtZqFR6jHw" type="Name"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_rOxM9iPeEem0UtZqFR6jHw" type="Parent"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_rOxM9yPeEem0UtZqFR6jHw" visible="false" type="Activities"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_rOx0ACPeEem0UtZqFR6jHw" visible="false" type="InternalTransitionCompartment"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rOxM8SPeEem0UtZqFR6jHw" x="4076" y="2014"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_xsfeUCPeEem0UtZqFR6jHw" element="_xscbACPeEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_xsgFYCPeEem0UtZqFR6jHw" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_xsgFYSPeEem0UtZqFR6jHw" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_xsgFYiPeEem0UtZqFR6jHw" type="Stereotype"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_xsgFYyPeEem0UtZqFR6jHw" type="Name"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_xsgFZCPeEem0UtZqFR6jHw" type="Parent"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_xsgscCPeEem0UtZqFR6jHw" visible="false" type="Activities"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_xshTgCPeEem0UtZqFR6jHw" visible="false" type="InternalTransitionCompartment"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_xsfeUSPeEem0UtZqFR6jHw" x="4076" y="3919"/>
+                </children>
+              </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="_tDIZxR2MEemFppq5PtQEow" type="Name"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tDIZxh2MEemFppq5PtQEow" x="635" y="635"/>
             </children>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_rO2sgCPeEem0UtZqFR6jHw" element="_tDHLoR2MEemFppq5PtQEow" source="_rOvXwCPeEem0UtZqFR6jHw" target="_rOxM8CPeEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_rO2sgiPeEem0UtZqFR6jHw" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_rO2shCPeEem0UtZqFR6jHw" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_rO3TkCPeEem0UtZqFR6jHw" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_rO36oCPeEem0UtZqFR6jHw" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_rO2sgyPeEem0UtZqFR6jHw" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_rO2sgSPeEem0UtZqFR6jHw" points="[0, 0, 0, -1270]$[0, 1270, 0, 0]"/>
+              <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rO_PYCPeEem0UtZqFR6jHw" id="(0.4988179669030733,1.0)"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_rO_PYSPeEem0UtZqFR6jHw" id="(0.49970466627288834,1.343180974971834E-17)"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_0UUcMCPeEem0UtZqFR6jHw" element="_0UQKwCPeEem0UtZqFR6jHw" source="_rOxM8CPeEem0UtZqFR6jHw" target="_xsfeUCPeEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_0UVDQCPeEem0UtZqFR6jHw" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_0UVDQiPeEem0UtZqFR6jHw" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_0UVqUCPeEem0UtZqFR6jHw" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_0UVqUSPeEem0UtZqFR6jHw" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_0UVDQSPeEem0UtZqFR6jHw" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0UUcMSPeEem0UtZqFR6jHw" points="[4, 25, -6, -47]$[11, 66, 1, -6]"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_0UbJ4CPeEem0UtZqFR6jHw" id="(0.5329974811083124,0.12003780718336483)"/>
+            </edges>
           </contents>
         </eAnnotations>
         <region xmi:id="_tDGkkR2MEemFppq5PtQEow" name="Region1">
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_tDGkkh2MEemFppq5PtQEow"/>
-          <subvertex xmi:type="uml:State" xmi:id="_tDHLoB2MEemFppq5PtQEow" name="State1"/>
+          <subvertex xmi:type="uml:State" xmi:id="_tDHLoB2MEemFppq5PtQEow" name="Idle"/>
+          <subvertex xmi:type="uml:State" xmi:id="_xscbACPeEem0UtZqFR6jHw" name="Analyzing"/>
           <transition xmi:id="_tDHLoR2MEemFppq5PtQEow" name="Initial" source="_tDGkkh2MEemFppq5PtQEow" target="_tDHLoB2MEemFppq5PtQEow">
             <eAnnotations xmi:id="_tDHLoh2MEemFppq5PtQEow" source="uml2.alias">
               <details xmi:id="_tDHLox2MEemFppq5PtQEow" key="Initial"/>
             </eAnnotations>
+          </transition>
+          <transition xmi:id="_0UQKwCPeEem0UtZqFR6jHw" name="analyzeImage" source="_tDHLoB2MEemFppq5PtQEow" target="_xscbACPeEem0UtZqFR6jHw">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_HPd3kCPfEem0UtZqFR6jHw" name="Effect">
+              <language>C++</language>
+              <body>fileToAnalyze = *rtdata;&#xD;
+std::cout &lt;&lt; &quot;Starting to analyze image &quot; &lt;&lt; fileToAnalyze &lt;&lt; std::endl;</body>
+            </effect>
+            <trigger xmi:id="_13h7YCPeEem0UtZqFR6jHw" name="" event="_QjukcB2NEemFppq5PtQEow" port="_0jyu0B2MEemFppq5PtQEow"/>
           </transition>
         </region>
       </ownedBehavior>
@@ -1092,14 +1346,16 @@ configureServer(&quot;192.168.8.101&quot;, 5000);</body>
         <eAnnotations xmi:id="_0jw5oh2MEemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <details xmi:id="_0jxgsB2MEemFppq5PtQEow" key="ProtocolRole"/>
         </eAnnotations>
-        <ownedOperation xmi:id="_QjvykR2NEemFppq5PtQEow" name="analyzeImage"/>
+        <ownedOperation xmi:id="_QjvykR2NEemFppq5PtQEow" name="analyzeImage">
+          <ownedParameter xmi:id="_fhdRQCPeEem0UtZqFR6jHw" name="data" type="_5TgPcCOQEem0UtZqFR6jHw"/>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Interface" xmi:id="_0jxgsR2MEemFppq5PtQEow" name="ImageRecognitionEvents~">
         <eAnnotations xmi:id="_0jxgsh2MEemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <details xmi:id="_0jxgsx2MEemFppq5PtQEow" key="ProtocolRole"/>
         </eAnnotations>
         <ownedOperation xmi:id="_VZsN0R2NEemFppq5PtQEow" name="result">
-          <ownedParameter xmi:id="_aepVcB2NEemFppq5PtQEow" name="data"/>
+          <ownedParameter xmi:id="_aepVcB2NEemFppq5PtQEow" name="data" type="_5TgPcCOQEem0UtZqFR6jHw"/>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_0jxgtR2MEemFppq5PtQEow" supplier="_0jxgsR2MEemFppq5PtQEow" client="_0jvrgB2MEemFppq5PtQEow"/>
@@ -1157,6 +1413,10 @@ configureServer(&quot;192.168.8.101&quot;, 5000, &quot;command&quot;);</body>
 if (msg == &quot;start_game&quot;) {&#xD;
 	// Start Game button was pushed&#xD;
 	game.startGame().send();&#xD;
+}&#xD;
+else if (msg == &quot;done_drawing&quot;) {&#xD;
+	// Done Drawing button was pushed&#xD;
+	game.doneDrawing().send();&#xD;
 }</body>
       </ownedBehavior>
       <ownedOperation xmi:id="_s0OY0CMjEem0UtZqFR6jHw" name="onMessageReceived" method="_s0Pm8CMjEem0UtZqFR6jHw">
@@ -1237,11 +1497,10 @@ if (msg == &quot;start_game&quot;) {&#xD;
   <UMLRealTime:InEvent xmi:id="_wbGuEB1_EemFppq5PtQEow" base_CallEvent="_wbE44B1_EemFppq5PtQEow"/>
   <UMLRealTime:RTPort xmi:id="_mfEGQB2AEemFppq5PtQEow" isConjugate="true" base_Port="_mfBqAB2AEemFppq5PtQEow"/>
   <UMLRealTime:OutEvent xmi:id="_Uf1m8B2IEemFppq5PtQEow" base_CallEvent="_UfzKsB2IEemFppq5PtQEow"/>
-  <UMLRealTime:OutEvent xmi:id="_MYtc4B2KEemFppq5PtQEow" base_CallEvent="_MYsOwB2KEemFppq5PtQEow"/>
   <CppPropertySets:GeneralAttributeProperties xmi:id="_wYTbQB2LEemFppq5PtQEow" base_Property="_sqBLoB2LEemFppq5PtQEow"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_0oFOYB2LEemFppq5PtQEow" base_Class="_-TGREB1dEemFppq5PtQEow">
     <headerPreface xmi:id="_0oFOYR2LEemFppq5PtQEow" body="#include &lt;string>&#xD;&#xA;#include &lt;vector>"/>
-    <implementationPreface xmi:id="_En9M8COWEem0UtZqFR6jHw" body="#include &lt;fstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;#include &lt;ios>"/>
+    <implementationPreface xmi:id="_En9M8COWEem0UtZqFR6jHw" body="#include &lt;fstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;#include &lt;ios>&#xD;&#xA;#include &lt;cstdlib>&#xD;&#xA;#include &lt;ctime>"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:Capsule xmi:id="_tDIZwB2MEemFppq5PtQEow" base_Class="_tDEvYB2MEemFppq5PtQEow"/>
   <UMLRealTime:CapsulePart xmi:id="_tDMEIB2MEemFppq5PtQEow" base_Property="_tDKO8B2MEemFppq5PtQEow"/>
@@ -1254,7 +1513,7 @@ if (msg == &quot;start_game&quot;) {&#xD;
   <UMLRealTime:RTConnector xmi:id="_fJR4kB2NEemFppq5PtQEow" base_Connector="_fJQqcB2NEemFppq5PtQEow"/>
   <UMLRealTime:InEvent xmi:id="_I0Gd8B2bEemFppq5PtQEow" base_CallEvent="_I0EowB2bEemFppq5PtQEow"/>
   <UMLRealTime:InEvent xmi:id="_MkZfwB2bEemFppq5PtQEow" base_CallEvent="_MkXqkB2bEemFppq5PtQEow"/>
-  <CppPropertySets:GeneralParameterProperties xmi:id="_mLvQcCL4Eem0UtZqFR6jHw" base_Parameter="_aepVcB2NEemFppq5PtQEow" nativeType="std::string"/>
+  <CppPropertySets:GeneralParameterProperties xmi:id="_mLvQcCL4Eem0UtZqFR6jHw" base_Parameter="_aepVcB2NEemFppq5PtQEow" nativeType="std::StdString"/>
   <CppPropertySets:GeneralParameterProperties xmi:id="_n_d34CL4Eem0UtZqFR6jHw" base_Parameter="_i7jjQB2AEemFppq5PtQEow" nativeType="std::StdString"/>
   <UMLRealTime:Capsule xmi:id="_84x4ACMXEem0UtZqFR6jHw" base_Class="_84Y2cCMXEem0UtZqFR6jHw"/>
   <UMLRealTime:RTRedefinableElement xmi:id="_VfB1ACMYEem0UtZqFR6jHw" base_RedefinableElement="_84jOgCMXEem0UtZqFR6jHw">
@@ -1290,4 +1549,16 @@ if (msg == &quot;start_game&quot;) {&#xD;
   </CppPropertySets:TargetRTSClassProperties>
   <CppPropertySets:GeneralAttributeProperties xmi:id="_kjWoACOVEem0UtZqFR6jHw" base_Property="_h6XMgCOVEem0UtZqFR6jHw" nativeType="std::vector&lt;std::string>"/>
   <UMLRealTime:RTPort xmi:id="_ZXLSYCO0Eem0UtZqFR6jHw" isWired="false" base_Port="_ZXIPECO0Eem0UtZqFR6jHw"/>
+  <CppPropertySets:GeneralCapsuleProperties xmi:id="_aziucCPPEem0UtZqFR6jHw" base_Class="_qwSyQB19EemFppq5PtQEow">
+    <implementationPreface xmi:id="_aziucSPPEem0UtZqFR6jHw" body="#include &lt;stdlib.h>&#xD;&#xA;#include &lt;ctime>&#xD;&#xA;#include &lt;string>&#xD;&#xA;#include &lt;sstream>"/>
+  </CppPropertySets:GeneralCapsuleProperties>
+  <UMLRealTime:OutEvent xmi:id="_HAxKsCPTEem0UtZqFR6jHw" base_CallEvent="_HAuHYCPTEem0UtZqFR6jHw"/>
+  <CppPropertySets:GeneralAttributeProperties xmi:id="_73f6wCPTEem0UtZqFR6jHw" base_Property="_73fTsCPTEem0UtZqFR6jHw"/>
+  <UMLRealTime:OutEvent xmi:id="_X9q7QCPUEem0UtZqFR6jHw" base_CallEvent="_X9pGECPUEem0UtZqFR6jHw"/>
+  <UMLRealTime:RTPort xmi:id="_kPDMUCPfEem0UtZqFR6jHw" isWired="false" base_Port="_kPAwECPfEem0UtZqFR6jHw"/>
+  <UMLRealTime:InEvent xmi:id="_T3bLsCPhEem0UtZqFR6jHw" base_CallEvent="_T3Z9kCPhEem0UtZqFR6jHw"/>
+  <UMLRealTime:InEvent xmi:id="_avgd0CPhEem0UtZqFR6jHw" base_CallEvent="_aveooCPhEem0UtZqFR6jHw"/>
+  <CppPropertySets:GeneralCapsuleProperties xmi:id="_VMZn4CRgEem0UtZqFR6jHw" base_Class="_tDEvYB2MEemFppq5PtQEow">
+    <implementationPreface xmi:id="_VMaO8CRgEem0UtZqFR6jHw" body="#include &lt;iostream>"/>
+  </CppPropertySets:GeneralCapsuleProperties>
 </xmi:XMI>

@@ -10,12 +10,25 @@
 $(function () {
     var socket = io();    
 
-    socket.on('word', function(msg) {
+    socket.on('newWord', function(msg) {
         $('#word-label').text('Draw a ' + msg.word);        
-    });        
-
+    });   
+    socket.on('remainingTime', function(msg) {
+        $('#timer').show();
+        $('#timer').text(msg.time);        
+    });     
+    socket.on('gameOver', function(msg) {        
+        $('#timer').text('GAME OVER! (score = ' + msg.score + ')');
+    });  
+    
     $('#start-button').click(function() {
         $.get('/start_game', function () {
+
+        });
+    });
+
+    $('#done-drawing-button').click(function() {
+        $.get('/done_drawing', function () {
 
         });
     });

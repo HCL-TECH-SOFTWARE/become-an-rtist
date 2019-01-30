@@ -55,6 +55,16 @@ app.get('/start_game', function(req, res) {
     res.end();
 });
 
+app.get('/done_drawing', function(req, res) {
+    if (!rtAppCallback) {
+        console.log('RT application not running!');
+        return;
+    }
+
+    rtAppCallback('done_drawing');    
+    res.end();
+});
+
 // Attempts to fetch a message to the RT application
 app.get('/command', function(req, res) {
     console.log('Ready for command');
@@ -68,8 +78,28 @@ app.get('/command', function(req, res) {
 app.get('/newWord', function(req, res) {
     let word = req.query.word;    
 
-    // Send light info to all connected web clients
-    io.emit('word', {'word' : word});
+    // Send info to all connected web clients
+    io.emit('newWord', {'word' : word});
+
+    res.contentType("text/plain");
+    res.send('OK');
+});
+
+app.get('/remainingTime', function(req, res) {
+    let time = req.query.time;    
+
+    // Send info to all connected web clients
+    io.emit('remainingTime', {'time' : time});
+
+    res.contentType("text/plain");
+    res.send('OK');
+});
+
+app.get('/gameOver', function(req, res) {
+    let score = req.query.score;    
+
+    // Send info to all connected web clients
+    io.emit('gameOver', {'score' : score});
 
     res.contentType("text/plain");
     res.send('OK');
