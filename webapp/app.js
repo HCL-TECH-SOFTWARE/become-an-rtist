@@ -105,4 +105,12 @@ app.get('/gameOver', function(req, res) {
     res.send('OK');
 });
 
+app.get('/failedToRecognizeImage', function(req, res) {
+    // Send info to all connected web clients
+    io.emit('failedToRecognizeImage', {});
+
+    res.contentType("text/plain");
+    res.send('OK');
+});
+
 http.listen(port, () => console.log(`Web app listening on port ${port}!`));

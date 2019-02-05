@@ -20,6 +20,12 @@ $(function () {
     socket.on('gameOver', function(msg) {        
         $('#timer').text('GAME OVER! (score = ' + msg.score + ')');
     });  
+    socket.on('failedToRecognizeImage', function(msg) {        
+        $('#popup').show().text('Failed to recognize the drawing. Try again!');
+        setTimeout(function () {
+            $('#popup').hide();
+        }, 2000);
+    });  
     
     $('#start-button').click(function() {
         $.get('/start_game', function () {
