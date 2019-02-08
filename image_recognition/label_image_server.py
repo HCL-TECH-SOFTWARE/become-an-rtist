@@ -45,7 +45,13 @@ class S(BaseHTTPRequestHandler):
 
             top_k = results.argsort()[-5:][::-1]
             end = time.time()
-            self.wfile.write((self.labels[top_k[0]] + " " + str(results[top_k[0]]) + " (took " + str(end - start) + " seconds)"))
+            # Build JSON response
+            self.wfile.write("{\"" + self.labels[top_k[0]] + "\" : " + str(results[top_k[0]]) + ",")
+            self.wfile.write("\"" + self.labels[top_k[1]] + "\" : " + str(results[top_k[1]]) + ",")
+            self.wfile.write("\"" + self.labels[top_k[2]] + "\" : " + str(results[top_k[2]]) + ",")
+            self.wfile.write("\"" + self.labels[top_k[3]] + "\" : " + str(results[top_k[3]]) + ",")
+            self.wfile.write("\"" + self.labels[top_k[4]] + "\" : " + str(results[top_k[4]]) + ",")
+            self.wfile.write("\"timeSpent\" : " + str(end - start) + "}")
         else:
 #            self.wfile.write("Unknown request".encode("utf-8"))
              self.wfile.write("Unknown request")

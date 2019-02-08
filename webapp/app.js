@@ -21,25 +21,26 @@ app.get('/', function(req, res) {
     res.contentType("text/html");
     res.sendFile(__dirname + '/public/html/main.html');
 });
-app.get('/css', function(req, res) {
-    res.contentType("text/css");
-    res.sendFile(__dirname + '/public/css/styling.css');
-});
-/*app.get('/images/stop', function(req, res) {
-    res.contentType("img/png");
-    res.sendFile(__dirname + '/public/images/stop.png');
-});
-app.get('/images/walk', function(req, res) {
-    res.contentType("img/png");
-    res.sendFile(__dirname + '/public/images/walk.png');
-});*/
-app.get('/main', function(req, res) {
+app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/audio', express.static(__dirname + '/public/audio'));
+app.use('/js', express.static(__dirname + '/public/js'));
+app.use('/images', express.static(__dirname + '/public/images'));
+// Special routes for modules that are installed
+app.get('/socket.io', function(req, res) {
     res.contentType("text/javascript");
-    res.sendFile(__dirname + '/public/js/main.js');
+    res.sendFile(__dirname + '/node_modules/socket.io-client/dist/socket.io.js');
 });
-app.get('/jquery', function(req, res) {
+app.get('/svg.js', function(req, res) {
     res.contentType("text/javascript");
-    res.sendFile(__dirname + '/public/js/jquery/jquery.min.js');
+    res.sendFile(__dirname + '/node_modules/svg.js/dist/svg.min.js');
+});
+
+app.get('/word-image', function(req, res) {
+    let word = req.query.word;
+    let index = req.query.index;
+
+    res.contentType("image/jpeg");
+    res.sendFile('D:\\quickdraw\\all_images\\' + word + '\\' + index + '.jpg');
 });
 
 var rtAppCallback = null;
@@ -52,7 +53,7 @@ app.get('/start_game', function(req, res) {
     }
 
     rtAppCallback('start_game');    
-    res.end();
+//    res.end();
 });
 
 app.get('/done_drawing', function(req, res) {
@@ -62,7 +63,7 @@ app.get('/done_drawing', function(req, res) {
     }
 
     rtAppCallback('done_drawing');    
-    res.end();
+//    res.end();
 });
 
 // Attempts to fetch a message to the RT application
@@ -96,18 +97,48 @@ app.get('/remainingTime', function(req, res) {
 });
 
 app.get('/gameOver', function(req, res) {
-    let score = req.query.score;    
-
     // Send info to all connected web clients
-    io.emit('gameOver', {'score' : score});
+    io.emit('gameOver', {});
 
     res.contentType("text/plain");
     res.send('OK');
 });
 
 app.get('/failedToRecognizeImage', function(req, res) {
+    let words = req.query.words;
+
     // Send info to all connected web clients
-    io.emit('failedToRecognizeImage', {});
+    io.emit('failedToRecognizeImage', JSON.parse(words));
+
+    res.contentType("text/plain");
+    res.send('OK');
+});
+
+app.get('/imageSuccessfullyRecognized', function(req, res) {
+    let words = req.query.words;
+    
+    // Send info to all connected web clients
+    io.emit('imageSuccessfullyRecognized', JSON.parse(words));
+
+    res.contentType("text/plain");
+    res.send('OK');
+});
+
+app.get('/score', function(req, res) {
+    let inc = req.query.inc;
+    let dec = req.query.dec;
+    let set = req.query.set;
+    
+    let obj = {};
+    if (inc != undefined)
+        obj.inc = parseInt(inc);
+    else if (dec != undefined)
+        obj.dec = parseInt(dec);
+    else if (set != undefined)
+        obj.set = parseInt(set);
+
+    // Send info to all connected web clients
+    io.emit('score', obj);
 
     res.contentType("text/plain");
     res.send('OK');
