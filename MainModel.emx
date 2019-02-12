@@ -919,6 +919,9 @@ return rtdata->find(currentWord) != std::string::npos;&#xD;
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_YKjDgB2bEemFppq5PtQEow" name="Effect">
                   <language>C++</language>
                   <body>std::cout &lt;&lt; &quot;Image successfully recognized&quot; &lt;&lt; std::endl;&#xD;
+timer.cancelTimer(countdownTimer); // Stop countdown&#xD;
+&#xD;
+// Compute score&#xD;
 unsigned int scoreInc = maxTime - secCount;&#xD;
 StdString result = *(StdString*) rtdata;&#xD;
 &#xD;
@@ -932,7 +935,7 @@ catch (...)&#xD;
 	std::cout &lt;&lt; &quot;Failed to extract probability score!&quot; &lt;&lt; std::endl;&#xD;
 }&#xD;
 &#xD;
-// Append current word&#xD;
+// Append 'current word' property to JSON string&#xD;
 result.insert(rtdata->size() - 1, &quot;, \&quot;currentWord\&quot; : \&quot;&quot; + currentWord + &quot;\&quot;&quot;);&#xD;
 webServer_out.imageSuccessfullyRecognized(result).send();&#xD;
 &#xD;
@@ -1550,6 +1553,10 @@ configureServer(webhost, webport);</body>
                   <body>fileToAnalyze = *rtdata;&#xD;
 std::cout &lt;&lt; &quot;Starting to analyze image &quot; &lt;&lt; fileToAnalyze &lt;&lt; std::endl;&#xD;
 std::string result = httpGet(&quot;image_recognition?file=&quot; + fileToAnalyze);&#xD;
+if (result == &quot;ERROR&quot;) {&#xD;
+	std::cout &lt;&lt; &quot;Failed to contact Python server. Is it running?&quot; &lt;&lt; std::endl;&#xD;
+	return;&#xD;
+}&#xD;
 // Result is JSON with the top 5 matches. Pass it on to the web app.&#xD;
 std::cout &lt;&lt; &quot;Finished analysis of image &quot; &lt;&lt; fileToAnalyze &lt;&lt; std::endl;&#xD;
 game.result(result).send();</body>

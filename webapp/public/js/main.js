@@ -11,33 +11,51 @@ $(function () {
     var socket = io();   
     var currentWord = 'The Eiffel Tower';
 
+    function showPopup(html) {   
+        hidePopup(); // In case the popup is already shown.       
+        $('#thePopup').append($(html));  
+        $('#thePopup').addClass('show');       
+    }
+
+    function hidePopup() {
+        $('#thePopup').empty();   
+        $('#thePopup').removeClass('show');        
+    }
+
     socket.on('newWord', function(msg) {
-        currentWord = msg.word;        
-        $('#tooltip_content > strong').text(msg.word);
-        $('#drawing').tooltipster('open');
+        currentWord = msg.word;              
+        showPopup('<span>Draw this: <strong>' + msg.word + '</strong></span>');                
+        $('#main-button').data('state', 'drawing');
+        updateMainButton();
     });   
     socket.on('remainingTime', function(msg) {
         // Show a sample image of the current word and the remaining time 
         let index = Math.floor(Math.random() * Math.floor(2000));
         $('#drawing').attr('src', '/word-image?word=' + currentWord + '&index=' + index);
-        $('#timer').show().text(msg.time);
-        //$('#timer').show();
-        //$('#timer').text(msg.time);        
+        $('#timer').show().text(msg.time);             
     });     
-    socket.on('gameOver', function(msg) {        
-        $('#drawing').attr('src', '/images/game-over.png');        
+    socket.on('gameOver', function(msg) {    
+        new Audio('/audio/game-over.mp3').play();    
+        hidePopup();
+        $('#drawing').attr('src', '/images/game-over.png');
+        $('#main-button').data('state', 'start');
+        updateMainButton();  
     });  
     socket.on('failedToRecognizeImage', function(msg) {        
-        $('#popup').show().text('Failed to recognize the drawing. Try again!');
+        showPopup('<span>Failed to recognize the drawing. Try again!</span>');        
         setTimeout(function () {
-            $('#popup').hide();
+            showPopup('<span>Draw this: <strong>' + currentWord + '</strong></span>');  
         }, 2000);
+        $('#main-button').data('state', 'drawing');
+        updateMainButton();
     });  
     socket.on('imageSuccessfullyRecognized', function(msg) {        
-        $('#popup').show().text('You guessed correctly ' + msg.currentWord);
+        showPopup('<span>Well done! Try another one!</span>');        
         setTimeout(function () {
-            $('#popup').hide();
+            hidePopup();
         }, 2000);
+        $('#main-button').data('state', 'start');
+        updateMainButton();
     });
     socket.on('score', function(msg) {
         if (msg.hasOwnProperty('inc'))
@@ -51,14 +69,14 @@ $(function () {
     $('#main-button').click(function() {
         if ($('#main-button').data('state') == 'start') {
             $('#main-button').data('state', 'drawing');
-            $('#main-button').text('DRAWING READY');
+            updateMainButton();
             $.get('/start_game', function () {
 
             });
         }
         else if ($('#main-button').data('state') == 'drawing') {
             $('#main-button').data('state', 'disabled');
-            $('#main-button').text('PLEASE WAIT');
+            updateMainButton();
             $.get('/done_drawing', function () {
 
             });
@@ -84,6 +102,19 @@ $(function () {
         scoreText.text(newScore.toString());
     }
 
+    // Update text and enablement of main button according to its current state
+    function updateMainButton() {
+        if ($('#main-button').data('state') == 'start') {
+            $('#main-button').text('START NEW GAME');
+        }
+        else if ($('#main-button').data('state') == 'drawing') {
+            $('#main-button').text('DRAWING READY');
+        }
+        else if ($('#main-button').data('state') == 'disabled') {
+            $('#main-button').text('PLEASE WAIT');
+        }
+    }
+
     $('#test-button').click(function() {
         //increaseScore(4);
 
@@ -92,14 +123,23 @@ $(function () {
         $('#drawing').attr('src', '/word-image?word=' + currentWord + '&index=' + index);
         $('#timer').show().text(index);*/
 
-        $('#drawing').attr('src', '/images/game-over.png');
-        new Audio('/audio/game-over.mp3').play();        
+        //$('#drawing').attr('src', '/images/game-over.png');
+        //new Audio('/audio/game-over.mp3').play();       
+        
+        /*if ($('#thePopup').hasClass('show')) 
+            hidePopup();
+        else
+            showPopup('<span>Draw a <strong>house</strong></span>');        */
+
+        $('#drawing').attr('src', '/word-image?word=' + 'lightning' + '&index=' + 880);
     });
 
+    /*
     let tooltip = $('#drawing').tooltipster({
         theme: 'tooltipster-light',
         content: $('#tooltip_content'),
         animation: 'fall'
-    });     
-    tooltip.tooltipster('open');
+    });*/         
+
+    updateMainButton();
 });

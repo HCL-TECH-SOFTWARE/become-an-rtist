@@ -26,27 +26,30 @@
             <text id="score" x="0" y="28">SCORE:</text>       
         </svg>
 
-        <a href="#" id="main-button" class="redButton" data-state="start">START NEW GAME</a>      
+        <a href="#" id="main-button" class="redButton" data-state="start"></a>      
         
         <button type="button" id="test-button">TEST</button>            
         <br>
         <br>
         <br>
-        <h1 id="popup" style="display:false;"></h1>
+        <div class="popup">            
+            <div class="popuptext" id="thePopup"></div>
+        </div>
         <div id="drawing-container">
             <div id="timer" style="display:none;"></div>
-            <img id="drawing" src="/images/draw.jpg" class="tooltip" data-tooltip-content="#tooltip_content"/>
+            <!-- <img id="drawing" src="/images/draw.jpg" class="tooltip" data-tooltip-content="#tooltip_content"/> -->
+            <img id="drawing" src="/images/draw.jpg" />
         </div>
-        <div class="tooltip_templates">
+        <!-- <div class="tooltip_templates">
             <span id="tooltip_content">
                 <span>Draw: </span>
                 <strong>The Eiffel Tower</strong>
             </span>
-        </div>
+        </div> -->
         <script src="/socket.io"></script>
         <script src="/js/jquery/jquery.min.js"></script>        
         <script src="/svg.js"></script>
-        <script src="/js/tooltipster/dist/js/tooltipster.bundle.min.js"></script>
+        <!-- <script src="/js/tooltipster/dist/js/tooltipster.bundle.min.js"></script> -->
         <script src="/js/main.js"></script>
 
     </body>

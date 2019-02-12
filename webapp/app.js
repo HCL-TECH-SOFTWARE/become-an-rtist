@@ -10,11 +10,13 @@
 
 var express = require('express');
 var app = express();
-var http = require('http').Server(app);
-var io = require('socket.io')(http);
+var http = require('http');
+var socketio = require('socket.io');
+var fs = require('fs');
 
 const port = 5000;
 const env = process.env.NODE_ENV || 'development';
+var io = null;
 
 // Static middleware for serving static files 
 app.get('/', function(req, res) {
@@ -37,10 +39,18 @@ app.get('/svg.js', function(req, res) {
 
 app.get('/word-image', function(req, res) {
     let word = req.query.word;
-    let index = req.query.index;
+    let index = parseInt(req.query.index);
 
     res.contentType("image/jpeg");
-    res.sendFile('D:\\quickdraw\\all_images\\' + word + '\\' + index + '.jpg');
+    let filename = '';    
+    do {
+        filename = 'D:\\quickdraw\\all_images\\' + word + '\\' + index + '.jpg';
+        index++;
+        if (index > 2200) // Safe-guard to avoid infinite loop
+            index = 0;
+    } while (!fs.existsSync(filename));    
+    
+    res.sendFile(filename);
 });
 
 var rtAppCallback = null;
@@ -49,6 +59,8 @@ var rtAppCallback = null;
 app.get('/start_game', function(req, res) {
     if (!rtAppCallback) {
         console.log('RT application not running!');
+        res.status(500);
+        res.end();
         return;
     }
 
@@ -104,11 +116,20 @@ app.get('/gameOver', function(req, res) {
     res.send('OK');
 });
 
+function parseJSON(json) {
+    try {
+        return JSON.parse(json);
+    } catch(e) {
+        console.log('JSON parse error: ' + e);
+        console.log('JSON: ' + json);
+    }
+}
+
 app.get('/failedToRecognizeImage', function(req, res) {
     let words = req.query.words;
 
     // Send info to all connected web clients
-    io.emit('failedToRecognizeImage', JSON.parse(words));
+    io.emit('failedToRecognizeImage', parseJSON(words));
 
     res.contentType("text/plain");
     res.send('OK');
@@ -118,7 +139,7 @@ app.get('/imageSuccessfullyRecognized', function(req, res) {
     let words = req.query.words;
     
     // Send info to all connected web clients
-    io.emit('imageSuccessfullyRecognized', JSON.parse(words));
+    io.emit('imageSuccessfullyRecognized', parseJSON(words));
 
     res.contentType("text/plain");
     res.send('OK');
@@ -144,4 +165,10 @@ app.get('/score', function(req, res) {
     res.send('OK');
 });
 
-http.listen(port, () => console.log(`Web app listening on port ${port}!`));
+app.server = http.createServer(app);
+app.server.setTimeout(0); // Disable timeout of requests since we use long-running requests (/command)
+app.server.listen(port, function () {
+    console.log(`Web app listening on port ${port}!`);
+    io = socketio.listen(app.server); 
+});
+//http.listen(port, () => console.log(`Web app listening on port ${port}!`));
