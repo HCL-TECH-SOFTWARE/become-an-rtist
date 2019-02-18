@@ -2,12 +2,6 @@
 * (c) Copyright HCL Technologies Ltd. 2019.  MIT Licensed!
 ************************************************************************/
 
-#score-container{
-  height: 100px;
-  width: 200px;  
-  float: right;
-}
-
 #score {
   font-size:28px;  
   fill: chocolate;
@@ -17,12 +11,18 @@
   position: relative;
   text-align: center;  
 }
+
 #drawing {
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 40%;
+  width: 300px;
+  height: 300px;
 }
+#drawing.thick-frame {
+  border: 5px solid gold;
+}
+
 #timer {
   position: absolute;
   top: 8px;
@@ -88,17 +88,9 @@
   color: #0066B3;
 }
 
-/* .tooltip_templates { 
-  display: none; 
-} 
-
-#tooltip_content > strong {
-  font-size:28px;  
-} */
-
 .popup {
-  position: relative;
-  display: inline-block;  
+  justify-self: stretch;  
+  align-self: center;
 }
 
 .popup .popuptext {
@@ -109,13 +101,9 @@
   color: #fff;
   text-align: center;
   border-radius: 6px;
-  padding: 8px 8px;
-  position: absolute;
+  padding: 8px 8px;  
   z-index: 1;
-  margin-top: -40px;
-  margin-left: 90px;  
 }
-
 
 /* Toggle this class when clicking on the popup container (hide and show the popup) */
 .popup .show {
@@ -133,4 +121,138 @@
 @keyframes fadeIn {
   from {opacity: 0;}
   to {opacity:1 ;}
+}
+
+#button-container {
+  display: grid;
+  grid-template-columns: 415px auto 150px;
+  grid-gap: 10px;
+  padding: 10px;
+}
+
+#button-div {  
+  justify-self: start;
+  align-self: center;
+}
+
+#score-div {  
+  justify-self: start;
+}
+
+#score-container {
+  height: 80px;
+  width: 168px;
+}
+
+#recog-words-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto auto;
+  grid-gap: 10px;
+  padding: 10px;
+}
+/*
+#recog-words-container > div {
+  background-color: rgba(185, 21, 21, 0.8);
+  text-align: center;
+  padding: 20px 0;
+  font-size: 30px;
+}*/
+
+.flip-card {
+  background-color: transparent;
+  /*width: 300px;*/
+  height: 100px;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+}
+
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+.flip-card-front img {
+  width:100px;
+  height:100px;
+}
+
+.flip-card-back {
+  background-color: #f20e0e;
+  color: white;
+  transform: rotateY(180deg);
+}
+
+.flip-card-back.correct {
+  background-color: #2f6627;  
+}
+
+#failedPopup {
+  width: 500px;
+  height: 110px;
+  border: 5px solid red;
+  text-align: left;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left:-250px;
+  margin-top:-100px;   
+  background:rgba(255,255,255,0.3); /* semi transparent background */
+  border-radius: 10%;
+  font-size: 54px;
+  font-family: Courier New;
+  color: red;
+}
+
+#hiscorePrompt {
+  width: 500px;
+  height: 110px;
+  border: 5px solid Black;
+  text-align: left;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-left:-250px;
+  margin-top:-200px;   
+  background:rgba(255,255,255,0.8); /* semi transparent background */
+  border-radius: 10%;
+  box-shadow:
+      inset 0 0 50px #fff,      /* inner white */
+      inset 20px 0 80px #f0f,   /* inner left magenta short */
+      inset -20px 0 80px #0ff,  /* inner right cyan short */
+      inset 20px 0 300px #f0f,  /* inner left magenta broad */
+      inset -20px 0 300px #0ff, /* inner right cyan broad */
+      0 0 50px #fff,            /* outer white */
+      -10px 0 80px #f0f,        /* outer left magenta */
+      10px 0 80px #0ff; /* outer right cyan */
+}
+
+#hiscorePrompt span {
+  font-size:28px; 
+  color: white;
+  margin-left: 100px;
+}
+
+#hiscorePrompt p {
+  font-size:20px; 
+  color: white;
 }

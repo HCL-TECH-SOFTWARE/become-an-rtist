@@ -14,9 +14,10 @@ tc.prerequisites = [
 ];
 tc.compileArguments = '$(DEBUG_TAG) -fexceptions -std=c++11 -D_GLIBCXX_USE_CXX11_ABI=1';
 tc.inclusionPaths = [
-    'D:\\rsarte\\TargetRTS\\Raspberry-TargetRTS\\TargetRTS\\src\\target\\RPI9'
+    'D:\\rsarte\\TargetRTS\\Raspberry-TargetRTS\\TargetRTS\\src\\target\\RPI9',
+    'D:\\eclipse-workspace\\rtist_demo\\WiringPi\\wiringPi'
 ];
-tc.linkArguments = '-std=c++11 -ldl -lrt -LD:/eclipse-workspace/rtist_demo/Poco_Foundation/Debug -lPoco_Foundation -LD:/eclipse-workspace/rtist_demo/Poco_Net/Debug -lPoco_Net';
+tc.linkArguments = '-std=c++11 -ldl -lrt -LD:/eclipse-workspace/rtist_demo/Poco_Foundation/Debug -lPoco_Foundation -LD:/eclipse-workspace/rtist_demo/Poco_Net/Debug -lPoco_Net -LD:/eclipse-workspace/rtist_demo/WiringPi/Debug -lWiringPi';
 tc.threads = [
 {
     name: 'MainThread',
@@ -37,6 +38,15 @@ tc.threads = [
     priority: 'DEFAULT_MAIN_PRIORITY',
     logical: [
         'WebServerThread'
+    ]
+},
+{
+    name: 'PushButtonThread',
+    implClass: 'RTPeerController',
+    stackSize: '20000',
+    priority: 'DEFAULT_MAIN_PRIORITY',
+    logical: [
+        'PushButtonThread'
     ]
 }
 ];

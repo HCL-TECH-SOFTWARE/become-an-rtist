@@ -22,6 +22,39 @@ $(function () {
         $('#thePopup').removeClass('show');        
     }
 
+    function updateCards(msg) {
+        // Set the guessed words on the "backside" of the flip cards
+        let index = 0;
+        for (var key in msg) {
+            if (msg.hasOwnProperty(key) && key != "timeSpent") {
+                index++;
+                let card = $('#recog-word-' + index);                
+                card.find('h1').text(key);                
+                let f = parseFloat(msg[key]) * 100;
+                card.find('p').text(f.toFixed(2));  
+                
+                if (currentWord == key)
+                    card.addClass('correct');
+            }            
+        }
+
+        // Then flip the cards
+        $('.flip-card').addClass('flipped');
+    }
+
+    function showImage(path, frame) {
+        $('#drawing').attr('src', path);
+        if (frame)
+            $('#drawing').addClass('thick-frame');
+        else
+            $('#drawing').removeClass('thick-frame');
+    }
+
+    socket.on('readyForNewGame', function(msg) {                     
+        $('#main-button').data('state', 'start');
+        updateMainButton();
+        $('#hiscorePrompt').hide();
+    });  
     socket.on('newWord', function(msg) {
         currentWord = msg.word;              
         showPopup('<span>Draw this: <strong>' + msg.word + '</strong></span>');                
@@ -31,30 +64,61 @@ $(function () {
     socket.on('remainingTime', function(msg) {
         // Show a sample image of the current word and the remaining time 
         let index = Math.floor(Math.random() * Math.floor(2000));
-        $('#drawing').attr('src', '/word-image?word=' + currentWord + '&index=' + index);
+        showImage('/word-image?word=' + currentWord + '&index=' + index, false);        
         $('#timer').show().text(msg.time);             
-    });     
+    });    
+    socket.on('imageUploaded', function(msg) {
+        // Show the uploaded image in a thick frame 
+        showImage(msg.path, true);               
+    }); 
     socket.on('gameOver', function(msg) {    
         new Audio('/audio/game-over.mp3').play();    
         hidePopup();
-        $('#drawing').attr('src', '/images/game-over.png');
+        showImage('/images/game-over.png', false);        
         $('#main-button').data('state', 'start');
         updateMainButton();  
-    });  
-    socket.on('failedToRecognizeImage', function(msg) {        
-        showPopup('<span>Failed to recognize the drawing. Try again!</span>');        
+        
         setTimeout(function () {
-            showPopup('<span>Draw this: <strong>' + currentWord + '</strong></span>');  
-        }, 2000);
+            showImage('/images/draw.jpg');
+            $('#timer').hide();
+        }, 4000);
+    });  
+    socket.on('newHighscore', function(msg) {            
+        hidePopup();
+        
+        // Wait 3 seconds until game over audio has played
+        setTimeout(function() {
+            new Audio('/audio/hiscore.mp3').play(); 
+            $('#hiscorePrompt').show();
+            $('#main-button').data('state', 'upload-hiscore');
+            updateMainButton(); 
+        }, 3000);               
+    });  
+    socket.on('startImageAnalysis', function(msg) {    
+        // Disable button while image recognition runs
+        $('#main-button').data('state', 'disabled');
+        updateMainButton();        
+    });  
+    socket.on('failedToRecognizeImage', function(msg) {
+        updateCards(msg);        
+        
+        new Audio('/audio/fail-buzzer.mp3').play();  
+        $('#failedPopup').show();        
+        setTimeout(function () {            
+            $('.flip-card').removeClass('flipped');
+            $('#failedPopup').hide();        
+        }, 3000);
         $('#main-button').data('state', 'drawing');
         updateMainButton();
     });  
-    socket.on('imageSuccessfullyRecognized', function(msg) {        
-        showPopup('<span>Well done! Try another one!</span>');        
+    socket.on('imageSuccessfullyRecognized', function(msg) {       
+        updateCards(msg);    
+
         setTimeout(function () {
-            hidePopup();
-        }, 2000);
-        $('#main-button').data('state', 'start');
+            $('.flip-card').removeClass('flipped');     
+            $('.correct').removeClass('correct')
+        }, 3000);
+        $('#main-button').data('state', 'drawing');
         updateMainButton();
     });
     socket.on('score', function(msg) {
@@ -68,22 +132,25 @@ $(function () {
     
     $('#main-button').click(function() {
         if ($('#main-button').data('state') == 'start') {
-            $('#main-button').data('state', 'drawing');
-            updateMainButton();
+            // State of main button is changed in callbacks from RTist app so that it
+            // also works in case the physical push button is used
             $.get('/start_game', function () {
 
             });
         }
-        else if ($('#main-button').data('state') == 'drawing') {
-            $('#main-button').data('state', 'disabled');
-            updateMainButton();
+        else if ($('#main-button').data('state') == 'drawing') {            
             $.get('/done_drawing', function () {
 
             });
         }
+        else if ($('#main-button').data('state') == 'upload-hiscore') {            
+            $.get('/hiscore_photo_ready', function () {
+
+            });
+        }    
     });    
 
-    var scoreText = SVG('score-container').text("0").attr({'x': 100, 'y':-7, 'font-size' : '28px', 'fill' : 'green'});
+    var scoreText = SVG('score-container').text("0").attr({'x': 100, 'y':12, 'font-size' : '28px', 'fill' : 'green'});
 
     function increaseScore(increment) {
         new Audio('/audio/tada.mp3').play();        
@@ -91,14 +158,12 @@ $(function () {
         scoreText.text((parseInt(scoreText.text(), 10) + increment).toString());
         scoreText.animate({ ease: '<>', duration: '0.5s' }).attr({'font-size': '28px'});
     }    
-    function decreaseScore(decrement) {
-        //new Audio('/audio/tada').play();        
+    function decreaseScore(decrement) {               
         scoreText.animate({ ease: '<>', duration: '0.5s' }).attr({'font-size': '12px'});        
         scoreText.text((parseInt(scoreText.text(), 10) - decrement).toString());
         scoreText.animate({ ease: '<>', duration: '0.5s' }).attr({'font-size': '28px'});
     }
-    function setScore(newScore) {
-        //new Audio('/audio/tada').play();        
+    function setScore(newScore) {        
         scoreText.text(newScore.toString());
     }
 
@@ -113,10 +178,24 @@ $(function () {
         else if ($('#main-button').data('state') == 'disabled') {
             $('#main-button').text('PLEASE WAIT');
         }
+        else if ($('#main-button').data('state') == 'upload-hiscore') {
+            $('#main-button').text('UPLOAD HISCORE');
+        }
     }
 
     $('#test-button').click(function() {
-        //increaseScore(4);
+        $('#failedPopup').show();
+
+        /*
+        new Audio('/audio/hiscore.mp3').play();    
+        $('#drawing').attr('src', '/images/game-over.png');
+        hidePopup();
+        $('#hiscorePrompt').show();
+        $('#main-button').data('state', 'upload-hiscore');
+        updateMainButton();        
+        */
+        //$('.flip-card').addClass('flipped');
+        increaseScore(4);
 
         /*
         let index = Math.floor(Math.random() * Math.floor(2000));
@@ -125,13 +204,13 @@ $(function () {
 
         //$('#drawing').attr('src', '/images/game-over.png');
         //new Audio('/audio/game-over.mp3').play();       
-        
-        /*if ($('#thePopup').hasClass('show')) 
+        /*
+        if ($('#thePopup').hasClass('show')) 
             hidePopup();
         else
-            showPopup('<span>Draw a <strong>house</strong></span>');        */
-
-        $('#drawing').attr('src', '/word-image?word=' + 'lightning' + '&index=' + 880);
+            showPopup('<span>Draw a <strong>house</strong></span>');        
+*/
+        //$('#drawing').attr('src', '/word-image?word=' + 'lightning' + '&index=' + 880);
     });
 
     /*
@@ -142,4 +221,14 @@ $(function () {
     });*/         
 
     updateMainButton();
+
+    function resize_drawing() { // set body height = window height
+        let imgHeight = $(window).height() - 350;
+        //let imgWidth = imgHeight - 100;
+        $('#drawing').height(imgHeight);
+        $('#drawing').width(imgHeight);
+    }
+
+    $(window).bind('resize', resize_drawing);  
+    resize_drawing();
 });

@@ -498,7 +498,10 @@
         </contents>
       </eAnnotations>
       <ownedAttribute xmi:id="_qwj4AB19EemFppq5PtQEow" name="theCamera" visibility="protected" type="_qwSyQB19EemFppq5PtQEow" aggregation="composite"/>
-      <ownedAttribute xmi:id="_tDgLAB19EemFppq5PtQEow" name="thePushButton" visibility="protected" type="_tDTWsB19EemFppq5PtQEow" aggregation="composite"/>
+      <ownedAttribute xmi:id="_tDgLAB19EemFppq5PtQEow" name="thePushButton" visibility="protected" type="_tDTWsB19EemFppq5PtQEow" aggregation="composite">
+        <upperValue xmi:type="uml:LiteralUnlimitedNatural" xmi:id="_hgXCkDBCEemdXd9vu5XPZQ" value="1"/>
+        <lowerValue xmi:type="uml:LiteralInteger" xmi:id="_hgWbgDBCEemdXd9vu5XPZQ"/>
+      </ownedAttribute>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_N5S8UB1-EemFppq5PtQEow" name="camera" type="_AQRh4B1-EemFppq5PtQEow" aggregation="composite" isBehavior="true" isService="false"/>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_aRSMsB1-EemFppq5PtQEow" name="pushButton" type="_zA5WgB19EemFppq5PtQEow" aggregation="composite" isBehavior="true" isService="false"/>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_mfBqAB2AEemFppq5PtQEow" name="webServer_in" visibility="public" type="_chHE0B1_EemFppq5PtQEow" aggregation="composite" isBehavior="true" isService="false"/>
@@ -545,6 +548,9 @@
         <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_sfHucCY3Eem0UtZqFR6jHw">
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
         </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_D_3AkDNMEemdXd9vu5XPZQ" name="lowestHighscore" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
       </ownedAttribute>
       <ownedConnector xmi:id="_SpG6YB1-EemFppq5PtQEow" name="CameraEvents~, CameraEvents" kind="assembly">
         <end xmi:id="_SpIIgB1-EemFppq5PtQEow" role="_N5S8UB1-EemFppq5PtQEow"/>
@@ -639,6 +645,26 @@
                   </children>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_pHXEkR2IEemFppq5PtQEow" x="2933" y="3474" width="3022" height="2176"/>
                 </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_ibarcDNJEemdXd9vu5XPZQ" element="_ibXoIDNJEemdXd9vu5XPZQ" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_ibbSgDNJEemdXd9vu5XPZQ" type="NameLabel">
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_ibbSgjNJEemdXd9vu5XPZQ" type="Stereotype"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_ibb5kDNJEemdXd9vu5XPZQ" type="Name"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_ibb5kTNJEemdXd9vu5XPZQ" type="Parent"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ibbSgTNJEemdXd9vu5XPZQ" x="1301" y="687"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ibarcTNJEemdXd9vu5XPZQ" x="8140" y="2331"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_qYWFwDNJEemdXd9vu5XPZQ" element="_qYUQkDNJEemdXd9vu5XPZQ" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_qYWFwjNJEemdXd9vu5XPZQ" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_qYWFwzNJEemdXd9vu5XPZQ" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_qYWs0DNJEemdXd9vu5XPZQ" type="Stereotype"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_qYWs0TNJEemdXd9vu5XPZQ" type="Name"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_qYWs0jNJEemdXd9vu5XPZQ" type="Parent"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_qYWs0zNJEemdXd9vu5XPZQ" visible="false" type="Activities"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_qYXT4DNJEemdXd9vu5XPZQ" visible="false" type="InternalTransitionCompartment"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_qYWFwTNJEemdXd9vu5XPZQ" x="11420" y="1442"/>
+                </children>
               </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="_-UjCkx1dEemFppq5PtQEow" type="Name"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_-UjClB1dEemFppq5PtQEow" x="635" y="635" width="20701" height="9926"/>
@@ -665,16 +691,16 @@
               <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_v6KOEB2IEemFppq5PtQEow" id="(0.4900727994705493,0.7797731568998114)"/>
               <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_79PTgB2KEemFppq5PtQEow" id="(1.0,1.0)"/>
             </edges>
-            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_BtIrAB2KEemFppq5PtQEow" element="_BtGOwB2KEemFppq5PtQEow" source="_79Il0R2KEemFppq5PtQEow" target="_f3lG0B1-EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_BtIrAB2KEemFppq5PtQEow" element="_BtGOwB2KEemFppq5PtQEow" source="_79Il0R2KEemFppq5PtQEow" target="_ibarcDNJEemdXd9vu5XPZQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
               <children xmi:type="notation:DecorationNode" xmi:id="_BtJSEB2KEemFppq5PtQEow" type="TransitionLabelCompartment">
                 <children xmi:type="notation:BasicDecorationNode" xmi:id="_BtJSEh2KEemFppq5PtQEow" type="Stereotype"/>
                 <children xmi:type="notation:BasicDecorationNode" xmi:id="_BtJSEx2KEemFppq5PtQEow" type="TransitionLabel"/>
                 <children xmi:type="notation:ListCompartment" xmi:id="_BtJSFB2KEemFppq5PtQEow" type="Triggers"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_BtJSER2KEemFppq5PtQEow" y="-149"/>
               </children>
-              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BtIrAR2KEemFppq5PtQEow" points="[152, 0, -382, 2476]$[2748, 0, 2214, 2476]$[2748, -2476, 2214, 0]$[847, -2476, 313, 0]"/>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_BtIrAR2KEemFppq5PtQEow" points="[-2, 3, -2, 3]$[-2, 3, -2, 3]"/>
               <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_79OFYB2KEemFppq5PtQEow" id="(1.0,1.0)"/>
-              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BtM8cR2KEemFppq5PtQEow" id="(0.8964262078093977,0.6200378071833649)"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_BtM8cR2KEemFppq5PtQEow" id="(0.34324324324324323,0.6992125984251969)"/>
             </edges>
             <edges xmi:type="umlnotation:UMLConnector" xmi:id="_V0_94B2aEemFppq5PtQEow" element="_V086kB2aEemFppq5PtQEow" source="_L8wtcB2aEemFppq5PtQEow" target="_V06eUB2aEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
               <children xmi:type="notation:DecorationNode" xmi:id="_V0_94h2aEemFppq5PtQEow" type="TransitionLabelCompartment">
@@ -685,11 +711,47 @@
               </children>
               <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_V0_94R2aEemFppq5PtQEow" points="[0, 0, 444, 254]$[-444, -254, 0, 0]"/>
             </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_lcM74DNJEemdXd9vu5XPZQ" element="_lcJ4kDNJEemdXd9vu5XPZQ" source="_ibarcDNJEemdXd9vu5XPZQ" target="_f3lG0B1-EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_lcM74jNJEemdXd9vu5XPZQ" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_lcM75DNJEemdXd9vu5XPZQ" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_lcM75TNJEemdXd9vu5XPZQ" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_lcNi8DNJEemdXd9vu5XPZQ" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_lcM74zNJEemdXd9vu5XPZQ" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_lcM74TNJEemdXd9vu5XPZQ" points="[-5, -2, 117, 42]$[-118, -44, 4, 0]"/>
+              <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lcRNUDNJEemdXd9vu5XPZQ" id="(0.25675675675675674,0.49921259842519683)"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_lcRNUTNJEemdXd9vu5XPZQ" id="(0.9665784248841827,0.720226843100189)"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_wTKeYDNJEemdXd9vu5XPZQ" element="_wTHbEDNJEemdXd9vu5XPZQ" source="_ibarcDNJEemdXd9vu5XPZQ" target="_qYWFwDNJEemdXd9vu5XPZQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_wTLsgDNJEemdXd9vu5XPZQ" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_wTLsgjNJEemdXd9vu5XPZQ" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_wTLsgzNJEemdXd9vu5XPZQ" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_wTLshDNJEemdXd9vu5XPZQ" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_wTLsgTNJEemdXd9vu5XPZQ" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_wTKeYTNJEemdXd9vu5XPZQ" points="[14, -3, -125, 22]$[140, -13, 1, 12]"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_wTPW4DNJEemdXd9vu5XPZQ" id="(0.013387297633872976,0.6597353497164461)"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_yY2YgDNJEemdXd9vu5XPZQ" element="_yYyuIDNJEemdXd9vu5XPZQ" source="_qYWFwDNJEemdXd9vu5XPZQ" target="_f3lG0B1-EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_yY2_kDNJEemdXd9vu5XPZQ" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_yY2_kjNJEemdXd9vu5XPZQ" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_yY2_kzNJEemdXd9vu5XPZQ" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_yY2_lDNJEemdXd9vu5XPZQ" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_yY2_kTNJEemdXd9vu5XPZQ" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_yY2YgTNJEemdXd9vu5XPZQ" points="[0, -529, 8061, 403]$[0, -1926, 8061, -994]$[-8188, -1926, -127, -994]$[-8188, -1037, -127, -105]"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_yZBXoDNJEemdXd9vu5XPZQ" id="(0.714427531436135,0.09924385633270322)"/>
+            </edges>
           </contents>
         </eAnnotations>
         <region xmi:id="_-TcPUB1dEemFppq5PtQEow" name="Region1">
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_-TerkB1dEemFppq5PtQEow"/>
-          <subvertex xmi:type="uml:State" xmi:id="_-TmAUB1dEemFppq5PtQEow" name="WaitForNewGame"/>
+          <subvertex xmi:type="uml:State" xmi:id="_-TmAUB1dEemFppq5PtQEow" name="WaitForNewGame">
+            <entry xmi:type="uml:OpaqueBehavior" xmi:id="_FmTQkDNlEemdXd9vu5XPZQ" name="Entry">
+              <language>C++</language>
+              <body>webServer_out.readyForNewGame().send();</body>
+            </entry>
+          </subvertex>
           <subvertex xmi:type="uml:State" xmi:id="_pHUoUB2IEemFppq5PtQEow" name="DrawingWord">
             <eAnnotations xmi:id="_72LCMB2KEemFppq5PtQEow" source="uml2.diagrams" references="_72LCMR2KEemFppq5PtQEow">
               <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_72LCMR2KEemFppq5PtQEow" type="Statechart" element="_pHUoUB2IEemFppq5PtQEow" measurementUnit="Himetric">
@@ -872,12 +934,15 @@ else {&#xD;
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cYCK4B2LEemFppq5PtQEow" name="Effect">
                   <language>C++</language>
                   <body>timer.cancelTimer(countdownTimer);&#xD;
+webServer_out.startImageAnalysis().send();&#xD;
 &#xD;
 currentDrawingFilename = &quot;no-photo&quot;;&#xD;
 RTMessage reply;&#xD;
-camera.takePhoto().invoke(&amp;reply);&#xD;
+camera.takePhoto(false /* isHighscorePhoto */).invoke(&amp;reply);&#xD;
 if (reply.isValid()) {&#xD;
 	currentDrawingFilename = *((StdString*) reply.getData());&#xD;
+	// Upload the drawing to the web server so it can be shown in the web app while image recognition runs&#xD;
+	webServer_out.uploadImage(currentDrawingFilename).send();&#xD;
 }</body>
                 </effect>
                 <trigger xmi:id="_UaxZYB2LEemFppq5PtQEow" name="" event="_2MzR0B19EemFppq5PtQEow" port="_aRSMsB1-EemFppq5PtQEow"/>
@@ -966,6 +1031,8 @@ std::cout &lt;&lt; secCount &lt;&lt; std::endl;</body>
               </transition>
             </region>
           </subvertex>
+          <subvertex xmi:type="uml:Pseudostate" xmi:id="_ibXoIDNJEemdXd9vu5XPZQ" name="highscore?" kind="choice"/>
+          <subvertex xmi:type="uml:State" xmi:id="_qYUQkDNJEemdXd9vu5XPZQ" name="GetHighscorePhoto"/>
           <transition xmi:id="_-TmnYB1dEemFppq5PtQEow" name="Initial" source="_-TerkB1dEemFppq5PtQEow" target="_-TmAUB1dEemFppq5PtQEow">
             <eAnnotations xmi:id="_-Trf4B1dEemFppq5PtQEow" source="uml2.alias">
               <details xmi:id="_-Trf4R1dEemFppq5PtQEow" key="Initial"/>
@@ -974,6 +1041,9 @@ std::cout &lt;&lt; secCount &lt;&lt; std::endl;</body>
               <language>C++</language>
               <body>// Start capsule for incoming web server message in its own thread since it is blocking&#xD;
 frame.incarnate(theWebServer_in, EmptyActorClass, (const void*) 0, (const RTObject_class*) 0, WebServerThread, 0);&#xD;
+&#xD;
+// Start capsule for handling the push button in its own thread since it uses Pi interrupts called from an external thread&#xD;
+frame.incarnate(thePushButton, EmptyActorClass, (const void*) 0, (const RTObject_class*) 0, PushButtonThread, 0);&#xD;
 &#xD;
 // Seed random generator&#xD;
 std::srand(std::time(0));&#xD;
@@ -991,7 +1061,7 @@ webServer_out.setScore(score).send();</body>
             <trigger xmi:id="_-HP-4B2IEemFppq5PtQEow" name="" event="_UfzKsB2IEemFppq5PtQEow" port="_mfBqAB2AEemFppq5PtQEow"/>
             <trigger xmi:id="_hoAhoB2JEemFppq5PtQEow" name="" event="_2MzR0B19EemFppq5PtQEow" port="_aRSMsB1-EemFppq5PtQEow"/>
           </transition>
-          <transition xmi:id="_BtGOwB2KEemFppq5PtQEow" name="gameOver" source="_7pzaIR2KEemFppq5PtQEow" target="_-TmAUB1dEemFppq5PtQEow" guard="_aDJjkCPgEem0UtZqFR6jHw">
+          <transition xmi:id="_BtGOwB2KEemFppq5PtQEow" name="gameOver" source="_7pzaIR2KEemFppq5PtQEow" target="_ibXoIDNJEemdXd9vu5XPZQ" guard="_aDJjkCPgEem0UtZqFR6jHw">
             <ownedRule xmi:id="_aDJjkCPgEem0UtZqFR6jHw">
               <specification xmi:type="uml:OpaqueExpression" xmi:id="_aDKKoCPgEem0UtZqFR6jHw" name="Guard">
                 <language>C++</language>
@@ -1000,7 +1070,16 @@ webServer_out.setScore(score).send();</body>
             </ownedRule>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_N5HaMCPhEem0UtZqFR6jHw" name="Effect">
               <language>C++</language>
-              <body>webServer_out.gameOver().send();&#xD;
+              <body>RTMessage reply;&#xD;
+webServer_out.gameOver().invoke(&amp;reply);&#xD;
+if (reply.isValid()) {&#xD;
+	lowestHighscore = *((int*) reply.getData());&#xD;
+}&#xD;
+else {&#xD;
+	lowestHighscore = 0;&#xD;
+	std::cout &lt;&lt; &quot;Failed to get valid reply from webServer_out.gameOver().invoke()&quot; &lt;&lt; std::endl;&#xD;
+}&#xD;
+&#xD;
 timer.cancelTimer(countdownTimer);</body>
             </effect>
             <trigger xmi:id="_Puk8cCPgEem0UtZqFR6jHw" name="" port="_kPAwECPfEem0UtZqFR6jHw">
@@ -1008,6 +1087,43 @@ timer.cancelTimer(countdownTimer);</body>
             </trigger>
           </transition>
           <transition xmi:id="_V086kB2aEemFppq5PtQEow" name="drawAnotherWord" source="_L8uRMB2aEemFppq5PtQEow" target="_V05QMB2aEemFppq5PtQEow"/>
+          <transition xmi:id="_lcJ4kDNJEemdXd9vu5XPZQ" name="no" source="_ibXoIDNJEemdXd9vu5XPZQ" target="_-TmAUB1dEemFppq5PtQEow" guard="_evRUYDNKEemdXd9vu5XPZQ">
+            <ownedRule xmi:id="_evRUYDNKEemdXd9vu5XPZQ">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_evRUYTNKEemdXd9vu5XPZQ" name="Guard">
+                <language>C++</language>
+                <body>else</body>
+              </specification>
+            </ownedRule>
+          </transition>
+          <transition xmi:id="_wTHbEDNJEemdXd9vu5XPZQ" name="yes" source="_ibXoIDNJEemdXd9vu5XPZQ" target="_qYUQkDNJEemdXd9vu5XPZQ" guard="_gRVkEDNKEemdXd9vu5XPZQ">
+            <ownedRule xmi:id="_gRVkEDNKEemdXd9vu5XPZQ">
+              <specification xmi:type="uml:OpaqueExpression" xmi:id="_gRWLIDNKEemdXd9vu5XPZQ" name="Guard">
+                <language>C++</language>
+                <body>return score > lowestHighscore;</body>
+              </specification>
+            </ownedRule>
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_uMzVMDNREemdXd9vu5XPZQ" name="Effect">
+              <language>C++</language>
+              <body>webServer_out.newHighscore().send();</body>
+            </effect>
+          </transition>
+          <transition xmi:id="_yYyuIDNJEemdXd9vu5XPZQ" name="uploadPhoto" source="_qYUQkDNJEemdXd9vu5XPZQ" target="_-TmAUB1dEemFppq5PtQEow">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_L-8aMDNQEemdXd9vu5XPZQ" name="Effect">
+              <language>C++</language>
+              <body>StdString photoFile = &quot;no-photo&quot;;&#xD;
+RTMessage reply;&#xD;
+camera.takePhoto(true /* isHighscorePhoto */).invoke(&amp;reply);&#xD;
+if (reply.isValid()) {&#xD;
+	photoFile = *((StdString*) reply.getData());&#xD;
+}&#xD;
+HiscoreData data;&#xD;
+data.score = score;&#xD;
+data.photo = photoFile;&#xD;
+webServer_out.uploadHighscorePhoto(data).send();</body>
+            </effect>
+            <trigger xmi:id="_7VCQYDNJEemdXd9vu5XPZQ" name="" event="_2MzR0B19EemFppq5PtQEow" port="_aRSMsB1-EemFppq5PtQEow"/>
+            <trigger xmi:id="_GvqgoDNKEemdXd9vu5XPZQ" name="" event="_DAECYDNKEemdXd9vu5XPZQ" port="_mfBqAB2AEemFppq5PtQEow"/>
+          </transition>
         </region>
       </ownedBehavior>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_hSOOcCOVEem0UtZqFR6jHw" name="loadWords" specification="_BoQ-ICOVEem0UtZqFR6jHw">
@@ -1068,9 +1184,9 @@ std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; wor
                       <children xmi:type="notation:BasicDecorationNode" xmi:id="_Vt8tpiPPEem0UtZqFR6jHw" type="Parent"/>
                       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vt8toyPPEem0UtZqFR6jHw" y="-149"/>
                     </children>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vt8toSPPEem0UtZqFR6jHw" x="761" y="-85"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Vt8toSPPEem0UtZqFR6jHw" x="1142" y="-85"/>
                   </children>
-                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PqogUSPPEem0UtZqFR6jHw" x="5854" y="2204"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_PqogUSPPEem0UtZqFR6jHw" x="5473" y="2204" width="2451"/>
                 </children>
               </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="_qwfmlB19EemFppq5PtQEow" type="Name"/>
@@ -1097,10 +1213,14 @@ std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; wor
               <transition xmi:id="_Vt1Y4CPPEem0UtZqFR6jHw" name="takePhoto" kind="internal" source="_qwY44R19EemFppq5PtQEow" target="_qwY44R19EemFppq5PtQEow">
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_e0rMICPQEem0UtZqFR6jHw" name="Effect">
                   <language>C++</language>
-                  <body>// Generate image file name based on current timestamp&#xD;
+                  <body>bool isHighscorePhoto = *((bool *) rtdata);&#xD;
+&#xD;
+// Generate image file name based on current timestamp&#xD;
 std::time_t t = std::time(nullptr);&#xD;
 std::tm* tm = std::localtime(&amp;t);&#xD;
 std::stringstream timestamp;&#xD;
+if (isHighscorePhoto)&#xD;
+	timestamp &lt;&lt; &quot;hiscore_&quot;;&#xD;
 timestamp &lt;&lt; (1900 + tm->tm_year);&#xD;
 if ((1 + tm->tm_mon) &lt; 10)&#xD;
 	timestamp &lt;&lt; &quot;0&quot;;&#xD;
@@ -1151,23 +1271,148 @@ game.imageFilename(filename).reply();</body>
         </contents>
       </eAnnotations>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_zBArQB19EemFppq5PtQEow" name="game" type="_zA5WgB19EemFppq5PtQEow" aggregation="composite" isBehavior="true"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_LOgUoDBDEemdXd9vu5XPZQ" name="interrupt" visibility="public" aggregation="composite" isBehavior="true" isService="false">
+        <type xmi:type="uml:Collaboration" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_17NVsrIlEduJc5NEaBCMOw?RTClasses/External/External?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_TABwMDBDEemdXd9vu5XPZQ" name="buttonPin" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_V4dV4DBDEemdXd9vu5XPZQ" value="1">
+          <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+        </defaultValue>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_2uU_sDBDEemdXd9vu5XPZQ" name="pushButtonInstance" visibility="private" isStatic="true"/>
+      <ownedAttribute xmi:type="uml:Port" xmi:id="_5xWuADBSEemdXd9vu5XPZQ" name="timer" visibility="public" aggregation="composite" isBehavior="true">
+        <type xmi:type="uml:Collaboration" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_18QelrIlEduJc5NEaBCMOw?RTClasses/Timing/Timing?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_kw_nsDBUEemdXd9vu5XPZQ" name="timerId" visibility="private">
+        <type xmi:type="uml:Class" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_45A541C803DD37E929080053?RTClasses/RTTimerId?"/>
+      </ownedAttribute>
       <ownedBehavior xmi:type="uml:StateMachine" xmi:id="_tDWaAB19EemFppq5PtQEow" name="State Machine">
         <eAnnotations xmi:id="_tDdHsB19EemFppq5PtQEow" source="uml2.diagrams" references="_tDdHsR19EemFppq5PtQEow">
           <contents xmi:type="umlnotation:UMLDiagram" xmi:id="_tDdHsR19EemFppq5PtQEow" type="Statechart" element="_tDWaAB19EemFppq5PtQEow" measurementUnit="Himetric">
-            <children xmi:type="umlnotation:UMLFrame" xmi:id="_tDdHsh19EemFppq5PtQEow" type="Statemachine" element="_tDWaAB19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="16250871" transparency="0" lineColor="12632258" lineWidth="1" showStereotype="Label" alignment="Horizontal">
-              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_tDdHsx19EemFppq5PtQEow" type="Region" element="_tDWaAR19EemFppq5PtQEow" verticalAlignment="false"/>
+            <children xmi:type="umlnotation:UMLFrame" xmi:id="_tDdHsh19EemFppq5PtQEow" type="Statemachine" element="_tDWaAB19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" bold="true" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label" alignment="Horizontal">
+              <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_tDdHsx19EemFppq5PtQEow" type="Region" element="_tDWaAR19EemFppq5PtQEow" verticalAlignment="false">
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_seitkDAlEemdXd9vu5XPZQ" element="_tDXBEB19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_sej7sDAlEemdXd9vu5XPZQ" type="NameLabel">
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_sekiwDAlEemdXd9vu5XPZQ" type="Stereotype"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_sekiwTAlEemdXd9vu5XPZQ" type="Name"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_sekiwjAlEemdXd9vu5XPZQ" type="Parent"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sej7sTAlEemdXd9vu5XPZQ" y="-149"/>
+                  </children>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_seitkTAlEemdXd9vu5XPZQ" x="4965" y="130"/>
+                </children>
+                <children xmi:type="umlnotation:UMLShape" xmi:id="_sekiwzAlEemdXd9vu5XPZQ" element="_tDXoIB19EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_selJ0DAlEemdXd9vu5XPZQ" type="ImageCompartment">
+                    <layoutConstraint xmi:type="notation:Size" xmi:id="_selJ0TAlEemdXd9vu5XPZQ" width="1320" height="1320"/>
+                  </children>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_selw4DAlEemdXd9vu5XPZQ" type="Stereotype"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_selw4TAlEemdXd9vu5XPZQ" type="Name"/>
+                  <children xmi:type="notation:BasicDecorationNode" xmi:id="_selw4jAlEemdXd9vu5XPZQ" type="Parent"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_selw4zAlEemdXd9vu5XPZQ" visible="false" type="Activities"/>
+                  <children xmi:type="notation:ListCompartment" xmi:id="_semX8DAlEemdXd9vu5XPZQ" type="InternalTransitionCompartment"/>
+                  <children xmi:type="umlnotation:UMLShape" xmi:id="_Ntj7kTBEEemdXd9vu5XPZQ" element="_NtaKkDBEEemdXd9vu5XPZQ" fontName="Segoe UI" fontHeight="8" fillColor="16116705" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
+                    <children xmi:type="notation:DecorationNode" xmi:id="_NtkioDBEEemdXd9vu5XPZQ" type="NameLabel">
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_NtkiojBEEemdXd9vu5XPZQ" type="Stereotype"/>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_NtkiozBEEemdXd9vu5XPZQ" type="Name"/>
+                      <children xmi:type="notation:BasicDecorationNode" xmi:id="_NtkipDBEEemdXd9vu5XPZQ" type="Parent"/>
+                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_NtkioTBEEemdXd9vu5XPZQ" y="-149"/>
+                    </children>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Ntj7kjBEEemdXd9vu5XPZQ" x="761" y="-84"/>
+                  </children>
+                  <children xmi:type="umlnotation:UMLShapeCompartment" xmi:id="_M2fL0DBTEemdXd9vu5XPZQ" visible="false" type="Region" element="_M2aTUDBTEemdXd9vu5XPZQ" collapsed="true" verticalAlignment="false"/>
+                  <layoutConstraint xmi:type="notation:Bounds" xmi:id="_sekixDAlEemdXd9vu5XPZQ" x="4330" y="1823" width="3449" height="2177"/>
+                </children>
+              </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="_tDdHtB19EemFppq5PtQEow" type="Name"/>
               <layoutConstraint xmi:type="notation:Bounds" xmi:id="_tDdHtR19EemFppq5PtQEow" x="635" y="635"/>
             </children>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_serQcDAlEemdXd9vu5XPZQ" element="_tDXoIR19EemFppq5PtQEow" source="_seitkDAlEemdXd9vu5XPZQ" target="_Ntj7kTBEEemdXd9vu5XPZQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_ser3gDAlEemdXd9vu5XPZQ" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_sesekDAlEemdXd9vu5XPZQ" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_sesekTAlEemdXd9vu5XPZQ" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_sesekjAlEemdXd9vu5XPZQ" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_ser3gTAlEemdXd9vu5XPZQ" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_serQcTAlEemdXd9vu5XPZQ" points="[0, 0, 0, -1270]$[0, 1270, 0, 0]"/>
+              <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_sfX0ADAlEemdXd9vu5XPZQ" id="(0.4988179669030733,1.0)"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_NtlwwDBEEemdXd9vu5XPZQ" id="(1.0,1.0)"/>
+            </edges>
+            <edges xmi:type="umlnotation:UMLConnector" xmi:id="_JIsEYDBTEemdXd9vu5XPZQ" element="_JIpoIDBTEemdXd9vu5XPZQ" source="_sekiwzAlEemdXd9vu5XPZQ" target="_sekiwzAlEemdXd9vu5XPZQ" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+              <children xmi:type="notation:DecorationNode" xmi:id="_JIsEYjBTEemdXd9vu5XPZQ" type="TransitionLabelCompartment">
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_JIsrcDBTEemdXd9vu5XPZQ" type="Stereotype"/>
+                <children xmi:type="notation:BasicDecorationNode" xmi:id="_JIsrcTBTEemdXd9vu5XPZQ" type="TransitionLabel"/>
+                <children xmi:type="notation:ListCompartment" xmi:id="_JIsrcjBTEemdXd9vu5XPZQ" type="Triggers"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_JIsEYzBTEemdXd9vu5XPZQ" y="-149"/>
+              </children>
+              <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_JIsEYTBTEemdXd9vu5XPZQ" points="[3, 2, 3, 2]$[3, 2, 3, 2]"/>
+              <sourceAnchor xmi:type="notation:IdentityAnchor" xmi:id="_M2vqgDBTEemdXd9vu5XPZQ" id="(0.9634676717889243,0.36931557188791914)"/>
+              <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_M2wRkDBTEemdXd9vu5XPZQ" id="(0.9817338358944622,0.7969683050068902)"/>
+            </edges>
           </contents>
         </eAnnotations>
         <region xmi:id="_tDWaAR19EemFppq5PtQEow" name="Region1">
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_tDXBEB19EemFppq5PtQEow"/>
-          <subvertex xmi:type="uml:State" xmi:id="_tDXoIB19EemFppq5PtQEow" name="State1"/>
-          <transition xmi:id="_tDXoIR19EemFppq5PtQEow" name="Initial" source="_tDXBEB19EemFppq5PtQEow" target="_tDXoIB19EemFppq5PtQEow">
+          <subvertex xmi:type="uml:State" xmi:id="_tDXoIB19EemFppq5PtQEow" name="State1">
+            <connectionPoint xmi:id="_NtaKkDBEEemdXd9vu5XPZQ" kind="entryPoint"/>
+            <region xmi:id="_M2aTUDBTEemdXd9vu5XPZQ" name="Region1">
+              <transition xmi:id="_NtaKkTBEEemdXd9vu5XPZQ" name="buttonPressed" kind="internal" source="_tDXoIB19EemFppq5PtQEow" target="_tDXoIB19EemFppq5PtQEow">
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_lmKIYDBEEemdXd9vu5XPZQ" name="Effect">
+                  <language>C++</language>
+                  <body>// Use timer to avoid interpreting a single push of the button as several&#xD;
+if( timerId.isValid() )&#xD;
+	timer.cancelTimer(timerId);&#xD;
+&#xD;
+timerId = timer.informIn(RTTimespec(0,500000000)); // 0.5 s</body>
+                </effect>
+                <trigger xmi:id="_QWY_ADBEEemdXd9vu5XPZQ" name="" port="_LOgUoDBDEemdXd9vu5XPZQ">
+                  <event xmi:type="uml:CallEvent" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_17fplbIlEduJc5NEaBCMOw?RTClasses/External/event?"/>
+                </trigger>
+              </transition>
+            </region>
+          </subvertex>
+          <transition xmi:id="_tDXoIR19EemFppq5PtQEow" name="Initial" source="_tDXBEB19EemFppq5PtQEow" target="_NtaKkDBEEemdXd9vu5XPZQ">
             <eAnnotations xmi:id="_tDYPMB19EemFppq5PtQEow" source="uml2.alias">
               <details xmi:id="_tDYPMR19EemFppq5PtQEow" key="Initial"/>
             </eAnnotations>
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_PsELQDAmEemdXd9vu5XPZQ" name="Effect">
+              <language>C++</language>
+              <body>// This initialises the wiringPi system &#xD;
+// and assumes that the calling program is going to be using the wiringPi pin numbering scheme.&#xD;
+if (wiringPiSetup() &lt; 0) {&#xD;
+	std::cout &lt;&lt; &quot;Failed to initialize wiringPi&quot; &lt;&lt; std::endl;&#xD;
+	return;&#xD;
+}&#xD;
+/*&#xD;
+pinMode(ButtonPin, INPUT);&#xD;
+pullUpDnControl(ButtonPin, PUD_UP);&#xD;
+while(1){&#xD;
+		if(digitalRead(ButtonPin) == 0){ //indicate that button has pressed down&#xD;
+			std::cout &lt;&lt; &quot;Button pressed!&quot; &lt;&lt; std::endl;&#xD;
+		}&#xD;
+	}&#xD;
+*/&#xD;
+// This function registers a function to received interrupts on the specified pin.&#xD;
+if (wiringPiISR(buttonPin, INT_EDGE_RISING, &amp;buttonInterrupt) &lt; 0)&#xD;
+{  &#xD;
+	std::cout &lt;&lt; &quot;Unable to setup ISR&quot; &lt;&lt; std::endl;&#xD;
+}  &#xD;
+std::cout &lt;&lt; &quot;Push button initialized&quot; &lt;&lt; std::endl;&#xD;
+&#xD;
+pushButtonInstance = this;&#xD;
+&#xD;
+interrupt.enable(); // Now ready to accept pushes from the button</body>
+            </effect>
+          </transition>
+          <transition xmi:id="_JIpoIDBTEemdXd9vu5XPZQ" name="timeout" source="_tDXoIB19EemFppq5PtQEow" target="_tDXoIB19EemFppq5PtQEow">
+            <effect xmi:type="uml:OpaqueBehavior" xmi:id="_LnK5ADBTEemdXd9vu5XPZQ" name="Effect">
+              <language>C++</language>
+              <body>std::cout &lt;&lt; &quot;Button was pressed!&quot; &lt;&lt; std::endl;&#xD;
+game.buttonPushed().send();&#xD;
+interrupt.enable(); // Now ready to accept another push of the button</body>
+            </effect>
+            <trigger xmi:id="_K5zcsDBTEemdXd9vu5XPZQ" name="" port="_5xWuADBSEemdXd9vu5XPZQ">
+              <event xmi:type="uml:CallEvent" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_18o5ErIlEduJc5NEaBCMOw?RTClasses/Timing/timeout?"/>
+            </trigger>
           </transition>
         </region>
       </ownedBehavior>
@@ -1201,7 +1446,11 @@ game.imageFilename(filename).reply();</body>
         <eAnnotations xmi:id="_AQT-IB1-EemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
           <details xmi:id="_AQT-IR1-EemFppq5PtQEow" key="ProtocolRole"/>
         </eAnnotations>
-        <ownedOperation xmi:id="_D2R_QB1-EemFppq5PtQEow" name="takePhoto"/>
+        <ownedOperation xmi:id="_D2R_QB1-EemFppq5PtQEow" name="takePhoto">
+          <ownedParameter xmi:id="_po9zEDNQEemdXd9vu5XPZQ" name="isHiscorePhoto">
+            <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0875RKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/bool?"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Interface" xmi:id="_AQT-Ih1-EemFppq5PtQEow" name="CameraEvents~">
         <eAnnotations xmi:id="_AQT-Ix1-EemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -1246,7 +1495,7 @@ game.imageFilename(filename).reply();</body>
                     <children xmi:type="notation:BasicDecorationNode" xmi:id="_KYjiwCMLEem0UtZqFR6jHw" type="Parent"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KYcOASMLEem0UtZqFR6jHw" y="-149"/>
                   </children>
-                  <element xmi:type="uml:Pseudostate" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_rXsN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/%3CPseudostate%3E?"/>
+                  <element xmi:type="uml:Pseudostate" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_rXsN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/%3CPseudostate%3E?"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KYZxwSMLEem0UtZqFR6jHw" x="5092" y="172"/>
                 </children>
                 <children xmi:type="umlnotation:UMLShape" xmi:id="_KYkJ0CMLEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
@@ -1269,10 +1518,10 @@ game.imageFilename(filename).reply();</body>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dp_FEiMjEem0UtZqFR6jHw"/>
                   </children>
                   <styles xmi:type="rtnotation:RedefinableViewStyle" xmi:id="_XHJBUCMjEem0UtZqFR6jHw" viewPropertiesFromSuperClass="false"/>
-                  <element xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                  <element xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KYkJ0SMLEem0UtZqFR6jHw" x="3949" y="2077"/>
                 </children>
-                <element xmi:type="uml:Region" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX?"/>
+                <element xmi:type="uml:Region" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1?"/>
               </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="__aeF1B1-EemFppq5PtQEow" type="Name"/>
               <element xmi:type="uml:StateMachine" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_o7cN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine?"/>
@@ -1285,20 +1534,20 @@ game.imageFilename(filename).reply();</body>
                 <children xmi:type="notation:ListCompartment" xmi:id="_KY6vISMLEem0UtZqFR6jHw" type="Triggers"/>
                 <layoutConstraint xmi:type="notation:Bounds" xmi:id="_KY6IESMLEem0UtZqFR6jHw" y="-149"/>
               </children>
-              <element xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/Initial?"/>
+              <element xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/Initial?"/>
               <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_KY458SMLEem0UtZqFR6jHw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
               <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_DqDWgCMjEem0UtZqFR6jHw" id="(0.8051496172581768,1.0)"/>
             </edges>
           </contents>
         </eAnnotations>
-        <region xmi:id="__abCgB1-EemFppq5PtQEow" name="RegionXXX">
+        <region xmi:id="__abCgB1-EemFppq5PtQEow" name="Region1">
           <subvertex xmi:type="uml:State" xmi:id="_DpjnQCMjEem0UtZqFR6jHw" name="WaitForMessage">
             <connectionPoint xmi:id="_Dpn4sCMjEem0UtZqFR6jHw" kind="entryPoint"/>
-            <redefinedState href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+            <redefinedState href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
             <region xmi:id="_DpmDgCMjEem0UtZqFR6jHw" name="Region1">
               <transition xmi:id="_DppG0CMjEem0UtZqFR6jHw" name="word" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_KYXooCMjEem0UtZqFR6jHw" name="Effect">
                   <language>C++</language>
                   <body>const std::string&amp; w = *(rtdata);&#xD;
@@ -1307,8 +1556,8 @@ httpGet(&quot;newWord?word=&quot; + w);</body>
                 <trigger xmi:id="_LmaJECMjEem0UtZqFR6jHw" name="" event="_wbE44B1_EemFppq5PtQEow" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
               <transition xmi:id="_ge7ewCPhEem0UtZqFR6jHw" name="remainingTime" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_rW4fwCPhEem0UtZqFR6jHw" name="Effect">
                   <language>C++</language>
                   <body>unsigned int t = *(rtdata);&#xD;
@@ -1317,17 +1566,25 @@ httpGet(&quot;remainingTime?time=&quot; + std::to_string(t));</body>
                 <trigger xmi:id="_tSFBICPhEem0UtZqFR6jHw" name="" event="_aveooCPhEem0UtZqFR6jHw" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
               <transition xmi:id="_vFuJACPhEem0UtZqFR6jHw" name="gameOver" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_2H39ICPhEem0UtZqFR6jHw" name="Effect">
                   <language>C++</language>
-                  <body>httpGet(&quot;gameOver&quot;);</body>
+                  <body>const std::string&amp; result = httpGet(&quot;gameOver&quot;);&#xD;
+int lowestHighscore = 0;&#xD;
+try {&#xD;
+	lowestHighscore = std::stoi(result);&#xD;
+}&#xD;
+catch (...) {&#xD;
+	std::cout &lt;&lt; &quot;Invalid response from gameOver HTTP request&quot; &lt;&lt; std::endl;&#xD;
+}&#xD;
+game.lowestHighscore(lowestHighscore).reply();</body>
                 </effect>
                 <trigger xmi:id="_xt2o4CPhEem0UtZqFR6jHw" name="" event="_T3Z9kCPhEem0UtZqFR6jHw" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
               <transition xmi:id="_FFFckCYBEem0UtZqFR6jHw" name="failedToRecognizeImage" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_Ie2NsCYBEem0UtZqFR6jHw" name="Effect">
                   <language>C++</language>
                   <body>const std::string&amp; words = *(rtdata);&#xD;
@@ -1336,8 +1593,8 @@ httpGet(&quot;failedToRecognizeImage?words=&quot; + words);</body>
                 <trigger xmi:id="_gstf4CYBEem0UtZqFR6jHw" name="" event="_I0EowB2bEemFppq5PtQEow" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
               <transition xmi:id="_AWWeoCoJEemRGZ3-ZqZ8HA" name="imageSuccessfullyRecognized" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_NQsOICoJEemRGZ3-ZqZ8HA" name="Effect">
                   <language>C++</language>
                   <body>const std::string&amp; words = *(rtdata);&#xD;
@@ -1346,8 +1603,8 @@ httpGet(&quot;imageSuccessfullyRecognized?words=&quot; + words);</body>
                 <trigger xmi:id="_C571sCoJEemRGZ3-ZqZ8HA" name="" event="_MkXqkB2bEemFppq5PtQEow" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
               <transition xmi:id="_mPkPACrkEemRGZ3-ZqZ8HA" name="setScore" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_u9-woCrkEemRGZ3-ZqZ8HA" name="Effect">
                   <language>C++</language>
                   <body>unsigned int score = *(rtdata);&#xD;
@@ -1356,8 +1613,8 @@ httpGet(&quot;score?set=&quot; + std::to_string(score));</body>
                 <trigger xmi:id="_oHCG8CrkEemRGZ3-ZqZ8HA" name="" event="_dzEj0CrkEemRGZ3-ZqZ8HA" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
               <transition xmi:id="_vQxw0CrkEemRGZ3-ZqZ8HA" name="incScore" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_zI2OkCrkEemRGZ3-ZqZ8HA" name="Effect">
                   <language>C++</language>
                   <body>unsigned int inc = *(rtdata);&#xD;
@@ -1365,10 +1622,57 @@ httpGet(&quot;score?inc=&quot; + std::to_string(inc));</body>
                 </effect>
                 <trigger xmi:id="_02bKsCrkEemRGZ3-ZqZ8HA" name="" event="_h0ZEMCrkEemRGZ3-ZqZ8HA" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
               </transition>
+              <transition xmi:id="_HxeiYDBqEemdXd9vu5XPZQ" name="startImageAnalysis" kind="internal">
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_NXAngDBqEemdXd9vu5XPZQ" name="Effect">
+                  <language>C++</language>
+                  <body>httpGet(&quot;startImageAnalysis&quot;);</body>
+                </effect>
+                <trigger xmi:id="_PXWuoDBqEemdXd9vu5XPZQ" name="" event="_EP7HMDBqEemdXd9vu5XPZQ" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
+              </transition>
+              <transition xmi:id="_nt6ZoDD1EemdXd9vu5XPZQ" name="uploadImage" kind="internal">
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_tKrkUDD1EemdXd9vu5XPZQ" name="Effect">
+                  <language>C++</language>
+                  <body>const std::string&amp; filename = *(rtdata);&#xD;
+httpPostFile(&quot;uploadImage&quot;, filename);</body>
+                </effect>
+                <trigger xmi:id="_ppPd4DD1EemdXd9vu5XPZQ" name="" event="_W46LYDD1EemdXd9vu5XPZQ" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
+              </transition>
+              <transition xmi:id="_EEpLMDNSEemdXd9vu5XPZQ" name="newHighscore" kind="internal">
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_YtpPgDNSEemdXd9vu5XPZQ" name="Effect">
+                  <language>C++</language>
+                  <body>httpGet(&quot;newHighscore&quot;);</body>
+                </effect>
+                <trigger xmi:id="_x0YqcDNSEemdXd9vu5XPZQ" name="" event="_wKGIUDNREemdXd9vu5XPZQ" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
+              </transition>
+              <transition xmi:id="_bxyOkDNVEemdXd9vu5XPZQ" name="uploadHiscorePhoto" kind="internal">
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_mJZioDNVEemdXd9vu5XPZQ" name="Effect">
+                  <language>C++</language>
+                  <body>HiscoreData data = *(rtdata);&#xD;
+httpPostFile(&quot;uploadImage?score=&quot; + std::to_string(data.score), data.photo);</body>
+                </effect>
+                <trigger xmi:id="_p4Py8DNVEemdXd9vu5XPZQ" name="" event="_OWtbcDNTEemdXd9vu5XPZQ" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
+              </transition>
+              <transition xmi:id="_JyUIkDNmEemdXd9vu5XPZQ" name="readyForNewGame" kind="internal">
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <effect xmi:type="uml:OpaqueBehavior" xmi:id="_jGSuQDNmEemdXd9vu5XPZQ" name="Effect">
+                  <language>C++</language>
+                  <body>httpGet(&quot;readyForNewGame&quot;);</body>
+                </effect>
+                <trigger xmi:id="_NiAGYDNmEemdXd9vu5XPZQ" name="" event="_L-cB4DNmEemdXd9vu5XPZQ" port="_Xs-d0CMZEem0UtZqFR6jHw"/>
+              </transition>
             </region>
           </subvertex>
           <transition xmi:id="_O9DC4B1_EemFppq5PtQEow" name="Initial" target="_Dpn4sCMjEem0UtZqFR6jHw">
-            <redefinedTransition href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/Initial?"/>
+            <redefinedTransition href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/Initial?"/>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_O9FfIB1_EemFppq5PtQEow" name="Effect">
               <language>C++</language>
               <body>StdString webhost;&#xD;
@@ -1380,7 +1684,7 @@ std::cout &lt;&lt; &quot;Web server (out): &quot; &lt;&lt; webhost &lt;&lt; &quo
 configureServer(webhost, webport);</body>
             </effect>
           </transition>
-          <extendedRegion href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX?"/>
+          <extendedRegion href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1?"/>
         </region>
         <extendedStateMachine href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_o7cN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine?"/>
       </ownedBehavior>
@@ -1418,6 +1722,15 @@ configureServer(webhost, webport);</body>
             <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
           </ownedParameter>
         </ownedOperation>
+        <ownedOperation xmi:id="_EQGtYDBqEemdXd9vu5XPZQ" name="startImageAnalysis"/>
+        <ownedOperation xmi:id="_W48noTD1EemdXd9vu5XPZQ" name="uploadImage">
+          <ownedParameter xmi:id="_dU_eADD1EemdXd9vu5XPZQ" name="data" type="_5TgPcCOQEem0UtZqFR6jHw"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_wKH9gTNREemdXd9vu5XPZQ" name="newHighscore"/>
+        <ownedOperation xmi:id="_OWvQoTNTEemdXd9vu5XPZQ" name="uploadHighscorePhoto">
+          <ownedParameter xmi:id="_Tef0oDNTEemdXd9vu5XPZQ" name="data" type="_1otQoDNSEemdXd9vu5XPZQ"/>
+        </ownedOperation>
+        <ownedOperation xmi:id="_L-d3EDNmEemdXd9vu5XPZQ" name="readyForNewGame"/>
       </packagedElement>
       <packagedElement xmi:type="uml:Interface" xmi:id="_chI6Ax1_EemFppq5PtQEow" name="WebServerEvents~">
         <eAnnotations xmi:id="_chI6BB1_EemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
@@ -1425,6 +1738,12 @@ configureServer(webhost, webport);</body>
         </eAnnotations>
         <ownedOperation xmi:id="_Uf1m8R2IEemFppq5PtQEow" name="startGame"/>
         <ownedOperation xmi:id="_HAxKsSPTEem0UtZqFR6jHw" name="doneDrawing"/>
+        <ownedOperation xmi:id="_DAGeoTNKEemdXd9vu5XPZQ" name="highscorePhotoReady"/>
+        <ownedOperation xmi:id="_Z-lXITNLEemdXd9vu5XPZQ" name="lowestHighscore">
+          <ownedParameter xmi:id="_bxjwoDNLEemdXd9vu5XPZQ" name="score">
+            <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+          </ownedParameter>
+        </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Usage" xmi:id="_chJhER1_EemFppq5PtQEow" supplier="_chI6Ax1_EemFppq5PtQEow" client="_chHE0B1_EemFppq5PtQEow"/>
       <packagedElement xmi:type="uml:AnyReceiveEvent" xmi:id="_chJhEh1_EemFppq5PtQEow" name="*"/>
@@ -1453,6 +1772,27 @@ configureServer(webhost, webport);</body>
         <name xsi:nil="true"/>
       </packagedElement>
       <packagedElement xmi:type="uml:CallEvent" xmi:id="_h0ZEMCrkEemRGZ3-ZqZ8HA" operation="_h0cukSrkEemRGZ3-ZqZ8HA">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_EP7HMDBqEemdXd9vu5XPZQ" operation="_EQGtYDBqEemdXd9vu5XPZQ">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_W46LYDD1EemdXd9vu5XPZQ" operation="_W48noTD1EemdXd9vu5XPZQ">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_DAECYDNKEemdXd9vu5XPZQ" operation="_DAGeoTNKEemdXd9vu5XPZQ">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_Z-kJADNLEemdXd9vu5XPZQ" operation="_Z-lXITNLEemdXd9vu5XPZQ">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_wKGIUDNREemdXd9vu5XPZQ" operation="_wKH9gTNREemdXd9vu5XPZQ">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_OWtbcDNTEemdXd9vu5XPZQ" operation="_OWvQoTNTEemdXd9vu5XPZQ">
+        <name xsi:nil="true"/>
+      </packagedElement>
+      <packagedElement xmi:type="uml:CallEvent" xmi:id="_L-cB4DNmEemdXd9vu5XPZQ" operation="_L-d3EDNmEemdXd9vu5XPZQ">
         <name xsi:nil="true"/>
       </packagedElement>
     </packagedElement>
@@ -1495,7 +1835,7 @@ configureServer(webhost, webport);</body>
                     <children xmi:type="notation:BasicDecorationNode" xmi:id="_GlZikSVuEem0UtZqFR6jHw" type="Parent"/>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GlY7gSVuEem0UtZqFR6jHw" y="-149"/>
                   </children>
-                  <element xmi:type="uml:Pseudostate" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_rXsN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/%3CPseudostate%3E?"/>
+                  <element xmi:type="uml:Pseudostate" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_rXsN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/%3CPseudostate%3E?"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GlYUcSVuEem0UtZqFR6jHw" x="5092" y="172"/>
                 </children>
                 <children xmi:type="umlnotation:UMLShape" xmi:id="_GlaJoCVuEem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
@@ -1518,10 +1858,10 @@ configureServer(webhost, webport);</body>
                     <layoutConstraint xmi:type="notation:Bounds" xmi:id="_VfzsYSVuEem0UtZqFR6jHw" x="1443" y="-84"/>
                   </children>
                   <styles xmi:type="rtnotation:RedefinableViewStyle" xmi:id="_LQNr4CVuEem0UtZqFR6jHw" viewPropertiesFromSuperClass="false"/>
-                  <element xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                  <element xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GlaJoSVuEem0UtZqFR6jHw" x="3695" y="1887" width="3318" height="1542"/>
                 </children>
-                <element xmi:type="uml:Region" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX?"/>
+                <element xmi:type="uml:Region" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1?"/>
               </children>
               <children xmi:type="notation:BasicDecorationNode" xmi:id="_tDIZxR2MEemFppq5PtQEow" type="Name"/>
               <element xmi:type="uml:StateMachine" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_o7cN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine?"/>
@@ -1532,22 +1872,22 @@ configureServer(webhost, webport);</body>
                 <children xmi:type="notation:BasicDecorationNode" xmi:id="_GliFciVuEem0UtZqFR6jHw" type="Stereotype"/>
                 <children xmi:type="notation:BasicDecorationNode" xmi:id="_GliFcyVuEem0UtZqFR6jHw" type="TransitionLabel"/>
                 <children xmi:type="notation:ListCompartment" xmi:id="_GliFdCVuEem0UtZqFR6jHw" type="Triggers"/>
-                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GliFcSVuEem0UtZqFR6jHw" x="117" y="-465"/>
+                <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GliFcSVuEem0UtZqFR6jHw" y="-149"/>
               </children>
-              <element xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/Initial?"/>
+              <element xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/Initial?"/>
               <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GlheYSVuEem0UtZqFR6jHw" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
               <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_Vf4k4CVuEem0UtZqFR6jHw" id="(1.0,1.0)"/>
             </edges>
           </contents>
         </eAnnotations>
-        <region xmi:id="_tDGkkR2MEemFppq5PtQEow" name="RegionXXX" visibility="public">
+        <region xmi:id="_tDGkkR2MEemFppq5PtQEow" name="Region1" visibility="public">
           <subvertex xmi:type="uml:State" xmi:id="_Ve1cACVuEem0UtZqFR6jHw" name="WaitForMessage">
             <connectionPoint xmi:id="_Ve8wwCVuEem0UtZqFR6jHw" kind="entryPoint"/>
-            <redefinedState href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+            <redefinedState href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
             <region xmi:id="_Ve5tcCVuEem0UtZqFR6jHw" name="Region1">
               <transition xmi:id="_Ve9-4CVuEem0UtZqFR6jHw" name="analyzeImage" kind="internal">
-                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
-                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+                <source xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
+                <target xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_XWhWYCVuEem0UtZqFR6jHw" name="Effect">
                   <language>C++</language>
                   <body>fileToAnalyze = *rtdata;&#xD;
@@ -1566,13 +1906,13 @@ game.result(result).send();</body>
             </region>
           </subvertex>
           <transition xmi:id="_Sl1OkCVuEem0UtZqFR6jHw" name="Initial" target="_Ve8wwCVuEem0UtZqFR6jHw">
-            <redefinedTransition href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/Initial?"/>
+            <redefinedTransition href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/Initial?"/>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_Sl3DwCVuEem0UtZqFR6jHw" name="Effect">
               <language>C++</language>
               <body>configureServer(&quot;rtist-pi&quot;, 5555);</body>
             </effect>
           </transition>
-          <extendedRegion href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX?"/>
+          <extendedRegion href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1?"/>
         </region>
         <extendedStateMachine href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_o7cN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine?"/>
       </ownedBehavior>
@@ -1661,6 +2001,13 @@ if (msg == &quot;start_game&quot;) {&#xD;
 else if (msg == &quot;done_drawing&quot;) {&#xD;
 	// Done Drawing button was pushed&#xD;
 	game.doneDrawing().send();&#xD;
+}&#xD;
+else if (msg == &quot;hiscore_photo_ready&quot;) {&#xD;
+	// Done Drawing button was pushed&#xD;
+	game.highscorePhotoReady().send();&#xD;
+}&#xD;
+else {&#xD;
+	std::cout &lt;&lt; &quot;Unexpected message received by WebServer_in&quot; &lt;&lt; std::endl;&#xD;
 }</body>
       </ownedBehavior>
       <ownedOperation xmi:id="_s0OY0CMjEem0UtZqFR6jHw" name="onMessageReceived" method="_s0Pm8CMjEem0UtZqFR6jHw">
@@ -1675,6 +2022,13 @@ else if (msg == &quot;done_drawing&quot;) {&#xD;
     <packagedElement xmi:type="uml:Dependency" xmi:id="_6CnTMCY4Eem0UtZqFR6jHw" name="" supplier="_5TgPcCOQEem0UtZqFR6jHw" client="_fMSxACY4Eem0UtZqFR6jHw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_B0xn8CY5Eem0UtZqFR6jHw" name="" supplier="_fMSxACY4Eem0UtZqFR6jHw" client="_84Y2cCMXEem0UtZqFR6jHw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_4PLKMCY5Eem0UtZqFR6jHw" name="" supplier="_fMSxACY4Eem0UtZqFR6jHw" client="__aYmQB1-EemFppq5PtQEow"/>
+    <packagedElement xmi:type="uml:Class" xmi:id="_1otQoDNSEemdXd9vu5XPZQ" name="HiscoreData" clientDependency="_7gXAgDNSEemdXd9vu5XPZQ">
+      <ownedAttribute xmi:id="_3IYToDNSEemdXd9vu5XPZQ" name="score" visibility="public">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_5LuEYDNSEemdXd9vu5XPZQ" name="photo" visibility="public" type="_5TgPcCOQEem0UtZqFR6jHw"/>
+    </packagedElement>
+    <packagedElement xmi:type="uml:Dependency" xmi:id="_7gXAgDNSEemdXd9vu5XPZQ" name="" supplier="_5TgPcCOQEem0UtZqFR6jHw" client="_1otQoDNSEemdXd9vu5XPZQ"/>
     <profileApplication xmi:id="_q2STHh1dEemFppq5PtQEow">
       <eAnnotations xmi:id="_q2STHx1dEemFppq5PtQEow" source="http://www.eclipse.org/uml2/2.0.0/UML">
         <references xmi:type="ecore:EPackage" href="pathmap://UML_PROFILES/Standard.profile.uml#_yzU58YinEdqtvbnfB2L_5w"/>
@@ -1738,7 +2092,7 @@ else if (msg == &quot;done_drawing&quot;) {&#xD;
     <rootFragment xmi:type="uml:Region" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX?"/>
   </UMLRealTime:RTRedefinableElement>
   <UMLRealTime:RTRedefinableElement xmi:id="_O9Dp8B1_EemFppq5PtQEow" base_RedefinableElement="_O9DC4B1_EemFppq5PtQEow">
-    <rootFragment xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/Initial?"/>
+    <rootFragment xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/Initial?"/>
   </UMLRealTime:RTRedefinableElement>
   <UMLRealTime:ProtocolContainer xmi:id="_chGdwB1_EemFppq5PtQEow" base_Package="_chEokB1_EemFppq5PtQEow"/>
   <UMLRealTime:Protocol xmi:id="_chIS8B1_EemFppq5PtQEow" base_Collaboration="_chHE0B1_EemFppq5PtQEow"/>
@@ -1762,7 +2116,7 @@ else if (msg == &quot;done_drawing&quot;) {&#xD;
   <UMLRealTime:InEvent xmi:id="_I0Gd8B2bEemFppq5PtQEow" base_CallEvent="_I0EowB2bEemFppq5PtQEow"/>
   <UMLRealTime:InEvent xmi:id="_MkZfwB2bEemFppq5PtQEow" base_CallEvent="_MkXqkB2bEemFppq5PtQEow"/>
   <CppPropertySets:GeneralParameterProperties xmi:id="_mLvQcCL4Eem0UtZqFR6jHw" base_Parameter="_aepVcB2NEemFppq5PtQEow" nativeType="std::StdString"/>
-  <CppPropertySets:GeneralParameterProperties xmi:id="_n_d34CL4Eem0UtZqFR6jHw" base_Parameter="_i7jjQB2AEemFppq5PtQEow" nativeType="std::StdString"/>
+  <CppPropertySets:GeneralParameterProperties xmi:id="_n_d34CL4Eem0UtZqFR6jHw" base_Parameter="_i7jjQB2AEemFppq5PtQEow"/>
   <UMLRealTime:Capsule xmi:id="_84x4ACMXEem0UtZqFR6jHw" base_Class="_84Y2cCMXEem0UtZqFR6jHw"/>
   <UMLRealTime:RTRedefinableElement xmi:id="_VfB1ACMYEem0UtZqFR6jHw" base_RedefinableElement="_84jOgCMXEem0UtZqFR6jHw">
     <rootFragment xmi:type="uml:StateMachine" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_wbEMYN62Eeife8wA8rm4kw?LibHttpServer/HttpServer_In/State%20Machine?"/>
@@ -1773,7 +2127,7 @@ else if (msg == &quot;done_drawing&quot;) {&#xD;
   <UMLRealTime:RTPort xmi:id="_XtCIMCMZEem0UtZqFR6jHw" base_Port="_Xs-d0CMZEem0UtZqFR6jHw"/>
   <UMLRealTime:RTPort xmi:id="_nFvXkCMZEem0UtZqFR6jHw" base_Port="_nFs7UCMZEem0UtZqFR6jHw"/>
   <UMLRealTime:RTRedefinableElement xmi:id="_DplccCMjEem0UtZqFR6jHw" base_RedefinableElement="_DpjnQCMjEem0UtZqFR6jHw">
-    <rootFragment xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+    <rootFragment xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
   </UMLRealTime:RTRedefinableElement>
   <UMLRealTime:RTRedefinableElement xmi:id="_joXtQCMjEem0UtZqFR6jHw" base_RedefinableElement="_joXGMCMjEem0UtZqFR6jHw">
     <rootFragment xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_wbFagd62Eeife8wA8rm4kw?LibHttpServer/HttpServer_In/State%20Machine/Region1/Initial?"/>
@@ -1825,10 +2179,10 @@ else if (msg == &quot;done_drawing&quot;) {&#xD;
     <rootFragment xmi:type="uml:Region" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_qJkN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX?"/>
   </UMLRealTime:RTRedefinableElement>
   <UMLRealTime:RTRedefinableElement xmi:id="_Sl11oCVuEem0UtZqFR6jHw" base_RedefinableElement="_Sl1OkCVuEem0UtZqFR6jHw">
-    <rootFragment xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/Initial?"/>
+    <rootFragment xmi:type="uml:Transition" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_ubAN6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/Initial?"/>
   </UMLRealTime:RTRedefinableElement>
   <UMLRealTime:RTRedefinableElement xmi:id="_Ve5GYCVuEem0UtZqFR6jHw" base_RedefinableElement="_Ve1cACVuEem0UtZqFR6jHw">
-    <rootFragment xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/RegionXXX/WaitForMessage?"/>
+    <rootFragment xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
   </UMLRealTime:RTRedefinableElement>
   <CppPropertySets:GeneralArtifactProperties xmi:id="_rT7RMCY4Eem0UtZqFR6jHw" base_Artifact="_fMSxACY4Eem0UtZqFR6jHw">
     <Header xmi:id="_rT7RMSY4Eem0UtZqFR6jHw" body="void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport);"/>
@@ -1845,4 +2199,19 @@ else if (msg == &quot;done_drawing&quot;) {&#xD;
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:InEvent xmi:id="_dzPi8CrkEemRGZ3-ZqZ8HA" base_CallEvent="_dzEj0CrkEemRGZ3-ZqZ8HA"/>
   <UMLRealTime:InEvent xmi:id="_h0cukCrkEemRGZ3-ZqZ8HA" base_CallEvent="_h0ZEMCrkEemRGZ3-ZqZ8HA"/>
+  <CppPropertySets:GeneralCapsuleProperties xmi:id="_3kjYsDAlEemdXd9vu5XPZQ" base_Class="_tDTWsB19EemFppq5PtQEow">
+    <implementationPreface xmi:id="_3kj_wDAlEemdXd9vu5XPZQ" body="#include &lt;iostream>&#xD;&#xA;#include &lt;wiringPi.h>&#xD;&#xA; &#xD;&#xA;#define ButtonPin 1&#xD;&#xA;&#xD;&#xA;// The function will be called when the interrupt triggers at button press.&#xD;&#xA;// Note that a single push yields multiple calls!&#xD;&#xA;void buttonInterrupt()&#xD;&#xA;{&#xD;&#xA;&#x9;if (PushButton_Actor::pushButtonInstance) {&#xD;&#xA;&#x9;&#x9;//std::cout &lt;&lt; &quot;Button interrupt!&quot; &lt;&lt; std::endl;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;PushButton_Actor::pushButtonInstance->interrupt.raise();&#xD;&#xA;&#x9;}&#xD;&#xA;}"/>
+    <publicDeclarations xmi:id="_K8ynoDBFEemdXd9vu5XPZQ" body="friend void buttonInterrupt();"/>
+  </CppPropertySets:GeneralCapsuleProperties>
+  <UMLRealTime:RTPort xmi:id="_LOqssDBDEemdXd9vu5XPZQ" isWired="false" base_Port="_LOgUoDBDEemdXd9vu5XPZQ"/>
+  <CppPropertySets:GeneralAttributeProperties xmi:id="_6KJmUDBDEemdXd9vu5XPZQ" base_Property="_2uU_sDBDEemdXd9vu5XPZQ" nativeType="PushButton_Actor*"/>
+  <UMLRealTime:RTPort xmi:id="_5xZKQDBSEemdXd9vu5XPZQ" isWired="false" base_Port="_5xWuADBSEemdXd9vu5XPZQ"/>
+  <UMLRealTime:InEvent xmi:id="_EQGGUDBqEemdXd9vu5XPZQ" base_CallEvent="_EP7HMDBqEemdXd9vu5XPZQ"/>
+  <UMLRealTime:InEvent xmi:id="_W48noDD1EemdXd9vu5XPZQ" base_CallEvent="_W46LYDD1EemdXd9vu5XPZQ"/>
+  <UMLRealTime:OutEvent xmi:id="_DAGeoDNKEemdXd9vu5XPZQ" base_CallEvent="_DAECYDNKEemdXd9vu5XPZQ"/>
+  <UMLRealTime:OutEvent xmi:id="_Z-lXIDNLEemdXd9vu5XPZQ" base_CallEvent="_Z-kJADNLEemdXd9vu5XPZQ"/>
+  <UMLRealTime:InEvent xmi:id="_wKH9gDNREemdXd9vu5XPZQ" base_CallEvent="_wKGIUDNREemdXd9vu5XPZQ"/>
+  <CppPropertySets:GeneralDependencyProperties xmi:id="_8sElsDNSEemdXd9vu5XPZQ" base_Dependency="_7gXAgDNSEemdXd9vu5XPZQ" kindInHeader="inclusion" kindInImplementation="none"/>
+  <UMLRealTime:InEvent xmi:id="_OWvQoDNTEemdXd9vu5XPZQ" base_CallEvent="_OWtbcDNTEemdXd9vu5XPZQ"/>
+  <UMLRealTime:InEvent xmi:id="_L-dQADNmEemdXd9vu5XPZQ" base_CallEvent="_L-cB4DNmEemdXd9vu5XPZQ"/>
 </xmi:XMI>

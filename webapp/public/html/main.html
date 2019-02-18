@@ -22,30 +22,93 @@
             <img src="/images/logo.jpg"/>
         </div>        
         <hr>
-        <svg id="score-container"   >
-            <text id="score" x="0" y="28">SCORE:</text>       
-        </svg>
-
-        <a href="#" id="main-button" class="redButton" data-state="start"></a>      
-        
-        <button type="button" id="test-button">TEST</button>            
-        <br>
-        <br>
-        <br>
-        <div class="popup">            
-            <div class="popuptext" id="thePopup"></div>
+        <div id="button-container">
+            <div id="button-div">
+                <a href="#" id="main-button" class="redButton" data-state="start"></a>    
+                <button type="button" id="test-button">TEST</button>
+            </div>
+            <div class="popup">            
+                <div class="popuptext" id="thePopup"></div>
+            </div>
+            <div id="score-div">
+                <svg id="score-container">
+                    <text id="score" x="0" y="48">SCORE:</text>       
+                </svg>              
+            </div>            
         </div>
+
         <div id="drawing-container">
-            <div id="timer" style="display:none;"></div>
-            <!-- <img id="drawing" src="/images/draw.jpg" class="tooltip" data-tooltip-content="#tooltip_content"/> -->
+            <div id="timer" style="display:none;"></div>            
             <img id="drawing" src="/images/draw.jpg" />
         </div>
-        <!-- <div class="tooltip_templates">
-            <span id="tooltip_content">
-                <span>Draw: </span>
-                <strong>The Eiffel Tower</strong>
-            </span>
-        </div> -->
+        
+        <div id="recog-words-container">
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="/images/rtist-icon.png">
+                    </div>
+                    <div class="flip-card-back" id="recog-word-1">
+                        <h1>WORD</h1>
+                        <p>Score</p>                       
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="/images/rtist-icon.png">
+                    </div>
+                    <div class="flip-card-back" id="recog-word-2">
+                        <h1>WORD 2</h1>
+                        <p>Score</p>                       
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="/images/rtist-icon.png">
+                    </div>
+                    <div class="flip-card-back" id="recog-word-3">
+                        <h1>WORD 3</h1>
+                        <p>Score</p>                       
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="/images/rtist-icon.png">
+                    </div>
+                    <div class="flip-card-back" id="recog-word-4">
+                        <h1>WORD 4</h1>
+                        <p>Score</p>            
+                    </div>
+                </div>
+            </div>
+            <div class="flip-card">
+                <div class="flip-card-inner">
+                    <div class="flip-card-front">
+                        <img src="/images/rtist-icon.png">
+                    </div>
+                    <div class="flip-card-back" id="recog-word-5">
+                        <h1>WORD 5</h1>
+                        <p>Score</p>                       
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="hiscorePrompt" style="display:none;">
+            <span>CONGRATULATIONS!</span>
+            <p>Your score qualify for the top 5. Write your email address on your drawing and press the button to enter the hiscore list!</p>
+        </div>
+
+        <div id="failedPopup" style="display:none;">
+                NOT RECOGNIZED!
+        </div>
+
         <script src="/socket.io"></script>
         <script src="/js/jquery/jquery.min.js"></script>        
         <script src="/svg.js"></script>
