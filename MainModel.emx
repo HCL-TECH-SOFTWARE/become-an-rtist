@@ -984,7 +984,6 @@ return rtdata->find(currentWord) != std::string::npos;&#xD;
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_YKjDgB2bEemFppq5PtQEow" name="Effect">
                   <language>C++</language>
                   <body>std::cout &lt;&lt; &quot;Image successfully recognized&quot; &lt;&lt; std::endl;&#xD;
-timer.cancelTimer(countdownTimer); // Stop countdown&#xD;
 &#xD;
 // Compute score&#xD;
 unsigned int scoreInc = maxTime - secCount;&#xD;

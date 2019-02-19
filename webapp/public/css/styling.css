@@ -23,6 +23,40 @@
   border: 5px solid gold;
 }
 
+.hiscore_img {
+  width: 80px;
+  height: 80px;
+}
+
+#hiscore_table {
+  width:100%;
+  font-size:36px;
+  background: url("/images/hiscores.jpg");
+  background-repeat: no-repeat;
+  background-position: left; 
+}
+
+.hiscore_row td:nth-child(1) {
+  width: 50%;
+  text-align: right;
+}
+.hiscore_row td:nth-child(2) {
+  width: 25%;
+}
+.hiscore_row td:nth-child(3) {
+  width: 25%;
+}
+
+.gold-score {
+  background: url("/images/Gold.jpg");
+}
+.silver-score {
+  background: url("/images/Silver.jpg");
+}
+.bronze-score {
+  background: url("/images/Bronze.jpg");
+}
+
 #timer {
   position: absolute;
   top: 8px;

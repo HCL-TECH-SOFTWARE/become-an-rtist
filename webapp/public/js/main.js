@@ -10,6 +10,8 @@
 $(function () {
     var socket = io();   
     var currentWord = 'The Eiffel Tower';
+    const monthNames = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
 
     function showPopup(html) {   
         hidePopup(); // In case the popup is already shown.       
@@ -43,17 +45,46 @@ $(function () {
     }
 
     function showImage(path, frame) {
+        $('#hiscore_table').hide();
         $('#drawing').attr('src', path);
         if (frame)
             $('#drawing').addClass('thick-frame');
         else
             $('#drawing').removeClass('thick-frame');
-    }
+        $('#drawing').show();
+    }    
 
     socket.on('readyForNewGame', function(msg) {                     
         $('#main-button').data('state', 'start');
         updateMainButton();
         $('#hiscorePrompt').hide();
+        $('#drawing').hide();        
+
+        // Show hiscores in table
+        $('#hiscore_table').find('.hiscore_row').remove();
+        let imgHeight = ($(window).height() - 430) / 7; // Approx vertical fit on common screen sizes        
+        let scoreCount = 0;
+        for (h of msg.hiscores) {
+            let year = h.photo.substring(8,12);
+            let month = monthNames[parseInt(h.photo.substring(12,14)) - 1];
+            let day = h.photo.substring(14,16);
+            let hour = h.photo.substring(17,19);
+            let min = h.photo.substring(19,21);
+
+            let scoreClass = '';
+            if (scoreCount == 0)
+                scoreClass = 'gold-score';
+            else if (scoreCount == 1)
+                scoreClass = 'silver-score';
+            else if (scoreCount == 2)
+                scoreClass = 'bronze-score';
+            $('#hiscore_table').append('<tr class="hiscore_row"><td><img style="height:' + imgHeight + 'px;width:' + imgHeight + 'px" src="/uploadedImages/' + h.photo + '"/></td><td class="' + scoreClass + '">' + h.score + '</td><td>' + day + ' ' + month + ' ' + year + ' ' + hour + ':' + min + '</td></tr>');
+            scoreCount++;
+        }
+        for (let i = scoreCount; i <= 5; i++) {
+            $('#hiscore_table').append('<tr class="hiscore_row"><td><img style="height:' + imgHeight + 'px;width:' + imgHeight + 'px" src="/images/empty-score.jpg"/></td><td>N/A</td><td>N/A</td></tr>');
+        }
+        $('#hiscore_table').show();
     });  
     socket.on('newWord', function(msg) {
         currentWord = msg.word;              
@@ -68,6 +99,7 @@ $(function () {
         $('#timer').show().text(msg.time);             
     });    
     socket.on('imageUploaded', function(msg) {
+        $('#hiscorePrompt').hide();
         // Show the uploaded image in a thick frame 
         showImage(msg.path, true);               
     }); 
@@ -85,7 +117,7 @@ $(function () {
     });  
     socket.on('newHighscore', function(msg) {            
         hidePopup();
-        
+
         // Wait 3 seconds until game over audio has played
         setTimeout(function() {
             new Audio('/audio/hiscore.mp3').play(); 

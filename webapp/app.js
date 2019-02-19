@@ -71,7 +71,7 @@ app.route('/uploadImage').post( function(req, res) {
         if (score != undefined) {
             // A hiscore photo was uploaded. Update the hiscore data for the new hiscore.
             highscores.push({'score' : parseInt(score), 'photo' : filename});
-            highscores.sort((a,b) => (a.score > b.score) ? 1 : ((b.score > a.score) ? -1 : 0));
+            highscores.sort((a,b) => (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0));
             fs.writeFileSync(highscoreFile, JSON.stringify(highscores));
         }
     }))
@@ -141,7 +141,7 @@ app.get('/command', function(req, res) {
 // Messages from RT application
 app.get('/readyForNewGame', function(req, res) {    
     // Send info to all connected web clients
-    io.emit('readyForNewGame', {});
+    io.emit('readyForNewGame', {'hiscores' : highscores});
 
     res.contentType("text/plain");
     res.send('OK');
@@ -251,5 +251,9 @@ app.server.setTimeout(0); // Disable timeout of requests since we use long-runni
 app.server.listen(port, function () {
     console.log(`Web app listening on port ${port}!`);
     io = socketio.listen(app.server); 
+/*
+    io.on('connect', (socket) => {
+        io.emit('readyForNewGame', {'hiscores' : highscores});
+    });*/
 });
 //http.listen(port, () => console.log(`Web app listening on port ${port}!`));
