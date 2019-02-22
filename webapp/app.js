@@ -24,6 +24,7 @@ const highscoreFile = __dirname + '/data/highscores.json';
 var highscores = [];
 if (fs.existsSync(highscoreFile)) {
     var highscores = JSON.parse(fs.readFileSync(highscoreFile));
+    //highscores = highscores.slice(0, 5); // Only keep top 5 hiscores
 }
 else {
     console.log('No highscores found! Creating new highscore file at ' + highscoreFile);
@@ -72,6 +73,8 @@ app.route('/uploadImage').post( function(req, res) {
             // A hiscore photo was uploaded. Update the hiscore data for the new hiscore.
             highscores.push({'score' : parseInt(score), 'photo' : filename});
             highscores.sort((a,b) => (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0));
+            // Keep only top 5 hiscores
+            //highscores = highscores.slice(0, 5);
             fs.writeFileSync(highscoreFile, JSON.stringify(highscores));
         }
     }))
@@ -171,14 +174,17 @@ app.get('/gameOver', function(req, res) {
     // Send info to all connected web clients
     io.emit('gameOver', {});
 
-    // Return the lowest highscore among the top 5 so the game app can decide if the player 
-    // made it to the highsscore list
-    let lowestScore = 0;
-    if (highscores.length > 5) {
-        lowestScore = highscores[highscores.length - 1].score;
-    }
-    res.contentType("text/plain");
-    res.send(lowestScore.toString());
+    // Delayed response with 3 seconds so the UI can play sound and show Game Over image.
+    setTimeout(function () {
+        // Return the lowest highscore among the top 5 so the game app can decide if the player 
+        // made it to the highsscore list
+        let lowestScore = 0;
+        if (highscores.length >= 5) {
+            lowestScore = highscores[4].score;
+        }
+        res.contentType("text/plain");
+        res.send(lowestScore.toString());
+    }, 3000);
 });
 
 app.get('/newHighscore', function(req, res) {

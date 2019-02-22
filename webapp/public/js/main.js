@@ -11,7 +11,7 @@ $(function () {
     var socket = io();   
     var currentWord = 'The Eiffel Tower';
     const monthNames = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
+  "July", "August", "September", "October", "November", "December"];    
 
     function showPopup(html) {   
         hidePopup(); // In case the popup is already shown.       
@@ -46,7 +46,10 @@ $(function () {
 
     function showImage(path, frame) {
         $('#hiscore_table').hide();
-        $('#drawing').attr('src', path);
+        let separator = path.startsWith('/word-image') ? '&' : '?';
+        //$('#drawing').attr('src', path + separator + new Date().getTime()); // Force browser to refresh image
+        $('#drawing').remove();
+        $('#drawing-container').append('<img id="drawing" src="' + path + separator + new Date().getTime() + '"/>');
         if (frame)
             $('#drawing').addClass('thick-frame');
         else
@@ -62,7 +65,7 @@ $(function () {
 
         // Show hiscores in table
         $('#hiscore_table').find('.hiscore_row').remove();
-        let imgHeight = ($(window).height() - 430) / 7; // Approx vertical fit on common screen sizes        
+        let imgHeight = ($(window).height() - 380) / 7; // Approx vertical fit on common screen sizes        
         let scoreCount = 0;
         for (h of msg.hiscores) {
             let year = h.photo.substring(8,12);
@@ -79,9 +82,14 @@ $(function () {
             else if (scoreCount == 2)
                 scoreClass = 'bronze-score';
             $('#hiscore_table').append('<tr class="hiscore_row"><td><img style="height:' + imgHeight + 'px;width:' + imgHeight + 'px" src="/uploadedImages/' + h.photo + '"/></td><td class="' + scoreClass + '">' + h.score + '</td><td>' + day + ' ' + month + ' ' + year + ' ' + hour + ':' + min + '</td></tr>');
+
             scoreCount++;
+
+            if (scoreCount == 5)
+                break; // Only show top 5 scores
         }
-        for (let i = scoreCount; i <= 5; i++) {
+        // If we don't have 5 hiscores, fill out the list with placeholders
+        for (let i = scoreCount; i < 5; i++) {
             $('#hiscore_table').append('<tr class="hiscore_row"><td><img style="height:' + imgHeight + 'px;width:' + imgHeight + 'px" src="/images/empty-score.jpg"/></td><td>N/A</td><td>N/A</td></tr>');
         }
         $('#hiscore_table').show();
@@ -110,21 +118,15 @@ $(function () {
         $('#main-button').data('state', 'start');
         updateMainButton();  
         
-        setTimeout(function () {
-            showImage('/images/draw.jpg');
-            $('#timer').hide();
-        }, 4000);
+        $('#timer').hide();
     });  
     socket.on('newHighscore', function(msg) {            
         hidePopup();
 
-        // Wait 3 seconds until game over audio has played
-        setTimeout(function() {
-            new Audio('/audio/hiscore.mp3').play(); 
-            $('#hiscorePrompt').show();
-            $('#main-button').data('state', 'upload-hiscore');
-            updateMainButton(); 
-        }, 3000);               
+        new Audio('/audio/hiscore.mp3').play(); 
+        $('#hiscorePrompt').show();
+        $('#main-button').data('state', 'upload-hiscore');
+        updateMainButton();        
     });  
     socket.on('startImageAnalysis', function(msg) {    
         // Disable button while image recognition runs

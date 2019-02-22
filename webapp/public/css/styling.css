@@ -23,11 +23,6 @@
   border: 5px solid gold;
 }
 
-.hiscore_img {
-  width: 80px;
-  height: 80px;
-}
-
 #hiscore_table {
   width:100%;
   font-size:36px;
@@ -37,14 +32,14 @@
 }
 
 .hiscore_row td:nth-child(1) {
-  width: 50%;
+  width: 55%;
   text-align: right;
 }
 .hiscore_row td:nth-child(2) {
-  width: 25%;
+  width: 15%;
 }
 .hiscore_row td:nth-child(3) {
-  width: 25%;
+  width: 30%;
 }
 
 .gold-score {
