@@ -218,7 +218,8 @@ $(function () {
     }
 
     $('#test-button').click(function() {
-        $('#failedPopup').show();
+        $.get('/readyForNewGame');
+        //$('#failedPopup').show();
 
         /*
         new Audio('/audio/hiscore.mp3').play();    
@@ -229,7 +230,7 @@ $(function () {
         updateMainButton();        
         */
         //$('.flip-card').addClass('flipped');
-        increaseScore(4);
+        //increaseScore(4);
 
         /*
         let index = Math.floor(Math.random() * Math.floor(2000));

@@ -22,13 +22,21 @@ var io = null;
 // Initialize highscore list
 const highscoreFile = __dirname + '/data/highscores.json';
 var highscores = [];
+const allGamesFile = __dirname + '/data/allGames.json';
+var allGames = [];
 if (fs.existsSync(highscoreFile)) {
     var highscores = JSON.parse(fs.readFileSync(highscoreFile));
-    //highscores = highscores.slice(0, 5); // Only keep top 5 hiscores
 }
 else {
     console.log('No highscores found! Creating new highscore file at ' + highscoreFile);
     fs.writeFileSync(highscoreFile, JSON.stringify(highscores));
+}
+if (fs.existsSync(allGamesFile)) {
+    var allGames = JSON.parse(fs.readFileSync(allGamesFile));
+}
+else {
+    console.log('Creating new allGames file at ' + allGamesFile);
+    fs.writeFileSync(allGamesFile, JSON.stringify(allGames));
 }
 
 // Static middleware for serving static files 
@@ -73,8 +81,6 @@ app.route('/uploadImage').post( function(req, res) {
             // A hiscore photo was uploaded. Update the hiscore data for the new hiscore.
             highscores.push({'score' : parseInt(score), 'photo' : filename});
             highscores.sort((a,b) => (a.score > b.score) ? -1 : ((b.score > a.score) ? 1 : 0));
-            // Keep only top 5 hiscores
-            //highscores = highscores.slice(0, 5);
             fs.writeFileSync(highscoreFile, JSON.stringify(highscores));
         }
     }))
@@ -185,6 +191,13 @@ app.get('/gameOver', function(req, res) {
         res.contentType("text/plain");
         res.send(lowestScore.toString());
     }, 3000);
+
+    let today = new Date();
+    let date = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate();
+    let time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
+    let dateTime = date+' '+time;
+    allGames.push({'playDate' : dateTime});
+    fs.writeFileSync(allGamesFile, JSON.stringify(allGames));
 });
 
 app.get('/newHighscore', function(req, res) {
