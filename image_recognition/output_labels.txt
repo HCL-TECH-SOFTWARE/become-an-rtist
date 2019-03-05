@@ -1,0 +1,100 @@
+the eiffel tower
+apple
+axe
+bicycle
+birthday cake
+book
+boomerang
+broccoli
+broom
+bucket
+butterfly
+calculator
+camel
+campfire
+candle
+carrot
+castle
+chair
+circle
+clarinet
+clock
+cloud
+couch
+crown
+diamond
+donut
+door
+envelope
+eye
+feather
+fence
+fish
+flamingo
+flower
+giraffe
+hamburger
+headphones
+helmet
+hexagon
+hot air balloon
+hourglass
+house
+ice cream
+jail
+ladder
+leaf
+light bulb
+lightning
+lollipop
+moon
+mountain
+mushroom
+octopus
+palm tree
+pants
+parachute
+pear
+picture frame
+pizza
+postcard
+radio
+rain
+rainbow
+rollerskates
+sailboat
+shark
+shorts
+shovel
+skateboard
+skull
+smiley face
+snail
+snake
+snowflake
+snowman
+soccer ball
+square
+stairs
+star
+stop sign
+strawberry
+sun
+sweater
+t shirt
+table
+teapot
+television
+tent
+tornado
+traffic light
+tree
+triangle
+umbrella
+vase
+washing machine
+whale
+wheel
+windmill
+wine bottle
+wine glass
