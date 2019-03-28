@@ -8,7 +8,7 @@ This is a sketch drawing game built with [HCL RTist](https://www.devops-communit
 For more information about the game set-up and how it works, see <a href="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/BecomeAnRTist.pdf">these slides</a>.
 
 ## Hardware setup
-A bill of material can be found [here](BOM).
+A bill of material can be found [here](BOM.md).
 * Connect the camera to the Raspberry Pi and enable it in the Pi settings. 
 * Connect the push button to the Raspberry Pi. One wire should have a resistor and connect to GPIO 1 (3.3 V), and the other wire should connect to GPIO 10.
 * Make sure the Raspberry Pi is on the same network as the computer where the web server will run. For best performance, assign a static IP address to the Raspberry Pi and connect it directly to the computer with an ethernet cable. For example, follow these <a href="http://www.circuitbasics.com/how-to-connect-to-a-raspberry-pi-directly-with-an-ethernet-cable/">instructions</a>. Then update your hosts file and assign the name "rtist-pi" to the IP address of the Raspberry Pi.
