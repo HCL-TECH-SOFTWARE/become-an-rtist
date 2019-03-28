@@ -104,6 +104,18 @@
           </children>
           <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Fj5CQSVuEem0UtZqFR6jHw" x="16764" y="5715"/>
         </children>
+        <children xmi:type="umlnotation:UMLShape" xmi:id="_F6CN4EGoEemLXOU7GQIM0w" element="_fMSxACY4Eem0UtZqFR6jHw" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Image">
+          <children xmi:type="notation:DecorationNode" xmi:id="_F6C08EGoEemLXOU7GQIM0w" type="ImageCompartment">
+            <layoutConstraint xmi:type="notation:Size" xmi:id="_F6C08UGoEemLXOU7GQIM0w" width="1320" height="1320"/>
+          </children>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6DcAEGoEemLXOU7GQIM0w" type="Stereotype"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6DcAUGoEemLXOU7GQIM0w" type="Kind"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6DcAkGoEemLXOU7GQIM0w" type="Name"/>
+          <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6DcA0GoEemLXOU7GQIM0w" type="Parent"/>
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_F6EDEEGoEemLXOU7GQIM0w" visible="false" type="AttributeCompartment"/>
+          <children xmi:type="notation:SemanticListCompartment" xmi:id="_F6EDEUGoEemLXOU7GQIM0w" visible="false" type="OperationCompartment"/>
+          <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F6CN4UGoEemLXOU7GQIM0w" x="8636" y="8382"/>
+        </children>
         <element xsi:nil="true"/>
         <edges xmi:type="umlnotation:UMLConnector" xmi:id="_BHtqwB1_EemFppq5PtQEow" element="_A7qy0B1_EemFppq5PtQEow" source="__an20B1-EemFppq5PtQEow" target="_9JBnoB1-EemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
           <children xmi:type="notation:DecorationNode" xmi:id="_BHuR0B1_EemFppq5PtQEow" type="NameLabel">
@@ -128,6 +140,22 @@
             <layoutConstraint xmi:type="notation:Bounds" xmi:id="_GmVWsyVuEem0UtZqFR6jHw" y="-149"/>
           </children>
           <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_GmVWsSVuEem0UtZqFR6jHw" points="[-119, -47, 243, 65]$[-292, -137, 70, -25]"/>
+        </edges>
+        <edges xmi:type="umlnotation:UMLConnector" xmi:id="_F6HtcEGoEemLXOU7GQIM0w" element="_B0xn8CY5Eem0UtZqFR6jHw" source="_85m-cCMXEem0UtZqFR6jHw" target="_F6CN4EGoEemLXOU7GQIM0w" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+          <children xmi:type="notation:DecorationNode" xmi:id="_F6HtckGoEemLXOU7GQIM0w" type="NameLabel">
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6IUgEGoEemLXOU7GQIM0w" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6IUgUGoEemLXOU7GQIM0w" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F6Htc0GoEemLXOU7GQIM0w" y="-149"/>
+          </children>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_F6HtcUGoEemLXOU7GQIM0w" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
+        </edges>
+        <edges xmi:type="umlnotation:UMLConnector" xmi:id="_F6IUgkGoEemLXOU7GQIM0w" element="_4PLKMCY5Eem0UtZqFR6jHw" source="__an20B1-EemFppq5PtQEow" target="_F6CN4EGoEemLXOU7GQIM0w" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" routing="Rectilinear" lineColor="8421504" lineWidth="1" showStereotype="Text">
+          <children xmi:type="notation:DecorationNode" xmi:id="_F6IUhEGoEemLXOU7GQIM0w" type="NameLabel">
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6IUhkGoEemLXOU7GQIM0w" type="Stereotype"/>
+            <children xmi:type="notation:BasicDecorationNode" xmi:id="_F6IUh0GoEemLXOU7GQIM0w" type="Name"/>
+            <layoutConstraint xmi:type="notation:Bounds" xmi:id="_F6IUhUGoEemLXOU7GQIM0w" y="-149"/>
+          </children>
+          <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_F6IUg0GoEemLXOU7GQIM0w" points="[0, 0, 0, 0]$[0, 0, 0, 0]"/>
         </edges>
       </contents>
     </eAnnotations>
@@ -2342,11 +2370,11 @@ else {&#xD;
     <headerPreface xmi:id="_3XduoCOSEem0UtZqFR6jHw" body="#include &lt;string>"/>
   </CppPropertySets:GeneralClassProperties>
   <CppPropertySets:TargetRTSClassProperties xmi:id="_E7TZACOREem0UtZqFR6jHw" base_Class="_5TgPcCOQEem0UtZqFR6jHw">
-    <copyFunctionBody xmi:id="_Ha0IYCOREem0UtZqFR6jHw" body="&#x9;// target is already allocated memory, so use placement new and invoke the copy constructor&#xD;&#xA;&#x9;target = new (target) std::string(*source);&#xD;&#xA;//(void)new( target ) AClass1( *source ); "/>
+    <copyFunctionBody xmi:id="_Ha0IYCOREem0UtZqFR6jHw" body="&#x9;// target is already allocated memory, so use placement new and invoke the copy constructor&#xD;&#xA;&#x9;target = new (target) std::string(*source);"/>
     <decodeFunctionBody xmi:id="_N2LM0COSEem0UtZqFR6jHw" body="char * StringValue; &#xD;&#xA;int ReturnValue = 0; &#xD;&#xA;&#xD;&#xA;coding->get_string(StringValue); &#xD;&#xA;target->assign(StringValue);&#xD;&#xA;return 1;"/>
     <destroyFunctionBody xmi:id="_p6dMYCOREem0UtZqFR6jHw" body="// The target object is deleted by the TargetRTS and we only need to ensure its destructor gets invoked.&#xD;&#xA;target->~StdString();"/>
     <encodeFunctionBody xmi:id="_aMhecCOSEem0UtZqFR6jHw" body="return coding->put_string(source->c_str());"/>
-    <initFunctionBody xmi:id="_gcmVYCOSEem0UtZqFR6jHw" body="target = new std::string();"/>
+    <initFunctionBody xmi:id="_gcmVYCOSEem0UtZqFR6jHw" body="&#x9;// target is already allocated memory, so use placement new and invoke the default constructor&#xD;&#xA;&#x9;target = new (target) std::string();"/>
   </CppPropertySets:TargetRTSClassProperties>
   <CppPropertySets:GeneralAttributeProperties xmi:id="_kjWoACOVEem0UtZqFR6jHw" base_Property="_h6XMgCOVEem0UtZqFR6jHw" nativeType="std::vector&lt;std::string>"/>
   <UMLRealTime:RTPort xmi:id="_ZXLSYCO0Eem0UtZqFR6jHw" isWired="false" base_Port="_ZXIPECO0Eem0UtZqFR6jHw"/>

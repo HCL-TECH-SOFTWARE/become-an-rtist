@@ -46,11 +46,11 @@ It's good if it has a "long flat" lamp so it can be more easily attached to the 
 
 Ordinary printer paper will work (although expect to use a lot since a sketch usually "bleeds" through on the opposite side of the paper). Use a black marker pen with a 1-3 mm head.
 
-<img src="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pen.jpg" alt="Marker pen" style="float: left; margin-right: 10px;transform:rotate(90deg);" />
+<img src="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pen.png" alt="Marker pen" style="float: left; margin-right: 10px;" />
 
 * __Material for building a scaffolding__ (approx cost 20 USD)
 
 For example, the base can be a wooden or plastic tray with attached metal plates (those used when building walls in houses). They are strong and have pre-drilled holes where M5 screws will fit. It's good to cover the tray with for example a white paper, and use duct tape for marking on it the anticipated position of the paper.
 
-<img src="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/scaffolding.jpg" alt="Scaffolding" style="float: left; margin-right: 10px;transform:rotate(90deg);" />
+<img src="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/scaffolding.png" alt="Scaffolding" style="float: left; margin-right: 10px;" />
 
