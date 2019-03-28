@@ -12,44 +12,45 @@ This means the Raspberry Pi itself as well as necessary accessories such as the 
 
 * __Pi Camera V2 Daylight__ (approx cost 30 USD)
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pi_camera.png "Pi Camera V2 Daylight")
+![pi camera](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pi_camera.png "Pi Camera V2 Daylight")
 
 * __Big red push button__ (approx cost 10 USD)
 
 For example: Adafruit Massive Arcade Button with LED
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/push_button.png "Big red push button")
+![push button](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pushbutton.png "Big red push button")
 
 * __Camera case__ (approx cost 15 USD)
 
 It's good if it allows you to adjust the camera angle. For example: Cookie wheel camera case
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/cameracase.png "Cookie wheel camera case")
+![camera case](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/cameracase.png "Cookie wheel camera case")
 
 * __Resistors and wires for connecting things together__ (approx cost 15 USD)
 
 For example: The PiHut Ultimate Resistor Kit
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pi_resistors.png "Resistors")
+![resistors](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pi_resistors.png "Resistors")
 
 Arcade Button Quick-Connect Wire Pairs - 0.11" (10 pack)
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pi_wires.png "Wires")
+![wires](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pi_wires.png "Wires")
 
 * __LED desk lamp with good bright light__ (approx cost 50 USD)
 
 It's good if it has a "long flat" lamp so it can be more easily attached to the scaffolding.
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/desklamp.png "Desk lamp")
+![lamp](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/desklamp.png "Desk lamp")
 
 * __Paper and marker pen__ (approx cost 20 USD)
 
 Ordinary printer paper will work (although expect to use a lot since a sketch usually "bleeds" through on the opposite side of the paper). Use a black marker pen with a 1-3 mm head.
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pen.jpg "Marker pen")
+<img src="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pen.jpg" alt="Marker pen" style="float: left; margin-right: 10px;" />
 
 * __Material for building a scaffolding__ (approx cost 20 USD)
 
 For example, the base can be a wooden or plastic tray with attached metal plates (those used when building walls in houses). They are strong and have pre-drilled holes where M5 screws will fit. It's good to cover the tray with for example a white paper, and use duct tape for marking on it the anticipated position of the paper.
 
-![pi kit](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/scaffolding.jpg "Scaffolding")
+<img src="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/scaffolding.jpg" alt="Scaffolding" style="float: left; margin-right: 10px;" />
+
