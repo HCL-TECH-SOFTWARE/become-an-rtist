@@ -30,6 +30,10 @@ A bill of material can be found [here](BOM.md).
 * Enable and test the push button by running the Python 2.7 script [button_test.py](image_recognition/button_test.py). There should be several printouts each time the button is pushed.
     
 ## Set-up image recognition on the Raspberry Pi
+* Install libraries required for Tensorflow
+
+` sudo apt-get install libhdf5-dev`
+
 * Install Tensorflow on the Raspberry Pi by following these [instructions](https://www.tensorflow.org/install/pip?lang=python2) (for Python 2.7).
 * Open a terminal on the Raspberry Pi and perform the command 
 
