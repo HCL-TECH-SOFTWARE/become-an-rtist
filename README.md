@@ -48,6 +48,7 @@ The script now waits for incoming HTTP image recognition requests on port 5555.
 ## Build the application
 * Install [cross-compiler](http://gnutoolchains.com/raspberry/) for Raspberry Pi and make sure that its build tools (make and g++) are in the PATH.
 * The communication with the web server and the Python script uses the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library, so you must start by cloning that repository also into your workspace.
+* Build RTist TargetRTS for Raspberry Pi: make a copy of any Linux TargetRTS, replace "<RTist_DIR>\rsa_rt\C++\TargetRTS\libset\<created_target_name>\libset.mk with the file from this repo [libset.mk](libset.mk)
 * You must build the POCO shared libraries for the Raspberry Pi. This can either be done using cmake (see POCO documentation) or you can add the POCO sources to an Eclipse cross-compilation project and build them yourself. You only need the Foundation and the Net libraries. Copy them to /home/pi/become-an-rtist/ on the Raspberry Pi.
 * You also must build the library [wiringpi](http://wiringpi.com/). Build it to a static library so you don't have to copy it to the Raspberry Pi.
 * Update the TC rtapp.tcjs by setting the property tc.pocoLoc to the location of the POCO library. Also update the tc.linkArguments property for the build location of the POCO libraries to link with, and update tc.inclusionPaths accordingly.
