@@ -49,11 +49,13 @@ The script now waits for incoming HTTP image recognition requests on port 5555.
 * Install [cross-compiler](http://gnutoolchains.com/raspberry/) for Raspberry Pi and make sure that its build tools (make and g++) are in the PATH.
 * The communication with the web server and the Python script uses the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library, so you must start by cloning that repository also into your workspace.
 * Build RTist TargetRTS for Raspberry Pi: make a copy of any Linux TargetRTS, replace "<RTist_DIR>\rsa_rt\C++\TargetRTS\libset\<created_target_name>\libset.mk with the file from this repo [libset.mk](libset.mk)
-* You must build the POCO shared libraries for the Raspberry Pi. This can either be done using cmake (see POCO documentation) or you can add the POCO sources to an Eclipse cross-compilation project and build them yourself. You only need the Foundation and the Net libraries. Copy them to /home/pi/become-an-rtist/ on the Raspberry Pi.
-* You also must build the library [wiringpi](http://wiringpi.com/). Build it to a static library so you don't have to copy it to the Raspberry Pi.
+* You must build the POCO shared libraries for the Raspberry Pi. This can either be done using cmake (see POCO documentation) or you can add the POCO sources to an Eclipse cross-compilation project and build them yourself. You only need the Foundation and the Net libraries. You may use [eclipse project](libs/poco_eclipse_projects.zip) from this repo to build libs. Import it in Eclipse, configure path to Raspberry cross-compiler in project properties -> C/C++ Build -> Settings -> Cross Settings, and build projects. Copy them to /home/pi/become-an-rtist/ on the Raspberry Pi.
+* You also must build the library [wiringpi](http://wiringpi.com/). Build it to a static library so you don't have to copy it to the Raspberry Pi. You may use [eclipse project](libs/wiringPi.zip) from this repo to build libs. Import it in Eclipse, configure path to Raspberry cross-compiler in project properties -> C/C++ Build -> Settings -> Cross Settings, and build project.
 * Download [Paho-MQTT](https://www.eclipse.org/paho/downloads.php) 
+
   `git clone https://github.com/eclipse/paho.mqtt.c.git`
-  And build it.
+  
+* And build it, or use [pre-built libs](libs/paho_mqtt_libs.zip) from this repo. Copy libpaho-mqtt3c.so.1 to /home/pi/become-an-rtist/ on the Raspberry Pi.
 * Update the TC rtapp.tcjs by setting the property tc.pocoLoc to the location of the POCO library. Also update the tc.linkArguments property for the build location of the POCO libraries to link with, and update tc.inclusionPaths accordingly.
 * Build the TC by right-clicking on it and do **Build**.
 
