@@ -51,6 +51,9 @@ The script now waits for incoming HTTP image recognition requests on port 5555.
 * Build RTist TargetRTS for Raspberry Pi: make a copy of any Linux TargetRTS, replace "<RTist_DIR>\rsa_rt\C++\TargetRTS\libset\<created_target_name>\libset.mk with the file from this repo [libset.mk](libset.mk)
 * You must build the POCO shared libraries for the Raspberry Pi. This can either be done using cmake (see POCO documentation) or you can add the POCO sources to an Eclipse cross-compilation project and build them yourself. You only need the Foundation and the Net libraries. Copy them to /home/pi/become-an-rtist/ on the Raspberry Pi.
 * You also must build the library [wiringpi](http://wiringpi.com/). Build it to a static library so you don't have to copy it to the Raspberry Pi.
+* Download [Paho-MQTT](https://www.eclipse.org/paho/downloads.php) 
+  `git clone https://github.com/eclipse/paho.mqtt.c.git`
+  And build it.
 * Update the TC rtapp.tcjs by setting the property tc.pocoLoc to the location of the POCO library. Also update the tc.linkArguments property for the build location of the POCO libraries to link with, and update tc.inclusionPaths accordingly.
 * Build the TC by right-clicking on it and do **Build**.
 
