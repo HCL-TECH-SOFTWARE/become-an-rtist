@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
-<!--HCL RealTime Software Tooling 10.3.0-->
+<!--IBM Rational Software Architect RealTime Edition 10.3.0-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
-<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="RTist Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CppPropertySets="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67" xmlns:Default="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2" xmlns:UMLRealTime="http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:rtnotation="http://www.ibm.com/xtools/1.0.0/rtnotation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67 pathmap://CPP_LANGUAGE_PROFILE/CppPropertySets.epx#_5TYAwMk4EeO2m9WtkWjeeQ?CppPropertySets/CppPropertySets? http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2 pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default? http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119 pathmap://RT_PROPERTIES/UMLRealTime.epx#_3TUzoXq6Ed2hSeAAWZznoA?UMLRealTime/UMLRealTime?">
   <uml:Package xmi:id="_q2STEB1dEemFppq5PtQEow" name="RTApp">
     <eAnnotations xmi:id="_q2STER1dEemFppq5PtQEow" source="uml2.diagrams" references="_q2STEh1dEemFppq5PtQEow">
@@ -1253,7 +1253,7 @@ webServer_out.uploadHighscorePhoto(data).send();</body>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_hSOOcCOVEem0UtZqFR6jHw" name="loadWords" specification="_BoQ-ICOVEem0UtZqFR6jHw">
         <language>C++</language>
         <body>// Load words from output_labels.txt file&#xD;
-std::ifstream input(&quot;/home/pi/become-an-rtist/image-recognition/output_labels.txt&quot;, std::ios::binary | std::ios::in);&#xD;
+std::ifstream input(&quot;/home/pi/become-an-rtist/image_recognition/output_labels.txt&quot;, std::ios::binary | std::ios::in);&#xD;
 std::string line;&#xD;
 while (std::getline(input, line)) {&#xD;
 	words.push_back(line);&#xD;
