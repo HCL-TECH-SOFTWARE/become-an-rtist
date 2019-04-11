@@ -56,7 +56,7 @@ The script now waits for incoming HTTP image recognition requests on port 5555.
   `git clone https://github.com/eclipse/paho.mqtt.c.git`
   
 * And build it, or use [pre-built libs](libs/paho_mqtt_libs.zip) from this repo. Copy libpaho-mqtt3c.so.1 to /home/pi/become-an-rtist/ on the Raspberry Pi.
-* Update the TC rtapp.tcjs by setting the property tc.pocoLoc to the location of the POCO library. Also update the tc.linkArguments property for the build location of the POCO libraries to link with, and update tc.inclusionPaths accordingly.
+* Update the TC rtapp.tcjs by setting the property tc.pocoLoc to the location of the POCO library. Also update the tc.linkArguments property for the build location of the POCO and other libraries to link with, and update tc.inclusionPaths accordingly.
 * Build the TC by right-clicking on it and do **Build**.
 
 ## Starting the web server
