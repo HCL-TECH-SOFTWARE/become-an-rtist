@@ -11,6 +11,7 @@ For more information about the game set-up and how it works, see <a href="https:
 A bill of material can be found [here](BOM.md).
 * Connect the camera to the Raspberry Pi and enable it in the Pi settings. 
 * Connect the push button to the Raspberry Pi. One wire should have a resistor and connect to GPIO 1 (3.3 V), and the other wire should connect to GPIO 10.
+* Another button connection scheme: Connect one wire to pin 6 (GND) and another to pin 12 (GPIO 18). Resistor is not required in this case. Use python script button_test_2.py to initialize button and branch 'moscow' to build application for this scheme.
 * Make sure the Raspberry Pi is on the same network as the computer where the web server will run. For best performance, assign a static IP address to the Raspberry Pi and connect it directly to the computer with an ethernet cable. For example, follow these <a href="http://www.circuitbasics.com/how-to-connect-to-a-raspberry-pi-directly-with-an-ethernet-cable/">instructions</a>. Then update your hosts file (on both machines, including /etc/hosts on RPi) and assign the name "rtist-pi" to the IP address of the Raspberry Pi.
 * Place the Raspberry Pi on a desk lamp, with the camera facing down.
 * Calibrate the camera so that it can get a good shot of a regular A4 paper placed under the lamp. Start by installing some useful tools in the Pi by following these <a href="https://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi">instructions</a>.
