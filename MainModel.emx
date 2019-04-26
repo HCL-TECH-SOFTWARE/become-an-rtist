@@ -1267,7 +1267,7 @@ std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; wor
 MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;&#xD;
 std::cout &lt;&lt; &quot;Initializing connection to Eclipse IoT MQTT broker&quot; &lt;&lt; std::endl;&#xD;
 &#xD;
-MQTTClient_create(&amp;mqttClient, &quot;tcp://broker.hivemq.com:1883&quot;, &quot;become_an_rtist_app&quot;, MQTTCLIENT_PERSISTENCE_NONE, NULL);&#xD;
+MQTTClient_create(&amp;mqttClient, &quot;tcp://10.191.139.92:1883&quot;, &quot;become_an_rtist_app&quot;, MQTTCLIENT_PERSISTENCE_NONE, NULL);&#xD;
 conn_opts.keepAliveInterval = 10; // Seconds between &quot;heart-beat&quot; pings between client and server&#xD;
 conn_opts.MQTTVersion = MQTTVERSION_3_1_1;&#xD;
 conn_opts.cleansession = 1;&#xD;
@@ -1437,7 +1437,7 @@ timestamp &lt;&lt; tm->tm_sec;&#xD;
 std::string filename = &quot;/home/pi/become-an-rtist/camera-snaps/&quot; + timestamp.str() + &quot;.jpg&quot;;&#xD;
 // Take a black and white photo with the same size as used for the image recognition training data&#xD;
 // High contrast and as fast as possible (timeout 1)&#xD;
-std::string command = &quot;raspistill --width 118 --height 113 --colfx 128:128 --contrast 100 --timeout 1 --output &quot; + filename;&#xD;
+std::string command = &quot;raspistill --vflip --hflip --width 118 --height 113 --colfx 128:128 --contrast 100 --timeout 1 --output &quot; + filename;&#xD;
 &#xD;
 system(command.c_str());&#xD;
 &#xD;
@@ -1472,7 +1472,7 @@ game.imageFilename(filename).reply();</body>
       </ownedAttribute>
       <ownedAttribute xmi:id="_TABwMDBDEemdXd9vu5XPZQ" name="buttonPin" visibility="private" isReadOnly="true">
         <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
-        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_V4dV4DBDEemdXd9vu5XPZQ" value="10">
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_V4dV4DBDEemdXd9vu5XPZQ" value="12">
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
         </defaultValue>
       </ownedAttribute>
@@ -1584,7 +1584,7 @@ while(1){&#xD;
 	}&#xD;
 */&#xD;
 // This function registers a function to received interrupts on the specified pin.&#xD;
-if (wiringPiISR(buttonPin, INT_EDGE_RISING, &amp;buttonInterrupt) &lt; 0)&#xD;
+if (wiringPiISR(buttonPin, INT_EDGE_FALLING, &amp;buttonInterrupt) &lt; 0)&#xD;
 {  &#xD;
 	std::cout &lt;&lt; &quot;Unable to setup ISR&quot; &lt;&lt; std::endl;&#xD;
 }  &#xD;
@@ -2427,7 +2427,7 @@ else {&#xD;
   <UMLRealTime:InEvent xmi:id="_dzPi8CrkEemRGZ3-ZqZ8HA" base_CallEvent="_dzEj0CrkEemRGZ3-ZqZ8HA"/>
   <UMLRealTime:InEvent xmi:id="_h0cukCrkEemRGZ3-ZqZ8HA" base_CallEvent="_h0ZEMCrkEemRGZ3-ZqZ8HA"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_3kjYsDAlEemdXd9vu5XPZQ" base_Class="_tDTWsB19EemFppq5PtQEow">
-    <implementationPreface xmi:id="_3kj_wDAlEemdXd9vu5XPZQ" body="#include &lt;iostream>&#xD;&#xA;#include &lt;wiringPi.h>&#xD;&#xA; &#xD;&#xA;#define ButtonPin 1&#xD;&#xA;&#xD;&#xA;// The function will be called when the interrupt triggers at button press.&#xD;&#xA;// Note that a single push yields multiple calls!&#xD;&#xA;void buttonInterrupt()&#xD;&#xA;{&#xD;&#xA;&#x9;if (PushButton_Actor::pushButtonInstance) {&#xD;&#xA;&#x9;&#x9;//std::cout &lt;&lt; &quot;Button interrupt!&quot; &lt;&lt; std::endl;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;PushButton_Actor::pushButtonInstance->interrupt.raise();&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;"/>
+    <implementationPreface xmi:id="_3kj_wDAlEemdXd9vu5XPZQ" body="#include &lt;iostream>&#xD;&#xA;#include &lt;wiringPi.h>&#xD;&#xA; &#xD;&#xA;#define ButtonPin 12&#xD;&#xA;&#xD;&#xA;// The function will be called when the interrupt triggers at button press.&#xD;&#xA;// Note that a single push yields multiple calls!&#xD;&#xA;void buttonInterrupt()&#xD;&#xA;{&#xD;&#xA;&#x9;if (PushButton_Actor::pushButtonInstance) {&#xD;&#xA;&#x9;&#x9;// std::cout &lt;&lt; &quot;Button interrupt!&quot; &lt;&lt; std::endl;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;PushButton_Actor::pushButtonInstance->interrupt.raise();&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;"/>
     <publicDeclarations xmi:id="_K8ynoDBFEemdXd9vu5XPZQ" body="friend void buttonInterrupt();"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:RTPort xmi:id="_LOqssDBDEemdXd9vu5XPZQ" isWired="false" base_Port="_LOgUoDBDEemdXd9vu5XPZQ"/>
