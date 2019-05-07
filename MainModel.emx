@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
-<!--IBM Rational Software Architect RealTime Edition 10.3.0-->
+<!--HCL RealTime Software Tooling 10.3.0-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
-<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="RTist Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CppPropertySets="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67" xmlns:Default="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2" xmlns:UMLRealTime="http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:rtnotation="http://www.ibm.com/xtools/1.0.0/rtnotation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67 pathmap://CPP_LANGUAGE_PROFILE/CppPropertySets.epx#_5TYAwMk4EeO2m9WtkWjeeQ?CppPropertySets/CppPropertySets? http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2 pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default? http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119 pathmap://RT_PROPERTIES/UMLRealTime.epx#_3TUzoXq6Ed2hSeAAWZznoA?UMLRealTime/UMLRealTime?">
   <uml:Package xmi:id="_q2STEB1dEemFppq5PtQEow" name="RTApp">
     <eAnnotations xmi:id="_q2STER1dEemFppq5PtQEow" source="uml2.diagrams" references="_q2STEh1dEemFppq5PtQEow">
@@ -636,6 +636,10 @@
       </ownedAttribute>
       <ownedAttribute xmi:id="_5p7pgDRGEemHavusGMjy6w" name="mqttClient" visibility="protected"/>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_Bls7EDToEemHavusGMjy6w" name="debug" type="_BlnbgDToEemHavusGMjy6w" aggregation="composite" isBehavior="true" isService="false"/>
+      <ownedAttribute xmi:id="_gBV_EGtXEemIXZirlmiY4A" name="wordIndex" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_iZwn8GtXEemIXZirlmiY4A"/>
+      </ownedAttribute>
       <ownedConnector xmi:id="_SpG6YB1-EemFppq5PtQEow" name="CameraEvents~, CameraEvents" kind="assembly">
         <end xmi:id="_SpIIgB1-EemFppq5PtQEow" role="_N5S8UB1-EemFppq5PtQEow"/>
         <end xmi:id="_SpIvkB1-EemFppq5PtQEow" role="_AQVzUB1-EemFppq5PtQEow" partWithPort="_qwj4AB19EemFppq5PtQEow"/>
@@ -995,8 +999,11 @@
             <connectionPoint xmi:id="_V05QMB2aEemFppq5PtQEow" kind="entryPoint"/>
             <entry xmi:type="uml:OpaqueBehavior" xmi:id="_5awVYB2aEemFppq5PtQEow" name="Entry">
               <language>C++</language>
-              <body>int i = rand() % (words.size() - 1);&#xD;
-currentWord = words[i];&#xD;
+              <body>currentWord = words[wordIndex++];&#xD;
+if (wordIndex >= words.size()) {&#xD;
+	wordIndex = 0;&#xD;
+	shuffleWords();&#xD;
+}&#xD;
 webServer_out.newWord(currentWord).send();&#xD;
 &#xD;
 // Start timer&#xD;
@@ -1153,7 +1160,10 @@ loadWords();</body>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_DOueoCPiEem0UtZqFR6jHw" name="Effect">
               <language>C++</language>
               <body>score = 0;&#xD;
+shuffleWords();&#xD;
+wordIndex = 0;&#xD;
 webServer_out.setScore(score).send();&#xD;
+&#xD;
 /*&#xD;
 // Send MQTT event to notify the start of a new game&#xD;
 std::time_t t = std::time(nullptr);&#xD;
@@ -1321,6 +1331,10 @@ std::cout &lt;&lt; &quot;Connected to MQTT server!&quot; &lt;&lt; std::endl;&#xD
 &#xD;
   return rc;</body>
       </ownedBehavior>
+      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_C8LxUGtYEemIXZirlmiY4A" name="shuffleWords" specification="_-KcgoGtXEemIXZirlmiY4A">
+        <language>C++</language>
+        <body>std::shuffle(std::begin(words), std::end(words), std::default_random_engine());</body>
+      </ownedBehavior>
       <ownedOperation xmi:id="_BoQ-ICOVEem0UtZqFR6jHw" name="loadWords" method="_hSOOcCOVEem0UtZqFR6jHw">
         <ownedParameter xmi:id="_Kb8pQCVhEem0UtZqFR6jHw" name="return" direction="return">
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0877hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/void?"/>
@@ -1337,6 +1351,7 @@ std::cout &lt;&lt; &quot;Connected to MQTT server!&quot; &lt;&lt; std::endl;&#xD
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:id="_-KcgoGtXEemIXZirlmiY4A" name="shuffleWords" method="_C8LxUGtYEemIXZirlmiY4A"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_qwSyQB19EemFppq5PtQEow" name="Camera">
       <eAnnotations xmi:id="_qwhbwB19EemFppq5PtQEow" source="uml2.diagrams" references="_qwiC0B19EemFppq5PtQEow">
@@ -2328,7 +2343,7 @@ else {&#xD;
   <UMLRealTime:OutEvent xmi:id="_Uf1m8B2IEemFppq5PtQEow" base_CallEvent="_UfzKsB2IEemFppq5PtQEow"/>
   <CppPropertySets:GeneralAttributeProperties xmi:id="_wYTbQB2LEemFppq5PtQEow" base_Property="_sqBLoB2LEemFppq5PtQEow"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_0oFOYB2LEemFppq5PtQEow" base_Class="_-TGREB1dEemFppq5PtQEow">
-    <headerPreface xmi:id="_0oFOYR2LEemFppq5PtQEow" body="#include &lt;string>&#xD;&#xA;#include &lt;vector>&#xD;&#xA;#include &quot;MQTTClient.h&quot;"/>
+    <headerPreface xmi:id="_0oFOYR2LEemFppq5PtQEow" body="#include &lt;string>&#xD;&#xA;#include &lt;vector>&#xD;&#xA;#include &lt;random>&#xD;&#xA;#include &lt;algorithm>&#xD;&#xA;#include &quot;MQTTClient.h&quot;"/>
     <implementationPreface xmi:id="_En9M8COWEem0UtZqFR6jHw" body="#include &lt;fstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;#include &lt;ios>&#xD;&#xA;#include &lt;cstdlib>&#xD;&#xA;#include &lt;ctime>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;&#xD;&#xA;void fnMessageDelivered(void *context, MQTTClient_deliveryToken dt)&#xD;&#xA;{&#xD;&#xA;&#x9;std::cout &lt;&lt; &quot;MQTT message delivered&quot; &lt;&lt; std::endl;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;void fnConnectionLost(void *context, char *cause)&#xD;&#xA;{&#xD;&#xA;&#x9;std::cout &lt;&lt; &quot;MQTT connection lost. Cause: &quot; &lt;&lt; cause &lt;&lt; std::endl;&#xD;&#xA;}"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:Capsule xmi:id="_tDIZwB2MEemFppq5PtQEow" base_Class="_tDEvYB2MEemFppq5PtQEow"/>
