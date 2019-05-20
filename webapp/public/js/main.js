@@ -65,7 +65,7 @@ $(function () {
 
         // Show hiscores in table
         $('#hiscore_table').find('.hiscore_row').remove();
-        let imgHeight = ($(window).height() - 380) / 7; // Approx vertical fit on common screen sizes        
+        let imgHeight = ($(window).height() - 470) / 5; // Approx vertical fit on common screen sizes        
         let scoreCount = 0;
         for (h of msg.hiscores) {
             let year = h.photo.substring(8,12);

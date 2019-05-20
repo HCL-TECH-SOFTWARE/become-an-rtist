@@ -16,8 +16,8 @@
   display: block;
   margin-left: auto;
   margin-right: auto;
-  width: 300px;
-  height: 300px;
+  width: 400px;
+  height: 400px;
 }
 #drawing.thick-frame {
   border: 5px solid gold;
@@ -40,6 +40,10 @@
 }
 .hiscore_row td:nth-child(3) {
   width: 30%;
+}
+
+.hiscore_row img {
+  vertical-align:-12px;
 }
 
 .gold-score {
@@ -122,10 +126,16 @@
   align-self: center;
 }
 
+.popup strong {
+  color: yellow;
+  text-shadow: -2px 0 black, 0 2px black, 2px 0 black, 0 -2px black;
+  font-size:64px; 
+}
+
 .popup .popuptext {
   visibility: hidden;  
   white-space: nowrap;
-  font-size:28px; 
+  font-size:48px; 
   background-color: #0066B3;
   color: #fff;
   text-align: center;
