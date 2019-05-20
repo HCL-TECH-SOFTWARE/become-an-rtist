@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
-<!--IBM Rational Software Architect RealTime Edition 10.3.0-->
+<!--HCL RealTime Software Tooling 10.3.0-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
-<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="RTist Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CppPropertySets="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67" xmlns:Default="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2" xmlns:UMLRealTime="http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:rtnotation="http://www.ibm.com/xtools/1.0.0/rtnotation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67 pathmap://CPP_LANGUAGE_PROFILE/CppPropertySets.epx#_5TYAwMk4EeO2m9WtkWjeeQ?CppPropertySets/CppPropertySets? http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2 pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default? http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119 pathmap://RT_PROPERTIES/UMLRealTime.epx#_3TUzoXq6Ed2hSeAAWZznoA?UMLRealTime/UMLRealTime?">
   <uml:Package xmi:id="_q2STEB1dEemFppq5PtQEow" name="RTApp">
     <eAnnotations xmi:id="_q2STER1dEemFppq5PtQEow" source="uml2.diagrams" references="_q2STEh1dEemFppq5PtQEow">
@@ -2371,7 +2371,7 @@ else {&#xD;
   </CppPropertySets:GeneralClassProperties>
   <CppPropertySets:TargetRTSClassProperties xmi:id="_E7TZACOREem0UtZqFR6jHw" base_Class="_5TgPcCOQEem0UtZqFR6jHw">
     <copyFunctionBody xmi:id="_Ha0IYCOREem0UtZqFR6jHw" body="&#x9;// target is already allocated memory, so use placement new and invoke the copy constructor&#xD;&#xA;&#x9;target = new (target) std::string(*source);"/>
-    <decodeFunctionBody xmi:id="_N2LM0COSEem0UtZqFR6jHw" body="char * StringValue; &#xD;&#xA;int ReturnValue = 0; &#xD;&#xA;&#xD;&#xA;coding->get_string(StringValue); &#xD;&#xA;target->assign(StringValue);&#xD;&#xA;return 1;"/>
+    <decodeFunctionBody xmi:id="_N2LM0COSEem0UtZqFR6jHw" body="char * stringValue;&#xD;&#xA;coding->get_string(stringValue);&#xD;&#xA;target->assign(stringValue);&#xD;&#xA;return 1;"/>
     <destroyFunctionBody xmi:id="_p6dMYCOREem0UtZqFR6jHw" body="// The target object is deleted by the TargetRTS and we only need to ensure its destructor gets invoked.&#xD;&#xA;target->~StdString();"/>
     <encodeFunctionBody xmi:id="_aMhecCOSEem0UtZqFR6jHw" body="return coding->put_string(source->c_str());"/>
     <initFunctionBody xmi:id="_gcmVYCOSEem0UtZqFR6jHw" body="&#x9;// target is already allocated memory, so use placement new and invoke the default constructor&#xD;&#xA;&#x9;target = new (target) std::string();"/>
