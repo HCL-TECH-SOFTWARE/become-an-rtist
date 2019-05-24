@@ -636,6 +636,10 @@
       </ownedAttribute>
       <ownedAttribute xmi:id="_5p7pgDRGEemHavusGMjy6w" name="mqttClient" visibility="protected"/>
       <ownedAttribute xmi:type="uml:Port" xmi:id="_Bls7EDToEemHavusGMjy6w" name="debug" type="_BlnbgDToEemHavusGMjy6w" aggregation="composite" isBehavior="true" isService="false"/>
+      <ownedAttribute xmi:id="_gBV_EGtXEemIXZirlmiY4A" name="wordIndex" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_iZwn8GtXEemIXZirlmiY4A"/>
+      </ownedAttribute>
       <ownedConnector xmi:id="_SpG6YB1-EemFppq5PtQEow" name="CameraEvents~, CameraEvents" kind="assembly">
         <end xmi:id="_SpIIgB1-EemFppq5PtQEow" role="_N5S8UB1-EemFppq5PtQEow"/>
         <end xmi:id="_SpIvkB1-EemFppq5PtQEow" role="_AQVzUB1-EemFppq5PtQEow" partWithPort="_qwj4AB19EemFppq5PtQEow"/>
@@ -995,8 +999,11 @@
             <connectionPoint xmi:id="_V05QMB2aEemFppq5PtQEow" kind="entryPoint"/>
             <entry xmi:type="uml:OpaqueBehavior" xmi:id="_5awVYB2aEemFppq5PtQEow" name="Entry">
               <language>C++</language>
-              <body>int i = rand() % (words.size() - 1);&#xD;
-currentWord = words[i];&#xD;
+              <body>currentWord = words[wordIndex++];&#xD;
+if (wordIndex >= words.size()) {&#xD;
+	wordIndex = 0;&#xD;
+	shuffleWords();&#xD;
+}&#xD;
 webServer_out.newWord(currentWord).send();&#xD;
 &#xD;
 // Start timer&#xD;
@@ -1153,7 +1160,10 @@ loadWords();</body>
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_DOueoCPiEem0UtZqFR6jHw" name="Effect">
               <language>C++</language>
               <body>score = 0;&#xD;
+shuffleWords();&#xD;
+wordIndex = 0;&#xD;
 webServer_out.setScore(score).send();&#xD;
+&#xD;
 /*&#xD;
 // Send MQTT event to notify the start of a new game&#xD;
 std::time_t t = std::time(nullptr);&#xD;
@@ -1267,7 +1277,7 @@ std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; wor
 MQTTClient_connectOptions conn_opts = MQTTClient_connectOptions_initializer;&#xD;
 std::cout &lt;&lt; &quot;Initializing connection to Eclipse IoT MQTT broker&quot; &lt;&lt; std::endl;&#xD;
 &#xD;
-MQTTClient_create(&amp;mqttClient, &quot;tcp://broker.hivemq.com:1883&quot;, &quot;become_an_rtist_app&quot;, MQTTCLIENT_PERSISTENCE_NONE, NULL);&#xD;
+MQTTClient_create(&amp;mqttClient, &quot;tcp://10.191.139.92:1883&quot;, &quot;become_an_rtist_app&quot;, MQTTCLIENT_PERSISTENCE_NONE, NULL);&#xD;
 conn_opts.keepAliveInterval = 10; // Seconds between &quot;heart-beat&quot; pings between client and server&#xD;
 conn_opts.MQTTVersion = MQTTVERSION_3_1_1;&#xD;
 conn_opts.cleansession = 1;&#xD;
@@ -1321,6 +1331,10 @@ std::cout &lt;&lt; &quot;Connected to MQTT server!&quot; &lt;&lt; std::endl;&#xD
 &#xD;
   return rc;</body>
       </ownedBehavior>
+      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_C8LxUGtYEemIXZirlmiY4A" name="shuffleWords" specification="_-KcgoGtXEemIXZirlmiY4A">
+        <language>C++</language>
+        <body>std::shuffle(std::begin(words), std::end(words), std::default_random_engine());</body>
+      </ownedBehavior>
       <ownedOperation xmi:id="_BoQ-ICOVEem0UtZqFR6jHw" name="loadWords" method="_hSOOcCOVEem0UtZqFR6jHw">
         <ownedParameter xmi:id="_Kb8pQCVhEem0UtZqFR6jHw" name="return" direction="return">
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0877hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/void?"/>
@@ -1337,6 +1351,7 @@ std::cout &lt;&lt; &quot;Connected to MQTT server!&quot; &lt;&lt; std::endl;&#xD
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
         </ownedParameter>
       </ownedOperation>
+      <ownedOperation xmi:id="_-KcgoGtXEemIXZirlmiY4A" name="shuffleWords" method="_C8LxUGtYEemIXZirlmiY4A"/>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_qwSyQB19EemFppq5PtQEow" name="Camera">
       <eAnnotations xmi:id="_qwhbwB19EemFppq5PtQEow" source="uml2.diagrams" references="_qwiC0B19EemFppq5PtQEow">
@@ -1437,7 +1452,7 @@ timestamp &lt;&lt; tm->tm_sec;&#xD;
 std::string filename = &quot;/home/pi/become-an-rtist/camera-snaps/&quot; + timestamp.str() + &quot;.jpg&quot;;&#xD;
 // Take a black and white photo with the same size as used for the image recognition training data&#xD;
 // High contrast and as fast as possible (timeout 1)&#xD;
-std::string command = &quot;raspistill --width 118 --height 113 --colfx 128:128 --contrast 100 --timeout 1 --output &quot; + filename;&#xD;
+std::string command = &quot;raspistill --vflip --hflip --width 118 --height 113 --colfx 128:128 --contrast 100 --timeout 1 --output &quot; + filename;&#xD;
 &#xD;
 system(command.c_str());&#xD;
 &#xD;
@@ -1472,7 +1487,7 @@ game.imageFilename(filename).reply();</body>
       </ownedAttribute>
       <ownedAttribute xmi:id="_TABwMDBDEemdXd9vu5XPZQ" name="buttonPin" visibility="private" isReadOnly="true">
         <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
-        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_V4dV4DBDEemdXd9vu5XPZQ" value="10">
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_V4dV4DBDEemdXd9vu5XPZQ" value="12">
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
         </defaultValue>
       </ownedAttribute>
@@ -1584,7 +1599,7 @@ while(1){&#xD;
 	}&#xD;
 */&#xD;
 // This function registers a function to received interrupts on the specified pin.&#xD;
-if (wiringPiISR(buttonPin, INT_EDGE_RISING, &amp;buttonInterrupt) &lt; 0)&#xD;
+if (wiringPiISR(buttonPin, INT_EDGE_FALLING, &amp;buttonInterrupt) &lt; 0)&#xD;
 {  &#xD;
 	std::cout &lt;&lt; &quot;Unable to setup ISR&quot; &lt;&lt; std::endl;&#xD;
 }  &#xD;
@@ -2328,7 +2343,7 @@ else {&#xD;
   <UMLRealTime:OutEvent xmi:id="_Uf1m8B2IEemFppq5PtQEow" base_CallEvent="_UfzKsB2IEemFppq5PtQEow"/>
   <CppPropertySets:GeneralAttributeProperties xmi:id="_wYTbQB2LEemFppq5PtQEow" base_Property="_sqBLoB2LEemFppq5PtQEow"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_0oFOYB2LEemFppq5PtQEow" base_Class="_-TGREB1dEemFppq5PtQEow">
-    <headerPreface xmi:id="_0oFOYR2LEemFppq5PtQEow" body="#include &lt;string>&#xD;&#xA;#include &lt;vector>&#xD;&#xA;#include &quot;MQTTClient.h&quot;"/>
+    <headerPreface xmi:id="_0oFOYR2LEemFppq5PtQEow" body="#include &lt;string>&#xD;&#xA;#include &lt;vector>&#xD;&#xA;#include &lt;random>&#xD;&#xA;#include &lt;algorithm>&#xD;&#xA;#include &quot;MQTTClient.h&quot;"/>
     <implementationPreface xmi:id="_En9M8COWEem0UtZqFR6jHw" body="#include &lt;fstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;#include &lt;ios>&#xD;&#xA;#include &lt;cstdlib>&#xD;&#xA;#include &lt;ctime>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;&#xD;&#xA;void fnMessageDelivered(void *context, MQTTClient_deliveryToken dt)&#xD;&#xA;{&#xD;&#xA;&#x9;std::cout &lt;&lt; &quot;MQTT message delivered&quot; &lt;&lt; std::endl;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;void fnConnectionLost(void *context, char *cause)&#xD;&#xA;{&#xD;&#xA;&#x9;std::cout &lt;&lt; &quot;MQTT connection lost. Cause: &quot; &lt;&lt; cause &lt;&lt; std::endl;&#xD;&#xA;}"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:Capsule xmi:id="_tDIZwB2MEemFppq5PtQEow" base_Class="_tDEvYB2MEemFppq5PtQEow"/>
@@ -2427,7 +2442,7 @@ else {&#xD;
   <UMLRealTime:InEvent xmi:id="_dzPi8CrkEemRGZ3-ZqZ8HA" base_CallEvent="_dzEj0CrkEemRGZ3-ZqZ8HA"/>
   <UMLRealTime:InEvent xmi:id="_h0cukCrkEemRGZ3-ZqZ8HA" base_CallEvent="_h0ZEMCrkEemRGZ3-ZqZ8HA"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_3kjYsDAlEemdXd9vu5XPZQ" base_Class="_tDTWsB19EemFppq5PtQEow">
-    <implementationPreface xmi:id="_3kj_wDAlEemdXd9vu5XPZQ" body="#include &lt;iostream>&#xD;&#xA;#include &lt;wiringPi.h>&#xD;&#xA; &#xD;&#xA;#define ButtonPin 1&#xD;&#xA;&#xD;&#xA;// The function will be called when the interrupt triggers at button press.&#xD;&#xA;// Note that a single push yields multiple calls!&#xD;&#xA;void buttonInterrupt()&#xD;&#xA;{&#xD;&#xA;&#x9;if (PushButton_Actor::pushButtonInstance) {&#xD;&#xA;&#x9;&#x9;//std::cout &lt;&lt; &quot;Button interrupt!&quot; &lt;&lt; std::endl;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;PushButton_Actor::pushButtonInstance->interrupt.raise();&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;"/>
+    <implementationPreface xmi:id="_3kj_wDAlEemdXd9vu5XPZQ" body="#include &lt;iostream>&#xD;&#xA;#include &lt;wiringPi.h>&#xD;&#xA; &#xD;&#xA;#define ButtonPin 12&#xD;&#xA;&#xD;&#xA;// The function will be called when the interrupt triggers at button press.&#xD;&#xA;// Note that a single push yields multiple calls!&#xD;&#xA;void buttonInterrupt()&#xD;&#xA;{&#xD;&#xA;&#x9;if (PushButton_Actor::pushButtonInstance) {&#xD;&#xA;&#x9;&#x9;// std::cout &lt;&lt; &quot;Button interrupt!&quot; &lt;&lt; std::endl;&#xD;&#xA;&#xD;&#xA;&#x9;&#x9;PushButton_Actor::pushButtonInstance->interrupt.raise();&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;"/>
     <publicDeclarations xmi:id="_K8ynoDBFEemdXd9vu5XPZQ" body="friend void buttonInterrupt();"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:RTPort xmi:id="_LOqssDBDEemdXd9vu5XPZQ" isWired="false" base_Port="_LOgUoDBDEemdXd9vu5XPZQ"/>
