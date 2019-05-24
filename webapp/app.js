@@ -20,9 +20,13 @@ const env = process.env.NODE_ENV || 'development';
 var io = null;
 
 // Initialize highscore list
-const highscoreFile = __dirname + '/data/highscores.json';
+const data_dir = __dirname + '/data';
+if (!fs.existsSync(data_dir)) {
+    fs.mkdir(data_dir);
+}
+const highscoreFile = data_dir + '/highscores.json';
 var highscores = [];
-const allGamesFile = __dirname + '/data/allGames.json';
+const allGamesFile = data_dir + '/allGames.json';
 var allGames = [];
 if (fs.existsSync(highscoreFile)) {
     var highscores = JSON.parse(fs.readFileSync(highscoreFile));
