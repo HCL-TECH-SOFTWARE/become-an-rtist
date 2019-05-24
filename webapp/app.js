@@ -19,11 +19,17 @@ const port = 5000;
 const env = process.env.NODE_ENV || 'development';
 var io = null;
 
-// Initialize highscore list
-const data_dir = __dirname + '/data';
-if (!fs.existsSync(data_dir)) {
-    fs.mkdir(data_dir);
+function ensureExists(dir) {
+    if (!fs.existsSync(dir)) {
+        fs.mkdir(dir);
+    }
 }
+
+const data_dir = __dirname + '/data';
+ensureExists(data_dir);
+
+// Initialize highscore list
+
 const highscoreFile = data_dir + '/highscores.json';
 var highscores = [];
 const allGamesFile = data_dir + '/allGames.json';
@@ -52,7 +58,9 @@ app.use('/css', express.static(__dirname + '/public/css'));
 app.use('/audio', express.static(__dirname + '/public/audio'));
 app.use('/js', express.static(__dirname + '/public/js'));
 app.use('/images', express.static(__dirname + '/public/images'));
-app.use('/uploadedImages', express.static(__dirname + '/public/uploadedImages'));
+const uploadedImagesDir = __dirname + '/public/uploadedImages';
+ensureExists(uploadedImagesDir);
+app.use('/uploadedImages', express.static(uploadedImagesDir));
 
 // Special routes for modules that are installed
 app.get('/socket.io', function(req, res) {
