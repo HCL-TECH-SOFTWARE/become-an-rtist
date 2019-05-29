@@ -8,12 +8,17 @@
  */
 'use strict';
 
+
 var express = require('express');
 var app = express();
 var http = require('http');
 var socketio = require('socket.io');
 var fs = require('fs');
 var busboy = require('connect-busboy');
+var nconf = require('nconf');
+var CONFIG_FILE = 'appconfig.json';
+
+var path = require('path');
 
 const port = 5000;
 const env = process.env.NODE_ENV || 'development';
@@ -25,11 +30,13 @@ function ensureExists(dir) {
     }
 }
 
+nconf.argv().env().file({ file: CONFIG_FILE });
+
+
 const data_dir = __dirname + '/data';
 ensureExists(data_dir);
 
 // Initialize highscore list
-
 const highscoreFile = data_dir + '/highscores.json';
 var highscores = [];
 const allGamesFile = data_dir + '/allGames.json';
@@ -47,6 +54,11 @@ if (fs.existsSync(allGamesFile)) {
 else {
     console.log('Creating new allGames file at ' + allGamesFile);
     fs.writeFileSync(allGamesFile, JSON.stringify(allGames));
+}
+
+if (!fs.existsSync(nconf.get("sample_images_dir"))) {
+    console.error("Could not find sample images dir: " + nconf.get("sample_images_dir"));
+    console.error("Set 'sample_imaged_dir' property in " + CONFIG_FILE);
 }
 
 // Static middleware for serving static files 
@@ -102,14 +114,35 @@ app.route('/uploadImage').post( function(req, res) {
 app.get('/word-image', function(req, res) {
     let word = req.query.word;
     let index = parseInt(req.query.index);
+    let img_dir = path.join(
+        nconf.get("sample_images_dir"),
+        'all_images',
+        word);
+    if (!fs.existsSync(img_dir)) {
+        console.error("Could not open images dir: " + img_dir);
+        res.send(404);
+        return;
+    }
 
     res.contentType("image/jpeg");
-    let filename = '';    
+    let filename = '';  
+    let iterations = 0;  
+
     do {
-        filename = 'D:\\quickdraw\\all_images\\' + word + '\\' + index + '.jpg';
+        filename = path.join(img_dir,
+            index + '.jpg');
         index++;
-        if (index > 2200) // Safe-guard to avoid infinite loop
+        if (index > 2200) {
+            // start from the begining
             index = 0;
+        }
+        iterations++;
+        if (iterations > 2200) {
+            console.error("Could not find picture for " + word + " starting form " + req.query.index);
+            res.send(404);
+            return;
+        }
+            
     } while (!fs.existsSync(filename));    
     
     res.sendFile(filename);

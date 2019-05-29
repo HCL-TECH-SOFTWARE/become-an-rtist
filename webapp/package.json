@@ -1,8 +1,8 @@
 {
-  "name": "trafficlight-demo",
+  "name": "become-an-rtist",
   "version": "0.0.1",
   "private": true,
-  "description": "TrafficLight Sample Web Server",
+  "description": "Web Server for Become an RTist game",
   "keywords": [],
   "author": "Mattias Mohlin",
   "license": "MIT",
@@ -11,7 +11,8 @@
     "express": "^4.12.3",
     "connect-busboy": "^0.0.2",
     "socket.io": "^2.1.1",
-    "svg.js": "^2.7.1"
+    "svg.js": "^2.7.1",
+    "nconf": "^0.8.4"
   },
   "scripts": {
     "start": "node app.js"
