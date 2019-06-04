@@ -867,14 +867,6 @@
                       <children xmi:type="notation:ListCompartment" xmi:id="_8dHtdB2KEemFppq5PtQEow" visible="false" type="InternalTransitionCompartment"/>
                       <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8dHGYR2KEemFppq5PtQEow" x="2679" y="1950"/>
                     </children>
-                    <children xmi:type="umlnotation:UMLShape" xmi:id="_Dr7dgB2LEemFppq5PtQEow" element="_Dr5oUB2LEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" fillColor="15912618" transparency="0" lineColor="15912618" lineWidth="1" showStereotype="Label">
-                      <children xmi:type="notation:DecorationNode" xmi:id="_Dr8EkB2LEemFppq5PtQEow" type="NameLabel">
-                        <children xmi:type="notation:BasicDecorationNode" xmi:id="_Dr8Ekh2LEemFppq5PtQEow" type="Stereotype"/>
-                        <children xmi:type="notation:BasicDecorationNode" xmi:id="_Dr8Ekx2LEemFppq5PtQEow" type="Name"/>
-                        <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dr8EkR2LEemFppq5PtQEow" y="-149"/>
-                      </children>
-                      <layoutConstraint xmi:type="notation:Bounds" xmi:id="_Dr7dgR2LEemFppq5PtQEow" x="3843" y="510"/>
-                    </children>
                     <children xmi:type="umlnotation:UMLShape" xmi:id="_Gj3T8B2LEemFppq5PtQEow" element="_Gj1ewB2LEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" transparency="0" lineColor="14263149" lineWidth="1" showStereotype="Label">
                       <children xmi:type="notation:DecorationNode" xmi:id="_Gj3T8h2LEemFppq5PtQEow" type="ImageCompartment">
                         <layoutConstraint xmi:type="notation:Size" xmi:id="_Gj3T8x2LEemFppq5PtQEow" width="1320" height="1320"/>
@@ -931,16 +923,6 @@
                   </children>
                   <layoutConstraint xmi:type="notation:Bounds" xmi:id="_72LCNh2KEemFppq5PtQEow" x="635" y="635" width="18669" height="8255"/>
                 </children>
-                <edges xmi:type="umlnotation:UMLConnector" xmi:id="_E71mMB2LEemFppq5PtQEow" element="_E7x70B2LEemFppq5PtQEow" source="_Dr7dgB2LEemFppq5PtQEow" target="_8dHGYB2KEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
-                  <children xmi:type="notation:DecorationNode" xmi:id="_E71mMh2LEemFppq5PtQEow" type="TransitionLabelCompartment">
-                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_E72NQB2LEemFppq5PtQEow" type="Stereotype"/>
-                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_E72NQR2LEemFppq5PtQEow" type="TransitionLabel"/>
-                    <children xmi:type="notation:ListCompartment" xmi:id="_E72NQh2LEemFppq5PtQEow" type="Triggers"/>
-                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_E71mMx2LEemFppq5PtQEow" y="-149"/>
-                  </children>
-                  <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_E71mMR2LEemFppq5PtQEow" points="[0, 10, 1, -61]$[-2, 59, -1, -12]"/>
-                  <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_E75QkB2LEemFppq5PtQEow" id="(0.48916184971098264,0.24007561436672967)"/>
-                </edges>
                 <edges xmi:type="umlnotation:UMLConnector" xmi:id="_Mze34B2LEemFppq5PtQEow" element="_Mzb0kB2LEemFppq5PtQEow" source="_8dHGYB2KEemFppq5PtQEow" target="_Gj3T8B2LEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
                   <children xmi:type="notation:DecorationNode" xmi:id="_Mzfe8B2LEemFppq5PtQEow" type="TransitionLabelCompartment">
                     <children xmi:type="notation:BasicDecorationNode" xmi:id="_Mzfe8h2LEemFppq5PtQEow" type="Stereotype"/>
@@ -991,6 +973,16 @@
                   </children>
                   <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_0IH-IR2aEemFppq5PtQEow" points="[4, -3, -200, 144]$[139, -145, -65, 2]"/>
                 </edges>
+                <edges xmi:type="umlnotation:UMLConnector" xmi:id="_8xw-YIaeEemLp_sN3MQQPA" element="_8wnH0IaeEemLp_sN3MQQPA" source="_72vp8B2KEemFppq5PtQEow" target="_8dHGYB2KEemFppq5PtQEow" fontName="Segoe UI" fontHeight="8" roundedBendpointsRadius="4" lineColor="8421504" lineWidth="1" showStereotype="Text">
+                  <children xmi:type="notation:DecorationNode" xmi:id="_8x0owIaeEemLp_sN3MQQPA" type="TransitionLabelCompartment">
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_8x3sEIaeEemLp_sN3MQQPA" type="Stereotype"/>
+                    <children xmi:type="notation:BasicDecorationNode" xmi:id="_8x4TIIaeEemLp_sN3MQQPA" type="TransitionLabel"/>
+                    <children xmi:type="notation:ListCompartment" xmi:id="_8x4TIYaeEemLp_sN3MQQPA" type="Triggers"/>
+                    <layoutConstraint xmi:type="notation:Bounds" xmi:id="_8x0owYaeEemLp_sN3MQQPA" y="-149"/>
+                  </children>
+                  <bendpoints xmi:type="notation:RelativeBendpoints" xmi:id="_8xw-YYaeEemLp_sN3MQQPA" points="[-2, 4, 66, -124]$[-67, 127, 1, -1]"/>
+                  <targetAnchor xmi:type="notation:IdentityAnchor" xmi:id="_8x_n4IaeEemLp_sN3MQQPA" id="(0.5198699421965318,0.03969754253308128)"/>
+                </edges>
               </contents>
             </eAnnotations>
             <connectionPoint xmi:id="_7pzaIB2KEemFppq5PtQEow" kind="entryPoint"/>
@@ -1013,7 +1005,6 @@ webServer_out.remainingTime(maxTime - secCount);</body>
             </entry>
             <region xmi:id="_7pyMAB2KEemFppq5PtQEow" name="Region1">
               <subvertex xmi:type="uml:State" xmi:id="_8dF4QB2KEemFppq5PtQEow" name="WaitForDrawing"/>
-              <subvertex xmi:type="uml:Pseudostate" xmi:id="_Dr5oUB2LEemFppq5PtQEow"/>
               <subvertex xmi:type="uml:State" xmi:id="_Gj1ewB2LEemFppq5PtQEow" name="AnalyzeDrawing">
                 <entry xmi:type="uml:OpaqueBehavior" xmi:id="_qXYvwB2NEemFppq5PtQEow" name="Entry">
                   <language>C++</language>
@@ -1027,11 +1018,6 @@ else {&#xD;
                 </entry>
               </subvertex>
               <subvertex xmi:type="uml:Pseudostate" xmi:id="_uZCnUB2NEemFppq5PtQEow" name="" kind="choice"/>
-              <transition xmi:id="_E7x70B2LEemFppq5PtQEow" name="Initial" source="_Dr5oUB2LEemFppq5PtQEow" target="_8dF4QB2KEemFppq5PtQEow">
-                <eAnnotations xmi:id="_E7zJ8B2LEemFppq5PtQEow" source="uml2.alias">
-                  <details xmi:id="_E7zJ8R2LEemFppq5PtQEow" key="Initial"/>
-                </eAnnotations>
-              </transition>
               <transition xmi:id="_Mzb0kB2LEemFppq5PtQEow" name="doneDrawing" source="_8dF4QB2KEemFppq5PtQEow" target="_Gj1ewB2LEemFppq5PtQEow">
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_cYCK4B2LEemFppq5PtQEow" name="Effect">
                   <language>C++</language>
@@ -1131,6 +1117,7 @@ std::cout &lt;&lt; secCount &lt;&lt; std::endl;</body>
                   <event xmi:type="uml:CallEvent" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_18o5ErIlEduJc5NEaBCMOw?RTClasses/Timing/timeout?"/>
                 </trigger>
               </transition>
+              <transition xmi:id="_8wnH0IaeEemLp_sN3MQQPA" name="gameStarted" kind="local" source="_7pzaIB2KEemFppq5PtQEow" target="_8dF4QB2KEemFppq5PtQEow"/>
             </region>
           </subvertex>
           <subvertex xmi:type="uml:Pseudostate" xmi:id="_ibXoIDNJEemdXd9vu5XPZQ" name="highscore?" kind="choice"/>
