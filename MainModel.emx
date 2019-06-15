@@ -780,6 +780,9 @@
         <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_iZwn8GtXEemIXZirlmiY4A"/>
       </ownedAttribute>
       <ownedAttribute xmi:id="_ukA3sIbJEemBRoXE3LR-Uw" name="settings" visibility="private" type="_Zckj4IbJEemBRoXE3LR-Uw"/>
+      <ownedAttribute xmi:id="_HPNX4I9WEemxy7tZ8DNXuw" name="currentWordAttempts" visibility="private">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+      </ownedAttribute>
       <ownedConnector xmi:id="_SpG6YB1-EemFppq5PtQEow" name="CameraEvents~, CameraEvents" kind="assembly">
         <end xmi:id="_SpIIgB1-EemFppq5PtQEow" role="_N5S8UB1-EemFppq5PtQEow"/>
         <end xmi:id="_SpIvkB1-EemFppq5PtQEow" role="_AQVzUB1-EemFppq5PtQEow" partWithPort="_qwj4AB19EemFppq5PtQEow"/>
@@ -1137,7 +1140,12 @@ if (wordIndex >= words.size()) {&#xD;
 	shuffleWords();&#xD;
 }&#xD;
 webServer_out.newWord(currentWord).send();&#xD;
-&#xD;
+if (settings.doMQTT()) {&#xD;
+	std::map&lt;std::string, std::string> msg;&#xD;
+	msg[&quot;word&quot;] = currentWord;&#xD;
+	publishMessage(&quot;WordSelected&quot;, getJson(msg));&#xD;
+}&#xD;
+currentWordAttempts = 0;&#xD;
 // Start timer&#xD;
 secCount = 0;&#xD;
 countdownTimer = timer.informEvery(RTTimespec(1, 0));&#xD;
@@ -1171,6 +1179,7 @@ if (reply.isValid()) {&#xD;
 	currentDrawingFilename = *((StdString*) reply.getData());&#xD;
 	// Upload the drawing to the web server so it can be shown in the web app while image recognition runs&#xD;
 	webServer_out.uploadImage(currentDrawingFilename).send();&#xD;
+	currentWordAttempts++;&#xD;
 }</body>
                 </effect>
                 <trigger xmi:id="_UaxZYB2LEemFppq5PtQEow" name="" event="_2MzR0B19EemFppq5PtQEow" port="_aRSMsB1-EemFppq5PtQEow"/>
@@ -1194,6 +1203,13 @@ if (reply.isValid()) {&#xD;
                   <language>C++</language>
                   <body>std::cout &lt;&lt; &quot;Image not recognized&quot; &lt;&lt; std::endl;&#xD;
 webServer_out.failedToRecognizeImage(*rtdata).send();&#xD;
+if (settings.doMQTT()) {&#xD;
+	std::map&lt;std::string, std::string> msg;&#xD;
+	msg[&quot;word&quot;] = currentWord;&#xD;
+	msg[&quot;time_spent&quot;] = std::to_string(secCount);&#xD;
+	msg[&quot;attempt&quot;] = std::to_string(currentWordAttempts);&#xD;
+	publishMessage(&quot;RecognitionFailed&quot;, getJson(msg));&#xD;
+}&#xD;
 &#xD;
 // Restart the timer to give the player a chance to improve the drawing&#xD;
 countdownTimer = timer.informEvery(RTTimespec(1, 0));&#xD;
@@ -1230,10 +1246,19 @@ catch (...)&#xD;
 // Append 'current word' property to JSON string&#xD;
 result.insert(rtdata->size() - 1, &quot;, \&quot;currentWord\&quot; : \&quot;&quot; + currentWord + &quot;\&quot;&quot;);&#xD;
 webServer_out.imageSuccessfullyRecognized(result).send();&#xD;
-&#xD;
+if (settings.doMQTT()) {&#xD;
+	std::map&lt;std::string, std::string> msg;&#xD;
+	msg[&quot;word&quot;] = currentWord;&#xD;
+	msg[&quot;time_spent&quot;] = std::to_string(secCount);&#xD;
+	msg[&quot;word_score&quot;] = std::to_string(scoreInc);&#xD;
+	msg[&quot;attempt&quot;] = std::to_string(currentWordAttempts);&#xD;
+	msg[&quot;score&quot;] = std::to_string(scoreInc+score);&#xD;
+	publishMessage(&quot;WordCompleted&quot;,getJson(msg));&#xD;
+}&#xD;
 score += scoreInc;&#xD;
 std::cout &lt;&lt; &quot;Score: &quot; &lt;&lt; std::to_string(score) &lt;&lt; std::endl;&#xD;
-webServer_out.incScore(scoreInc).send();</body>
+webServer_out.incScore(scoreInc).send();&#xD;
+</body>
                 </effect>
               </transition>
               <transition xmi:id="_0IDssB2aEemFppq5PtQEow" name="" kind="local" source="_V05QMB2aEemFppq5PtQEow" target="_8dF4QB2KEemFppq5PtQEow"/>
@@ -1296,11 +1321,8 @@ wordIndex = 0;&#xD;
 webServer_out.setScore(score).send();&#xD;
 &#xD;
 if (settings.doMQTT()) {&#xD;
-	// Send MQTT event to notify the start of a new game&#xD;
-	std::stringstream msg;&#xD;
-	msg &lt;&lt; &quot;{\&quot;event\&quot; : \&quot;GameStarted\&quot;, \&quot;timestamp\&quot; : \&quot;&quot; &lt;&lt; getCurrentTimeStamp();&#xD;
-	msg &lt;&lt; &quot;\&quot;}&quot; &lt;&lt; std::endl;&#xD;
-	publishMessage(msg.str());&#xD;
+	std::map&lt;std::string, std::string> msg;&#xD;
+	publishMessage(&quot;GameStarted&quot;, getJson(msg));&#xD;
 }</body>
             </effect>
             <trigger xmi:id="_-HP-4B2IEemFppq5PtQEow" name="" event="_UfzKsB2IEemFppq5PtQEow" port="_mfBqAB2AEemFppq5PtQEow"/>
@@ -1328,10 +1350,10 @@ else {&#xD;
 timer.cancelTimer(countdownTimer);&#xD;
 &#xD;
 if (settings.doMQTT()) {&#xD;
-	// Send MQTT event to notify the start of a new game&#xD;
-	std::stringstream msg;&#xD;
-	msg &lt;&lt; &quot;{\&quot;event\&quot; : \&quot;GameEnded\&quot;, \&quot;timestamp\&quot; : \&quot;&quot; &lt;&lt; getCurrentTimeStamp() &lt;&lt; &quot;\&quot;}&quot; &lt;&lt; std::endl;&#xD;
-	publishMessage(msg.str());&#xD;
+	std::map&lt;std::string, std::string> msg;&#xD;
+	msg[&quot;words_count&quot;] = std::to_string(wordIndex-1);&#xD;
+	msg[&quot;score&quot;] = std::to_string(score);&#xD;
+	publishMessage(&quot;GameEnded&quot;, getJson(msg));&#xD;
 }</body>
             </effect>
             <trigger xmi:id="_Puk8cCPgEem0UtZqFR6jHw" name="" port="_kPAwECPfEem0UtZqFR6jHw">
@@ -1371,7 +1393,13 @@ if (reply.isValid()) {&#xD;
 HiscoreData data;&#xD;
 data.score = score;&#xD;
 data.photo = photoFile;&#xD;
-webServer_out.uploadHighscorePhoto(data).send();</body>
+webServer_out.uploadHighscorePhoto(data).send();&#xD;
+if (settings.doMQTT()) {&#xD;
+	std::map&lt;std::string, std::string> msg;&#xD;
+	msg[&quot;score&quot;] = std::to_string(score);&#xD;
+	msg[&quot;word_count&quot;] = std::to_string(wordIndex-1);&#xD;
+	publishMessage(&quot;HighScore&quot;, getJson(msg));&#xD;
+}</body>
             </effect>
             <trigger xmi:id="_7VCQYDNJEemdXd9vu5XPZQ" name="" event="_2MzR0B19EemFppq5PtQEow" port="_aRSMsB1-EemFppq5PtQEow"/>
             <trigger xmi:id="_GvqgoDNKEemdXd9vu5XPZQ" name="" event="_DAECYDNKEemdXd9vu5XPZQ" port="_mfBqAB2AEemFppq5PtQEow"/>
@@ -1452,9 +1480,11 @@ std::cout &lt;&lt; &quot;Connected to MQTT server!&quot; &lt;&lt; std::endl;&#xD
   pubmsg.payloadlen = payload.length();&#xD;
   pubmsg.qos = 1;&#xD;
   pubmsg.retained = 0;&#xD;
-  std::string topic = &quot;/becomeanrtist/event&quot;;&#xD;
-  if (settings.isDebug())&#xD;
-	  std::cout &lt;&lt; &quot;MQTT: Publishing &quot; &lt;&lt; topic;&#xD;
+  std::string topic = &quot;/becomeanrtist/&quot; + event;&#xD;
+  if (settings.isDebug()) {&#xD;
+	  std::cout &lt;&lt; &quot;MQTT: Publishing &quot; &lt;&lt; topic &lt;&lt; std::endl;&#xD;
+	  std::cout &lt;&lt; &quot;Payload=&quot; &lt;&lt; payload;&#xD;
+  }&#xD;
   int res_pub = MQTTClient_publishMessage(mqttClient, topic.c_str(), &amp;pubmsg, &amp;token);&#xD;
   if (settings.isDebug())&#xD;
 	  std::cout &lt;&lt; &quot; returned: &quot; &lt;&lt; res_pub &lt;&lt; std::endl;&#xD;
@@ -1483,6 +1513,7 @@ std::cout &lt;&lt; &quot;Connected to MQTT server!&quot; &lt;&lt; std::endl;&#xD
         </ownedParameter>
       </ownedOperation>
       <ownedOperation xmi:id="_5p8QkjRGEemHavusGMjy6w" name="publishMessage" visibility="public" method="_5p9esDRGEemHavusGMjy6w">
+        <ownedParameter xmi:id="_OV4CkI7oEemxy7tZ8DNXuw" name="event" type="_5TgPcCOQEem0UtZqFR6jHw"/>
         <ownedParameter xmi:id="_5p8QkzRGEemHavusGMjy6w" name="payload" type="_5TgPcCOQEem0UtZqFR6jHw"/>
         <ownedParameter xmi:id="_5p8QlDRGEemHavusGMjy6w" name="return" direction="return">
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
@@ -2633,8 +2664,8 @@ while (std::getline(input, line)) {&#xD;
     <rootFragment xmi:type="uml:State" href="platform:/resource/LibHttpServer/LibHttpServer.emx#_K_tz8N6wEeife8wA8rm4kw?LibHttpServer/HttpServer_Out/State%20Machine/Region1/WaitForMessage?"/>
   </UMLRealTime:RTRedefinableElement>
   <CppPropertySets:GeneralArtifactProperties xmi:id="_rT7RMCY4Eem0UtZqFR6jHw" base_Artifact="_fMSxACY4Eem0UtZqFR6jHw">
-    <Header xmi:id="_rT7RMSY4Eem0UtZqFR6jHw" body="void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport);&#xD;&#xA;StdString getCurrentTimeStamp();&#xD;&#xA;StdString getPropertiesFile();&#xD;&#xA;bool getDebugFromEnv();"/>
-    <Implementation xmi:id="_rT74QCY4Eem0UtZqFR6jHw" body="#include &lt;ctime>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;&#xD;&#xA;bool getDebugFromEnv() {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-debug&quot;, 6) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return true;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getPropertiesFile() {&#xD;&#xA;&#x9;StdString result = &quot;game.properties&quot;;&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-propFile=&quot;, 10 ) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return (*av + 10);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return result;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport) {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webhost=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webhost = *av + 9;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webport=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webport = RTMemoryUtil::atoi(*av + 9);&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getCurrentTimeStamp() {&#xD;&#xA;&#x9;std::time_t t = std::time(nullptr);&#xD;&#xA;&#x9;std::tm* tm = std::localtime(&amp;t);&#xD;&#xA;&#x9;std::stringstream timestamp;&#xD;&#xA;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1900 + tm->tm_year);&#xD;&#xA;&#x9;if ((1 + tm->tm_mon) &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1 + tm->tm_mon);&#xD;&#xA;&#x9;if (tm->tm_mday &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_mday &lt;&lt; &quot;_&quot;;&#xD;&#xA;&#x9;if (tm->tm_hour &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_hour;&#xD;&#xA;&#x9;if (tm->tm_min &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_min;&#xD;&#xA;&#x9;if (tm->tm_sec &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_sec;&#xD;&#xA;&#xD;&#xA;&#x9;return timestamp.str();&#xD;&#xA;}"/>
+    <Header xmi:id="_rT7RMSY4Eem0UtZqFR6jHw" body="#include &lt;map>&#xD;&#xA;void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport);&#xD;&#xA;StdString getCurrentTimeStamp();&#xD;&#xA;StdString getPropertiesFile();&#xD;&#xA;bool getDebugFromEnv();&#xD;&#xA;StdString getJson(std::map&lt;StdString, StdString> jsonObj);"/>
+    <Implementation xmi:id="_rT74QCY4Eem0UtZqFR6jHw" body="#include &lt;ctime>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;&#xD;&#xA;bool getDebugFromEnv() {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-debug&quot;, 6) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return true;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getPropertiesFile() {&#xD;&#xA;&#x9;StdString result = &quot;game.properties&quot;;&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-propFile=&quot;, 10 ) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return (*av + 10);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return result;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport) {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webhost=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webhost = *av + 9;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webport=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webport = RTMemoryUtil::atoi(*av + 9);&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getCurrentTimeStamp() {&#xD;&#xA;&#x9;std::time_t t = std::time(nullptr);&#xD;&#xA;&#x9;std::tm* tm = std::localtime(&amp;t);&#xD;&#xA;&#x9;std::stringstream timestamp;&#xD;&#xA;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1900 + tm->tm_year);&#xD;&#xA;&#x9;if ((1 + tm->tm_mon) &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1 + tm->tm_mon);&#xD;&#xA;&#x9;if (tm->tm_mday &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_mday &lt;&lt; &quot;_&quot;;&#xD;&#xA;&#x9;if (tm->tm_hour &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_hour;&#xD;&#xA;&#x9;if (tm->tm_min &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_min;&#xD;&#xA;&#x9;if (tm->tm_sec &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_sec;&#xD;&#xA;&#xD;&#xA;&#x9;return timestamp.str();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getJson(std::map&lt;StdString, StdString> jsonObj) {&#xD;&#xA;&#x9;std::stringstream jsonString;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;{ &quot;;&#xD;&#xA;&#xD;&#xA;&#x9;for (std::map&lt;StdString,StdString>::iterator it = jsonObj.begin(); it != jsonObj.end(); it++) {&#xD;&#xA;&#x9;&#x9;jsonString &lt;&lt; &quot;\&quot;&quot; &lt;&lt; it->first &lt;&lt; &quot;\&quot;: \&quot;&quot;;&#xD;&#xA;&#x9;&#x9;jsonString &lt;&lt; it->second &lt;&lt; &quot;\&quot;,&quot;;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;\&quot;timestamp\&quot; : \&quot;&quot;;&#xD;&#xA;&#x9;jsonString &lt;&lt; getCurrentTimeStamp() &lt;&lt; &quot;\&quot;&quot;;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;} &quot;;&#xD;&#xA;&#x9;return jsonString.str();&#xD;&#xA;}"/>
   </CppPropertySets:GeneralArtifactProperties>
   <CppPropertySets:GeneralDependencyProperties xmi:id="_7KEDcCY4Eem0UtZqFR6jHw" base_Dependency="_6CnTMCY4Eem0UtZqFR6jHw" kindInHeader="inclusion"/>
   <CppPropertySets:GeneralDependencyProperties xmi:id="_C6DN8CY5Eem0UtZqFR6jHw" base_Dependency="_B0xn8CY5Eem0UtZqFR6jHw" kindInHeader="none"/>
@@ -2681,4 +2712,5 @@ while (std::getline(input, line)) {&#xD;
   <CppPropertySets:GeneralClassProperties xmi:id="_EkD6kIbiEemmidn_KYLHqw" base_Class="_Zckj4IbJEemBRoXE3LR-Uw">
     <implementationPreface xmi:id="_EkG94IbiEemmidn_KYLHqw" body="#include &lt;Utils.h>&#xD;&#xA;#include &lt;fstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;#include &lt;string>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;"/>
   </CppPropertySets:GeneralClassProperties>
+  <CppPropertySets:GeneralParameterProperties xmi:id="_ZKSAUI7oEemxy7tZ8DNXuw" base_Parameter="_OV4CkI7oEemxy7tZ8DNXuw" nativeType="const StdString&amp;"/>
 </xmi:XMI>
