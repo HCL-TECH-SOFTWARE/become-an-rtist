@@ -1,0 +1,1 @@
+[{"id":"5402e877.218378","type":"delay","z":"3640c398.c19384","name":"","pauseType":"delay","timeout":"2","timeoutUnits":"seconds","rate":"1","nbRateUnits":"1","rateUnits":"second","randomFirst":"1","randomLast":"5","randomUnits":"seconds","drop":false,"x":740,"y":160,"wires":[["97ed8ce7.bd9088"]]}]
