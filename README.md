@@ -10,8 +10,7 @@ For more information about the game set-up and how it works, see <a href="https:
 ## Hardware setup
 A bill of material can be found [here](BOM.md).
 * Connect the camera to the Raspberry Pi and enable it in the Pi settings. 
-* Connect the push button to the Raspberry Pi. One wire should have a resistor and connect to GPIO 1 (3.3 V), and the other wire should connect to GPIO 10.
-* Another button connection scheme: Connect one wire to pin 6 (GND) and another to pin 12 (GPIO 18). Resistor is not required in this case. Use python script button_test_2.py to initialize button and branch 'moscow' to build application for this scheme.
+* Connect the push button to the Raspberry Pi. Connect one wire to pin 6 (GND) and another to pin 12 (GPIO 18). It's not necessary to use resistors, but having them also won't hurt. 
 * Make sure the Raspberry Pi is on the same network as the computer where the web server will run. For best performance, assign a static IP address to the Raspberry Pi and connect it directly to the computer with an ethernet cable. For example, follow these <a href="http://www.circuitbasics.com/how-to-connect-to-a-raspberry-pi-directly-with-an-ethernet-cable/">instructions</a>. Then update your hosts file (on both machines, including /etc/hosts on RPi) and assign the name "rtist-pi" to the IP address of the Raspberry Pi.
 * Place the Raspberry Pi on a desk lamp, with the camera facing down.
 * Calibrate the camera so that it can get a good shot of a regular A4 paper placed under the lamp. Start by installing some useful tools in the Pi by following these <a href="https://blog.miguelgrinberg.com/post/how-to-build-and-run-mjpg-streamer-on-the-raspberry-pi">instructions</a>.
@@ -28,7 +27,7 @@ A bill of material can be found [here](BOM.md).
     
     Move the paper under the lamp, and adjust the lamp height, until the paper is fully visible by the camera. Then mark the paper position, for example using a transparent tape.
     
-* Enable and test the push button by running the Python 2.7 script [button_test.py](image_recognition/button_test.py). There should be several printouts each time the button is pushed.
+* Initialize and test the push button by running the Python 2.7 script [button_test_2.py](image_recognition/button_test_2.py). There should be a printout each time the button is pushed.
     
 ## Set-up image recognition on the Raspberry Pi
 * Install libraries required for Tensorflow
@@ -40,7 +39,7 @@ A bill of material can be found [here](BOM.md).
 
   `source ~/venv/bin/activate`
 
-* Copy the script [label_image_server.py](image_recognition/label_image_server.py) to the folder /become-an-rtist/image-recognition on the Pi. Also copy the trained Tensorflow model [output_graph.pb](image_recognition/output_graph.pb) and the list of words to recognize [output_labels.txt](image_recognition/output_labels.txt) to the same place. Then go into that folder and perform the command:
+* Copy the script [label_image_server.py](image_recognition/label_image_server.py) to the folder /become-an-rtist/image_recognition on the Pi. Also copy the trained Tensorflow model [output_graph.pb](image_recognition/output_graph.pb) and the list of words to recognize [output_labels.txt](image_recognition/output_labels.txt) to the same place. Then go into that folder and perform the command:
 
   `python label_image_server.py --graph=output_graph.pb --labels=output_labels.txt --input_layer=Placeholder --output_layer=final_result --input_height=224 --input_width=224`
 
@@ -81,7 +80,7 @@ Note: To start the application from within RTist it is recommended to install th
 
 and then start the executable on the Pi with this command
 
-`./executable -obslisten=12345 -webhost=192.168.137.1 -webport=5000`
+`./executable -obslisten=12345 -webhost=192.168.137.1 -webport=5000 -propFile=/home/pi/become-an-rtist/game.properties`
 
-Replace the IP address with the IP address of the computer that runs the web server.
+Replace the IP address with the IP address of the computer that runs the web server. Replace the propFile path with the path on the Pi where you have copied the file [game.properties](game.properties).
 When the web application shows the hiscore list, the game is ready to play!
