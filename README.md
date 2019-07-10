@@ -1,11 +1,13 @@
 # become-an-rtist
 ![become an rtist](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/ready.png "Become An RTist")
 
-This is a sketch drawing game built with [HCL RTist](https://www.devops-community.com/realtime-software-tooling-rtist.html). It is intended to run on a Raspberry Pi 3+ equipped with a camera and a push button. In addition to the RTist C++ application that runs on the Raspberry Pi, the system also consists of the following applications:
+This is a sketch drawing game built with [HCL RTist](https://www.devops-community.com/realtime-software-tooling-rtist.html). It is intended to run on a Raspberry Pi 3+ (or newer) equipped with a camera and a push button. In addition to the RTist C++ application that runs on the Raspberry Pi, the system also consists of the following applications:
 * An image recognizer Python script. It runs on the Raspberry Pi as an HTTP server to serve requests for image recognition.
 * A web server implemented in Node JS. The RTist application communicates with it over HTTP. This web server can run on a different machine, for example a laptop that is connected to the same network as the Raspberry Pi.
 * A web application implemented in JavaScript, HTML and CSS. This runs in a web browser on any computer.
 For more information about the game set-up and how it works, see <a href="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/BecomeAnRTist.pdf">these slides</a>.
+
+Watch [this video](https://www.youtube.com/watch?v=UPmKu93ESZ8) to get an overview of the game and see it in action.
 
 ## Hardware setup
 A bill of material can be found [here](BOM.md).
