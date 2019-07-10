@@ -36,7 +36,7 @@ For example: The PiHut Ultimate Resistor Kit
 
 You may use a resistor when connecting the push button to the Pi, but it is strictly not necessary, so consider this an optional buy.
 
-Arcade Button Quick-Connect Wire Pairs - 0.11" (10 pack)
+* __Arcade Button Quick-Connect Wire Pairs - 0.11" (10 pack)
 
 ![wires](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/pi_wires.png "Wires")
 
