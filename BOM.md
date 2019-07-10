@@ -44,9 +44,9 @@ These wires are for connecting the push button to the Pi. Which wires to use dep
 
 * __LED desk lamp with good bright light__ (approx cost 50 USD)
 
-It's good if the lamp is stable enough so it can carry both the Pi and the camera. Alternatively, keep the Pi on the table and just attach the camera on the lamp since it is considerably lighter. In this case you need a longer than default camera cable. If you choose to attach the Pi on the lamp you may need a scaffolding to make the construction stable enough.
-
 ![lamp](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/desklamp.png "Desk lamp")
+
+It's good if the lamp is stable enough so it can carry both the Pi and the camera. Alternatively, keep the Pi on the table and just attach the camera on the lamp since it is considerably lighter. In this case you need a longer than default camera cable. If you choose to attach the Pi on the lamp you may need a scaffolding to make the construction stable enough.
 
 * __Paper and marker pen__ (approx cost 20 USD)
 
