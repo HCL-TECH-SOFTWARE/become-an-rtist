@@ -1412,12 +1412,32 @@ if (settings.doMQTT()) {&#xD;
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_hSOOcCOVEem0UtZqFR6jHw" name="loadWords" specification="_BoQ-ICOVEem0UtZqFR6jHw">
         <language>C++</language>
         <body>// Load words from output_labels.txt file&#xD;
-std::ifstream input(&quot;/home/pi/become-an-rtist/image_recognition/output_labels.txt&quot;, std::ios::binary | std::ios::in);&#xD;
+std::string filename = settings.getWordsFile();&#xD;
+if (settings.isDebug()) {&#xD;
+	std::cout &lt;&lt; &quot;Reading words from: &quot; &lt;&lt; filename &lt;&lt; std::endl;&#xD;
+}&#xD;
+std::ifstream input(filename , std::ios::binary | std::ios::in);&#xD;
+if (input.fail()) {&#xD;
+	std::cout &lt;&lt; &quot;Could not open words file file &quot; &lt;&lt; filename &lt;&lt; std::endl;&#xD;
+	exit(1);&#xD;
+}&#xD;
+&#xD;
 std::string line;&#xD;
 while (std::getline(input, line)) {&#xD;
-	words.push_back(line);&#xD;
+	std::string word = trim(line);&#xD;
+	if (word.length()> 0)&#xD;
+	words.push_back(word);&#xD;
 }&#xD;
-std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; words&quot; &lt;&lt; std::endl;</body>
+&#xD;
+if (settings.isDebug()) {&#xD;
+	for (int i=0; i &lt; words.size(); ++i) {&#xD;
+		std::cout &lt;&lt; words[i] &lt;&lt; &quot;, &quot;;&#xD;
+	}&#xD;
+	std::cout &lt;&lt; std::endl;&#xD;
+}&#xD;
+&#xD;
+std::cout &lt;&lt; &quot;Loaded &quot; &lt;&lt; words.size() &lt;&lt; &quot; words&quot; &lt;&lt; std::endl;&#xD;
+</body>
       </ownedBehavior>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_5p83oDRGEemHavusGMjy6w" name="initMQTT" specification="_5p8QkDRGEemHavusGMjy6w">
         <language>C++</language>
@@ -2396,9 +2416,7 @@ else {&#xD;
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Class" xmi:id="_5TgPcCOQEem0UtZqFR6jHw" name="StdString"/>
-    <packagedElement xmi:type="uml:Artifact" xmi:id="_fMSxACY4Eem0UtZqFR6jHw" name="Utils">
-      <clientDependency href="#_6CnTMCY4Eem0UtZqFR6jHw?RTApp/%3CDependency%3E(Supplier-StdString)?"/>
-    </packagedElement>
+    <packagedElement xmi:type="uml:Artifact" xmi:id="_fMSxACY4Eem0UtZqFR6jHw" name="Utils" clientDependency="_6CnTMCY4Eem0UtZqFR6jHw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_6CnTMCY4Eem0UtZqFR6jHw" name="" supplier="_5TgPcCOQEem0UtZqFR6jHw" client="_fMSxACY4Eem0UtZqFR6jHw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_B0xn8CY5Eem0UtZqFR6jHw" name="" supplier="_fMSxACY4Eem0UtZqFR6jHw" client="_84Y2cCMXEem0UtZqFR6jHw"/>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_4PLKMCY5Eem0UtZqFR6jHw" name="" supplier="_fMSxACY4Eem0UtZqFR6jHw" client="__aYmQB1-EemFppq5PtQEow"/>
@@ -2451,6 +2469,9 @@ else {&#xD;
       <ownedAttribute xmi:id="_BU3w0IbZEemBRoXE3LR-Uw" name="mqttClient" visibility="private" type="_5TgPcCOQEem0UtZqFR6jHw">
         <defaultValue xmi:type="uml:LiteralString" xmi:id="_HBDQgIbZEemBRoXE3LR-Uw" type="_5TgPcCOQEem0UtZqFR6jHw" value="become_an_rtist"/>
       </ownedAttribute>
+      <ownedAttribute xmi:id="_fTnRMMDcEemtW7qGHRwMwA" name="wordsFile" visibility="private" type="_5TgPcCOQEem0UtZqFR6jHw">
+        <defaultValue xmi:type="uml:LiteralString" xmi:id="_WPHVYMDdEemtW7qGHRwMwA" type="_5TgPcCOQEem0UtZqFR6jHw" value="image_recognition/output_labels.txt"/>
+      </ownedAttribute>
       <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_-kOzAIbJEemBRoXE3LR-Uw" name="getMQTTURL" specification="_dE2SIIbJEemBRoXE3LR-Uw">
         <language>C++</language>
         <body>return mqttURL;</body>
@@ -2485,7 +2506,9 @@ std::string line, name, value;&#xD;
 while (std::getline(input, line)) {&#xD;
 	std::stringstream stream(line);&#xD;
 	std::getline(stream, name, '=');&#xD;
+	name = trim(name);&#xD;
 	std::getline(stream, value);&#xD;
+	value = trim(value);&#xD;
 	if (debug) {&#xD;
 		std::cout &lt;&lt; &quot;Read: &quot; &lt;&lt; name &lt;&lt; &quot;=&quot; &lt;&lt; value &lt;&lt; std::endl;&#xD;
 	}&#xD;
@@ -2493,9 +2516,15 @@ while (std::getline(input, line)) {&#xD;
 		std::istringstream(value) >> std::boolalpha >> mqtt;&#xD;
 	} else if (name == &quot;MQTT_URL&quot;) {&#xD;
 		mqttURL = value;&#xD;
-	} &#xD;
+	} else if (name == &quot;WORDS_FILE&quot;) {&#xD;
+		wordsFile = value;&#xD;
+	}&#xD;
 }&#xD;
 </body>
+      </ownedBehavior>
+      <ownedBehavior xmi:type="uml:OpaqueBehavior" xmi:id="_DJnEIMDdEemtW7qGHRwMwA" name="getWordsFile" specification="__e_zkMDcEemtW7qGHRwMwA">
+        <language>C++</language>
+        <body>return wordsFile;</body>
       </ownedBehavior>
       <ownedOperation xmi:id="_dE2SIIbJEemBRoXE3LR-Uw" name="getMQTTURL" method="_-kOzAIbJEemBRoXE3LR-Uw">
         <ownedParameter xmi:id="_8ctF0IbJEemBRoXE3LR-Uw" name="return" type="_5TgPcCOQEem0UtZqFR6jHw" direction="return"/>
@@ -2517,6 +2546,9 @@ while (std::getline(input, line)) {&#xD;
         <ownedParameter xmi:id="_7akmsIcGEemmidn_KYLHqw" name="return" direction="return">
           <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0877hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/void?"/>
         </ownedParameter>
+      </ownedOperation>
+      <ownedOperation xmi:id="__e_zkMDcEemtW7qGHRwMwA" name="getWordsFile" method="_DJnEIMDdEemtW7qGHRwMwA">
+        <ownedParameter xmi:id="_BkncQMDdEemtW7qGHRwMwA" name="return" type="_5TgPcCOQEem0UtZqFR6jHw" direction="return"/>
       </ownedOperation>
     </packagedElement>
     <packagedElement xmi:type="uml:Dependency" xmi:id="_6xedoIbKEemBRoXE3LR-Uw" supplier="_Zckj4IbJEemBRoXE3LR-Uw" client="_-TGREB1dEemFppq5PtQEow"/>
@@ -2717,7 +2749,7 @@ while (std::getline(input, line)) {&#xD;
   </CppPropertySets:GeneralClassProperties>
   <CppPropertySets:GeneralParameterProperties xmi:id="_ZKSAUI7oEemxy7tZ8DNXuw" base_Parameter="_OV4CkI7oEemxy7tZ8DNXuw" nativeType="const StdString&amp;"/>
   <CppPropertySets:GeneralArtifactProperties xmi:id="_rT7RMCY4Eem0UtZqFR6jHw" base_Artifact="_fMSxACY4Eem0UtZqFR6jHw">
-    <Header xmi:id="_rT7RMSY4Eem0UtZqFR6jHw" body="#include &lt;map>&#xD;&#xA;void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport);&#xD;&#xA;StdString getCurrentTimeStamp();&#xD;&#xA;StdString getPropertiesFile();&#xD;&#xA;bool getDebugFromEnv();&#xD;&#xA;StdString getJson(std::map&lt;StdString, StdString> jsonObj);"/>
-    <Implementation xmi:id="_rT74QCY4Eem0UtZqFR6jHw" body="#include &lt;ctime>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;&#xD;&#xA;bool getDebugFromEnv() {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-debug&quot;, 6) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return true;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getPropertiesFile() {&#xD;&#xA;&#x9;StdString result = &quot;game.properties&quot;;&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-propFile=&quot;, 10 ) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return (*av + 10);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return result;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport) {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webhost=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webhost = *av + 9;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webport=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webport = RTMemoryUtil::atoi(*av + 9);&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getCurrentTimeStamp() {&#xD;&#xA;&#x9;std::time_t t = std::time(nullptr);&#xD;&#xA;&#x9;std::tm* tm = std::localtime(&amp;t);&#xD;&#xA;&#x9;std::stringstream timestamp;&#xD;&#xA;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1900 + tm->tm_year);&#xD;&#xA;&#x9;if ((1 + tm->tm_mon) &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1 + tm->tm_mon);&#xD;&#xA;&#x9;if (tm->tm_mday &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_mday &lt;&lt; &quot;_&quot;;&#xD;&#xA;&#x9;if (tm->tm_hour &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_hour;&#xD;&#xA;&#x9;if (tm->tm_min &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_min;&#xD;&#xA;&#x9;if (tm->tm_sec &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_sec;&#xD;&#xA;&#xD;&#xA;&#x9;return timestamp.str();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getJson(std::map&lt;StdString, StdString> jsonObj) {&#xD;&#xA;&#x9;std::stringstream jsonString;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;{ &quot;;&#xD;&#xA;&#xD;&#xA;&#x9;for (std::map&lt;StdString,StdString>::iterator it = jsonObj.begin(); it != jsonObj.end(); it++) {&#xD;&#xA;&#x9;&#x9;jsonString &lt;&lt; &quot;\&quot;&quot; &lt;&lt; it->first &lt;&lt; &quot;\&quot;: \&quot;&quot;;&#xD;&#xA;&#x9;&#x9;jsonString &lt;&lt; it->second &lt;&lt; &quot;\&quot;,&quot;;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;\&quot;timestamp\&quot; : \&quot;&quot;;&#xD;&#xA;&#x9;jsonString &lt;&lt; getCurrentTimeStamp() &lt;&lt; &quot;\&quot;&quot;;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;} &quot;;&#xD;&#xA;&#x9;return jsonString.str();&#xD;&#xA;}"/>
+    <Header xmi:id="_rT7RMSY4Eem0UtZqFR6jHw" body="#include &lt;map>&#xD;&#xA;void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport);&#xD;&#xA;StdString getCurrentTimeStamp();&#xD;&#xA;StdString getPropertiesFile();&#xD;&#xA;bool getDebugFromEnv();&#xD;&#xA;StdString getJson(std::map&lt;StdString, StdString> jsonObj);&#xD;&#xA;StdString trim(StdString);"/>
+    <Implementation xmi:id="_rT74QCY4Eem0UtZqFR6jHw" body="#include &lt;ctime>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;#include &lt;iostream>&#xD;&#xA;&#xD;&#xA;bool getDebugFromEnv() {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-debug&quot;, 6) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return true;&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return false;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getPropertiesFile() {&#xD;&#xA;&#x9;StdString result = &quot;game.properties&quot;;&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-propFile=&quot;, 10 ) == 0 ) {&#xD;&#xA;&#x9;&#x9;&#x9;return (*av + 10);&#xD;&#xA;&#x9;&#x9;}&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;return result;&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;void getWebHostAndPort(StdString&amp; webhost, unsigned int&amp; webport) {&#xD;&#xA;&#x9;int ac = RTMain::argCount();&#xD;&#xA;&#x9;const char * const * av = RTMain::argStrings();&#xD;&#xA;&#xD;&#xA;&#x9;while( --ac > 0 ) {&#xD;&#xA;&#x9;&#x9;const char* arg = *++av;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webhost=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webhost = *av + 9;&#xD;&#xA;&#x9;&#x9;if( RTMemoryUtil::strcmp( arg, &quot;-webport=&quot;, 9 ) == 0 )&#xD;&#xA;&#x9;&#x9;&#x9;webport = RTMemoryUtil::atoi(*av + 9);&#xD;&#xA;&#x9;}&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getCurrentTimeStamp() {&#xD;&#xA;&#x9;std::time_t t = std::time(nullptr);&#xD;&#xA;&#x9;std::tm* tm = std::localtime(&amp;t);&#xD;&#xA;&#x9;std::stringstream timestamp;&#xD;&#xA;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1900 + tm->tm_year);&#xD;&#xA;&#x9;if ((1 + tm->tm_mon) &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; (1 + tm->tm_mon);&#xD;&#xA;&#x9;if (tm->tm_mday &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_mday &lt;&lt; &quot;_&quot;;&#xD;&#xA;&#x9;if (tm->tm_hour &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_hour;&#xD;&#xA;&#x9;if (tm->tm_min &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_min;&#xD;&#xA;&#x9;if (tm->tm_sec &lt; 10)&#xD;&#xA;&#x9;&#x9;timestamp &lt;&lt; &quot;0&quot;;&#xD;&#xA;&#x9;timestamp &lt;&lt; tm->tm_sec;&#xD;&#xA;&#xD;&#xA;&#x9;return timestamp.str();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString getJson(std::map&lt;StdString, StdString> jsonObj) {&#xD;&#xA;&#x9;std::stringstream jsonString;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;{ &quot;;&#xD;&#xA;&#xD;&#xA;&#x9;for (std::map&lt;StdString,StdString>::iterator it = jsonObj.begin(); it != jsonObj.end(); it++) {&#xD;&#xA;&#x9;&#x9;jsonString &lt;&lt; &quot;\&quot;&quot; &lt;&lt; it->first &lt;&lt; &quot;\&quot;: \&quot;&quot;;&#xD;&#xA;&#x9;&#x9;jsonString &lt;&lt; it->second &lt;&lt; &quot;\&quot;,&quot;;&#xD;&#xA;&#x9;}&#xD;&#xA;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;\&quot;timestamp\&quot; : \&quot;&quot;;&#xD;&#xA;&#x9;jsonString &lt;&lt; getCurrentTimeStamp() &lt;&lt; &quot;\&quot;&quot;;&#xD;&#xA;&#x9;jsonString &lt;&lt; &quot;} &quot;;&#xD;&#xA;&#x9;return jsonString.str();&#xD;&#xA;}&#xD;&#xA;&#xD;&#xA;StdString trim(StdString line) {&#xD;&#xA;&#x9;if (line.length() == 0)&#xD;&#xA;&#x9;&#x9;return line;&#xD;&#xA;&#x9;size_t begin = 0;&#xD;&#xA;&#x9;while (!isalpha(line[begin]) &amp;&amp; (begin &lt; line.length())) {&#xD;&#xA;&#x9;&#x9;begin++;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;if (begin == line.length())&#xD;&#xA;&#x9;&#x9;return &quot;&quot;;&#xD;&#xA;&#x9;size_t end = line.length()-1;&#xD;&#xA;&#x9;while (!isalpha(line[end])) {&#xD;&#xA;&#x9;&#x9;end--;&#xD;&#xA;&#x9;}&#xD;&#xA;&#x9;if (begin &lt;=end) {&#xD;&#xA;&#x9;&#x9;return line.substr(begin, end - begin + 1);&#xD;&#xA;&#x9;} else {&#xD;&#xA;&#x9;&#x9;return &quot;&quot;;&#xD;&#xA;&#x9;}&#xD;&#xA;}"/>
   </CppPropertySets:GeneralArtifactProperties>
 </xmi:XMI>
