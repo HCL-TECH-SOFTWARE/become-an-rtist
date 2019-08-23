@@ -104,7 +104,10 @@ $(function () {
         // Show a sample image of the current word and the remaining time 
         let index = Math.floor(Math.random() * Math.floor(2000));
         showImage('/word-image?word=' + currentWord + '&index=' + index, false);        
-        $('#timer').show().text(msg.time);             
+        $('#timer').show().text(msg.time);
+        if (msg.time <= 3 && msg.time > 0) {
+            new Audio('/audio/beep.mp3').play(); 
+        }            
     });    
     socket.on('imageUploaded', function(msg) {
         $('#hiscorePrompt').hide();
