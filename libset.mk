@@ -14,19 +14,19 @@ SHLIBCCFLAGS  = -fPIC
 SHLIBS        =
 
 
-LIBSETCCFLAGS = -fno-exceptions -mthreads -D_MT -fpermissive
+LIBSETCCFLAGS = -fno-exceptions -pthread -D_MT -fpermissive
 
 
 LIBSETCCEXTRA = -O4 -finline -finline-functions -fno-builtin -Wall -Winline -Wwrite-strings -fpermissive
 
 
-LIBSETLDFLAGS = -mthreads
+LIBSETLDFLAGS = -pthread
 
 
-CC = g++
+CC = arm-linux-gnueabihf-g++
 
 
-LD = g++
+LD = arm-linux-gnueabihf-g++
 
 
-AR_CMD = $(PERL) "$(RTS_HOME)/tools/ar.pl" -create=ar.exe,rc -add=ar.exe,r -ranlib=ranlib.exe -suffix=$(OBJ_EXT) -limit=4000
+AR_CMD = $(PERL) "$(RTS_HOME)/tools/ar.pl" -create=arm-linux-gnueabihf-ar,rc -add=arm-linux-gnueabihf-ar,r -ranlib=arm-linux-gnueabihf-ranlib -suffix=$(OBJ_EXT) -limit=4000

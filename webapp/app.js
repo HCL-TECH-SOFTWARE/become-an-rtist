@@ -26,7 +26,7 @@ var io = null;
 
 function ensureExists(dir) {
     if (!fs.existsSync(dir)) {
-        fs.mkdir(dir);
+        fs.mkdir(dir, () => {console.log("Dir created: " + dir)});
     }
 }
 
