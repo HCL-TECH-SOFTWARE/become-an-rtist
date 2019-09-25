@@ -1,4 +1,4 @@
-# become-an-rtist
+# Become an RTist
 ![become an rtist](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/ready.png "Become An RTist")
 
 This is a sketch drawing game built with [HCL RTist](https://www.devops-community.com/realtime-software-tooling-rtist.html). It is intended to run on a Raspberry Pi 3+ (or newer) equipped with a camera and a push button. In addition to the RTist C++ application that runs on the Raspberry Pi, the system also consists of the following applications:
@@ -46,45 +46,62 @@ A bill of material can be found [here](BOM.md).
 
 The script now waits for incoming HTTP image recognition requests on port 5555.
     
-## Build the application
+## Build game application on a computer
 
 ### Install Required Software
-1. [Nodejs](https://nodejs.org/en/download/)
-2. [HCL Rtist](https://www.devops-community.com/realtime-software-tooling-rtist.html) or RSARTE
-3. [Raspberry Pi cross-compiler for Windows](http://gnutoolchains.com/raspberry/)
-make sure that its **bin** folder (with make and g++) has been added to **PATH** variable.
+1. [HCL Rtist](https://www.devops-community.com/realtime-software-tooling-rtist.html) or RSARTE
+2. **On Windows:** [Raspberry Pi cross-compiler](http://gnutoolchains.com/raspberry/)
 
-### Prepare Sources and Build the Game
-1. The communication with the web server and the Python script uses the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library, so you must start by cloning that repository also into your workspace.
+Make sure that its **bin** folder (with make and g++) has been added to **PATH** variable.
+
+### Prepare sources and build the application
+1. The communication with the web server and the Python script uses the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library. Clone the project and import it to your workspace.
 
   `git clone https://github.com/hcl-pnp-rtist/lib-http-server.git`
 
-2. Get [Paho-MQTT](https://www.eclipse.org/paho/downloads.php) 
-
-  `git clone https://github.com/eclipse/paho.mqtt.c.git`
+2. [Paho-MQTT](https://www.eclipse.org/paho/downloads.php) 
+    1. Get sources
+    
+    `git clone https://github.com/eclipse/paho.mqtt.c.git`
   
-   and buld it, or use [pre-built libs](libs/paho_mqtt_lib.zip) from this repo. Copy **libpaho-mqtt3c.so.1** to **/home/pi/become-an-rtist/** on the Raspberry Pi.
+    2. Buld them or use [pre-built libs](libs/paho_mqtt_lib.zip) from this repo.
+    3. Copy **libpaho-mqtt3c.so.1** to **/home/pi/become-an-rtist/** on the Raspberry Pi.
   
-3. You must build the POCO shared libraries for the Raspberry Pi. This can either be done using cmake (see POCO documentation) or you can add the POCO sources to an Eclipse cross-compilation project and build them yourself. You only need the Foundation and the Net libraries.     You may use [eclipse project](libs/poco_eclipse_projects.zip) from this repo to build libs. Import it in Eclipse, configure path to Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings**, and build projects. Copy them to **/home/pi/become-an-rtist/** on the Raspberry Pi.
-4. You also must build the library [wiringpi](http://wiringpi.com/). Build it to a static library so you don't have to copy it to the Raspberry Pi. You may use [eclipse project](libs/wiringPi.zip) from this repo to build libs. Import it in Eclipse, configure path to Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings, and build project.**
-6. Build RTist TargetRTS for Raspberry Pi: make a copy of any Linux TargetRTS
+3. [POCO](https://pocoproject.org/)
+    1. You must build the POCO shared libraries for the Raspberry Pi. This can either be done using cmake (see POCO documentation) or you can add the POCO sources to an Eclipse cross-compilation project and build them yourself. 
+    2. Only **Foundation** and the **Net** libraries are used.    
+    3. You may use [eclipse project](libs/poco_eclipse_projects.zip) from this repo to build libraries.
+    4. Import it into RTist workspace, configure path to Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings**,    
+    5. Build the projects.
+    6. Copy the shared libraries to **/home/pi/become-an-rtist/** on the Raspberry Pi.
+    
+4. [WiringPi](http://wiringpi.com/)
+    1. You may use [eclipse project](libs/wiringPi.zip) from this repo to build the library.
+    2. Import it into RTist workspace, configure path to Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings, and build project.**
+    3. Build it. It will be built into a static library, so you don't have to copy it to the Raspberry Pi.
+    
+5. Build RTist TargetRTS for Raspberry Pi: make a copy of any Linux TargetRTS
     1. In RTist run **Target RTS Wizard** from **TargetRTS** top menu.
     2. Select LinuxT.x64-gcc-7.x configuration and **Duplicate** option from **Manage** list.
     3. Under Create New check **Target Name** and **Libset Name**
     4. Click **Finish**
-    5. For Windows you can use the file from this repo [libset.mk](libset.mk), copy it to **<RTist_DIR>\rsa_rt\C++\TargetRTS\libset\<created_libset_name>\libset.mk** 
+    5. For Windows you can use the file from this repo [libset.mk](libset.mk), copy it to **<RTist_DIR>\rsa_rt\C++\TargetRTS\libset\\<created_libset_name>\libset.mk** 
     6. Use **Target RTS Wizard again**, select newly created target and **Build** option from **Manage** list.
+    7. Click **Finish** and ensure Target RTS is built successfully.
 
-7 Update the TC rtapp.tcjs by doing the following.
-    1. Set the property **tc.pocoLoc** to the location of the POCO library. If you imported Poco_Net and Poco_Foundation from this repository it would be the path to your workspace.
-    2. Set **tc.taretConfiguration** with the name of Target you creted in the previous step.
-    3. Ensure **tc.targetServicesLibrary** is set to TargetRTS path. E.g. **<RTist_dir>\rsa_rt\C++\TargetRTS**
-    4. update **tc.inclusionPaths** accordingly.
-    5. **tc.linkArguments** property for the build location of the POCO and other libraries to link with
+6. Update the TC **rtapp.tcjs** by doing the following.
+    1. Set the property **tc.pocoLoc** to the location of the POCO library. If you imported **Poco_Net** and **Poco_Foundation** projects from this repository it would be the path to your RTist workspace.
+    2. If using **Poco_Net** and **Poco_Foundation** projects open **httpServerLib.tcjs** file in **LibHttpServer** project and modify **tc.inclusionPaths** property by replacing **Net** with **Poco_Net** and **Foundation** with **Poco_Foundation**
+    3. Set **tc.taretConfiguration** with the name of Target you created in the previous step.
+    4. Ensure **tc.targetServicesLibrary** is set to TargetRTS path. E.g. **<RTist_dir>\rsa_rt\C++\TargetRTS**
+    5. Update **tc.inclusionPaths** so it points to WiringPi and Paho MQTT sources.
+    6. Update **tc.linkArguments** property to reference the build location of the **POCO**, **WiringPi**, and **PahoMQTT** binaries
     
-10 Build the TC by right-clicking on it and selecting **Build...**.
+7. Build the TC by right-clicking on it and selecting **Build...**.
 
 ## Starting the web server
+* Install [Nodejs](https://nodejs.org/en/download/)
+
 * `cd webapp`
 
 * `npm install`
