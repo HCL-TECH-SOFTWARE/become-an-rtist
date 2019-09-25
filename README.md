@@ -100,15 +100,26 @@ Make sure that its **bin** folder (with make and g++) has been added to **PATH**
 7. Build the TC by right-clicking on it and selecting **Build...**.
 
 ## Starting the web server
-* Install [Nodejs](https://nodejs.org/en/download/)
+1. Install [Nodejs](https://nodejs.org/en/download/)
 
-* `cd webapp`
+2. Go to webapp folder
 
-* `npm install`
+`cd webapp`
 
-* `node app.js`
+3. Get the dependencies
 
-* Open [http://localhost:5000/](http://localhost:5000/) in a web browser
+`npm install`
+
+4. During each round of the game sample images of the same word are shown.
+    1. For this to work download [image archive](https://drive.google.com/open?id=12CoTw4aE1OSRWp0qEgsdbgP0TNc_HVKW) (2.8 Gb)
+    2. Extract the contents to some folder
+    3. Edit **sample_images_dir** property in [appconfig.json](webapp/appconfig.json) to point to the folder where the images were extracted.
+
+5. Start the application
+
+`node app.js`
+
+6. Open [http://localhost:5000/](http://localhost:5000/) in a web browser
 
 ## Start the game application
 Note: To start the application from within RTist it is recommended to install the Remote Systems plugin for Eclipse. This makes it possible to automate the below steps in a launch configuration.
