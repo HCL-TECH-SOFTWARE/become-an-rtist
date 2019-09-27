@@ -122,18 +122,27 @@ Make sure that its **bin** folder (with make and g++) has been added to **PATH**
 6. Open [http://localhost:5000/](http://localhost:5000/) in a web browser
 
 ## Start the game application
-Note: To start the application from within RTist it is recommended to install the Remote Systems plugin for Eclipse. This makes it possible to automate the below steps in a launch configuration.
-
-* Copy the built executable to /home/pi/become-an-rtist/executable
-* Run these commands
+The easiest way to start the application on the Pi is to create a **C/C++ Remote Application** run confirugration in RTist
+* Make sure the project and executable are set correctly, e.g. to **IoTBecomeAnRTist_target** and **default\executable.EXE**
+* Create a new ssh connection to Raspberry pi and specify the remote path to be **/home/pi/become-an-rtist/executable**
+* In **Commands to execute before application** section add the following
 
   `sudo -i`
   
   `export LD_LIBRARY_PATH=/home/pi/become-an-rtist`
+ 
+ * In **Arguments** tab add the following arguments
+  
+  `-webhost=192.168.137.1 -webport=5000 -propFile=/home/pi/become-an-rtist/game.properties`
 
-and then start the executable on the Pi with this command
+Replace **webhost** with the IP address of the computer that runs the web server. Replace the propFile path with the path on the Pi where you have copied the file [game.properties](game.properties).
 
-`./executable -obslisten=12345 -webhost=192.168.137.1 -webport=5000 -propFile=/home/pi/become-an-rtist/game.properties`
+* To be able to attach RTist debugger to the appliaction also add **obslisten** argument with a port number, e.g.
 
-Replace the IP address with the IP address of the computer that runs the web server. Replace the propFile path with the path on the Pi where you have copied the file [game.properties](game.properties).
-When the web application shows the hiscore list, the game is ready to play!
+  `-obslisten=12345`
+
+* Run the remote C/C++ application created
+
+* If **obslisten** argument was specified, attach RTist debugger by right clicking on **rtapp** transformation configuration and selecting **Debug As -> Remote realtime application (attach)** from the context menu. Specify Raspberry Pi hostname and **obslisten** port number in the dialog. Resume the application after RTist debugger is attached.
+
+* The web application will show the hiscore list, when the game is ready to play!
