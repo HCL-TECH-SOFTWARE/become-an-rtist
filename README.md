@@ -121,6 +121,9 @@ Make sure that its **bin** folder (with make and g++) has been added to **PATH**
 
 6. Open [http://localhost:5000/](http://localhost:5000/) in a web browser
 
+## [MQTT Setup](MQTT.md)
+See [these instructions](MQTT.md) to add a game dashboard updated via MQTT.
+
 ## Start the game application
 The easiest way to start the application on the Pi is to create a **C/C++ Remote Application** run confirugration in RTist
 * Make sure the project and executable are set correctly, e.g. to **IoTBecomeAnRTist_target** and **default\executable.EXE**
