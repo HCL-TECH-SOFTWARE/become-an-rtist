@@ -182,7 +182,7 @@
         "type": "mqtt in",
         "z": "c5c1153b.e27988",
         "name": "MQTT In game",
-        "topic": "/becomeanrtist",
+        "topic": "/becomeanrtist/#",
         "qos": "2",
         "datatype": "auto",
         "broker": "345b4836.d87678",
