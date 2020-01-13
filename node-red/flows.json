@@ -1,27 +1,34 @@
 [
     {
-        "id": "88d8ac9a.f4eb2",
+        "id": "6d5d5aa0.77a758",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "8ae38333.03726",
         "type": "tab",
         "label": "MQTT_Log",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "c5c1153b.e27988",
+        "id": "f3d28362.06a72",
         "type": "tab",
         "label": "MQTT_InGame",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "30f47300.0ffcce",
+        "id": "d60e8f2d.f7bf7",
         "type": "tab",
         "label": "MQTT_GameStats",
         "disabled": false,
         "info": ""
     },
     {
-        "id": "345b4836.d87678",
+        "id": "453f85e2.7be33c",
         "type": "mqtt-broker",
         "z": "",
         "name": "Paho-pi",
@@ -43,17 +50,243 @@
         "willPayload": ""
     },
     {
-        "id": "1c7c80bf.c2d05f",
+        "id": "5a0f04fe.b8446c",
         "type": "ui_group",
-        "z": "",
+        "z": "6d5d5aa0.77a758",
         "name": "Games",
-        "tab": "a391e517.c8e128",
+        "tab": "5f5e90dd.d3faa",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "a391e517.c8e128",
+        "id": "25360610.c1528e",
+        "type": "ui_group",
+        "z": "6d5d5aa0.77a758",
+        "name": "Games",
+        "tab": "4c39ab31.d80b64",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "e6f7eb87.b5245",
+        "type": "ui_base",
+        "z": "6d5d5aa0.77a758",
+        "theme": {
+            "name": "theme-light",
+            "lightTheme": {
+                "default": "#0094CE",
+                "baseColor": "#0094CE",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": true,
+                "reset": false
+            },
+            "darkTheme": {
+                "default": "#097479",
+                "baseColor": "#097479",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif",
+                "edited": false
+            },
+            "customTheme": {
+                "name": "Untitled Theme 1",
+                "default": "#4B7930",
+                "baseColor": "#4B7930",
+                "baseFont": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+            },
+            "themeState": {
+                "base-color": {
+                    "default": "#0094CE",
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-titlebar-backgroundColor": {
+                    "value": "#0094CE",
+                    "edited": false
+                },
+                "page-backgroundColor": {
+                    "value": "#fafafa",
+                    "edited": false
+                },
+                "page-sidebar-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-textColor": {
+                    "value": "#1bbfff",
+                    "edited": false
+                },
+                "group-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "group-backgroundColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "widget-textColor": {
+                    "value": "#111111",
+                    "edited": false
+                },
+                "widget-backgroundColor": {
+                    "value": "#0094ce",
+                    "edited": false
+                },
+                "widget-borderColor": {
+                    "value": "#ffffff",
+                    "edited": false
+                },
+                "base-font": {
+                    "value": "-apple-system,BlinkMacSystemFont,Segoe UI,Roboto,Oxygen-Sans,Ubuntu,Cantarell,Helvetica Neue,sans-serif"
+                }
+            },
+            "angularTheme": {
+                "primary": "indigo",
+                "accents": "blue",
+                "warn": "red",
+                "background": "grey"
+            }
+        },
+        "site": {
+            "name": "Node-RED Dashboard",
+            "hideToolbar": "false",
+            "allowSwipe": "false",
+            "lockMenu": "false",
+            "allowTempTheme": "true",
+            "dateFormat": "DD/MM/YYYY",
+            "sizes": {
+                "sx": 48,
+                "sy": 48,
+                "gx": 6,
+                "gy": 6,
+                "cx": 6,
+                "cy": 6,
+                "px": 0,
+                "py": 0
+            }
+        }
+    },
+    {
+        "id": "94a93869.ff9c08",
+        "type": "ui_group",
+        "z": "6d5d5aa0.77a758",
+        "name": "Stats",
+        "tab": "4c39ab31.d80b64",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "a3077019.b82c2",
+        "type": "ui_group",
+        "z": "6d5d5aa0.77a758",
+        "name": "Recognition Precision",
+        "tab": "4c39ab31.d80b64",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "d2e870f1.d8eb7",
+        "type": "ui_group",
+        "name": "93952fc6.6ac68",
+        "tab": "",
+        "order": null,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "5449e8df.419f9",
+        "type": "ui_group",
+        "name": "a42f1e16.2fbee",
+        "tab": "",
+        "order": 4,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "d83e3fb8.932ac",
+        "type": "ui_group",
+        "name": "ba18bba7.b37868",
+        "tab": "",
+        "order": 2,
+        "disp": true,
+        "width": 6
+    },
+    {
+        "id": "9388f23b.e17d4",
+        "type": "ui_group",
+        "z": "",
+        "name": "Games",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "6527d2d5.91408",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Paho-pi",
+        "broker": "rtist-pi",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "0",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "d0e3ddd.5d93ae",
+        "type": "ui_group",
+        "z": "",
+        "name": "Games",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f0d02163.c5147",
+        "type": "ui_group",
+        "z": "",
+        "name": "Stats",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "34d2e4c4.228ea4",
+        "type": "ui_group",
+        "z": "",
+        "name": "Recognition Precision",
+        "tab": "",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "f3bb51d0.d5cc",
+        "type": "ui_group",
+        "z": "",
+        "name": "Games",
+        "tab": "eba230fb.58b8f",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "eba230fb.58b8f",
         "type": "ui_tab",
         "z": "",
         "name": "Become an RTist Game",
@@ -62,7 +295,109 @@
         "hidden": false
     },
     {
-        "id": "d3ac84d8.afd0c8",
+        "id": "3f13824e.d6cb1e",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Paho-pi",
+        "broker": "rtist-pi",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "0",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "aeaf52f4.8e64d",
+        "type": "ui_group",
+        "z": "",
+        "name": "Games",
+        "tab": "c23ec4a7.427b08",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "c23ec4a7.427b08",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Become an RTist Game",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "79cb5d36.c9cd84",
+        "type": "ui_group",
+        "z": "",
+        "name": "Stats",
+        "tab": "c23ec4a7.427b08",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "9446799b.1e12c8",
+        "type": "ui_group",
+        "z": "",
+        "name": "Recognition Precision",
+        "tab": "c23ec4a7.427b08",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "97f70e54.67ede",
+        "type": "mqtt-broker",
+        "z": "",
+        "name": "Paho-pi",
+        "broker": "rtist-pi",
+        "port": "1883",
+        "clientid": "",
+        "usetls": false,
+        "compatmode": true,
+        "keepalive": "0",
+        "cleansession": true,
+        "birthTopic": "",
+        "birthQos": "0",
+        "birthPayload": "",
+        "closeTopic": "",
+        "closeQos": "0",
+        "closePayload": "",
+        "willTopic": "",
+        "willQos": "0",
+        "willPayload": ""
+    },
+    {
+        "id": "3199b19d.a03e5e",
+        "type": "ui_group",
+        "z": "",
+        "name": "Games",
+        "tab": "7b61f9ba.a2c898",
+        "disp": true,
+        "width": "6",
+        "collapse": false
+    },
+    {
+        "id": "7b61f9ba.a2c898",
+        "type": "ui_tab",
+        "z": "",
+        "name": "Become an RTist Game",
+        "icon": "dashboard",
+        "disabled": false,
+        "hidden": false
+    },
+    {
+        "id": "54703a3d.bc3eb4",
         "type": "ui_base",
         "theme": {
             "name": "theme-light",
@@ -158,46 +493,47 @@
         }
     },
     {
-        "id": "e8797730.9fe428",
+        "id": "c52497d4.a562f8",
         "type": "ui_group",
         "z": "",
         "name": "Stats",
-        "tab": "a391e517.c8e128",
+        "tab": "7b61f9ba.a2c898",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "75d49e9c.8d0ca",
+        "id": "46d5ffaf.bb5fb",
         "type": "ui_group",
         "z": "",
         "name": "Recognition Precision",
-        "tab": "a391e517.c8e128",
+        "tab": "7b61f9ba.a2c898",
         "disp": true,
         "width": "6",
         "collapse": false
     },
     {
-        "id": "1a9eb30f.4b8a1d",
+        "id": "70edebe6.c896f4",
         "type": "mqtt in",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "MQTT In game",
         "topic": "/becomeanrtist/#",
         "qos": "2",
         "datatype": "auto",
-        "broker": "345b4836.d87678",
-        "x": 100,
+        "broker": "97f70e54.67ede",
+        "x": 80,
         "y": 200,
         "wires": [
             [
-                "6e5d68d9.b69f48"
+                "58ac78dd.d042a8",
+                "c54db434.764fe8"
             ]
         ]
     },
     {
-        "id": "6e5d68d9.b69f48",
+        "id": "58ac78dd.d042a8",
         "type": "json",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "parseJSON",
         "property": "payload",
         "action": "",
@@ -206,14 +542,15 @@
         "y": 200,
         "wires": [
             [
-                "a41c2571.dc8b78"
+                "6c7e3e89.12f4c",
+                "c54db434.764fe8"
             ]
         ]
     },
     {
-        "id": "a41c2571.dc8b78",
+        "id": "6c7e3e89.12f4c",
         "type": "switch",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "switch topic",
         "property": "topic",
         "propertyType": "msg",
@@ -236,18 +573,18 @@
         "y": 200,
         "wires": [
             [
-                "6ae83eb7.e254b"
+                "e7cbe8c6.4adae8"
             ],
             [
-                "6ae83eb7.e254b",
-                "4b589057.e8034"
+                "e7cbe8c6.4adae8",
+                "836c8a32.40b418"
             ]
         ]
     },
     {
-        "id": "8ffdd8ab.2e28e8",
+        "id": "2bf21c3f.148e14",
         "type": "function",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "ResetCounters",
         "func": "flow.set('buttonCounter',0);\nflow.set('recognizedCounter',0);\nflow.set('gamesCounter',0);\nflow.set('maxAttempts',0);\nmsg.payload = []\nreturn msg;",
         "outputs": 1,
@@ -256,18 +593,18 @@
         "y": 360,
         "wires": [
             [
-                "373bf17f.786d2e",
-                "168f96e3.b2dde9",
-                "c78ed2d8.3086"
+                "af20e5d1.aaa868",
+                "e8bbb540.b87c78",
+                "cd73d87a.871d98"
             ]
         ]
     },
     {
-        "id": "373bf17f.786d2e",
+        "id": "af20e5d1.aaa868",
         "type": "ui_gauge",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "",
-        "group": "e8797730.9fe428",
+        "group": "c52497d4.a562f8",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -285,13 +622,13 @@
         "seg1": "",
         "seg2": "",
         "x": 1220,
-        "y": 240,
+        "y": 340,
         "wires": []
     },
     {
-        "id": "6ae83eb7.e254b",
+        "id": "e7cbe8c6.4adae8",
         "type": "function",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "calcRatio",
         "func": "var cnt = flow.get('buttonCounter');\ncnt++;\nflow.set('buttonCounter',cnt);\nvar words = flow.get('recognizedCounter');\nif (msg.topic.includes(\"WordCompleted\")) {\n    words++;\n    flow.set('recognizedCounter',words);\n}\nmsg.payload = (100*words/cnt) | 0;\nreturn msg;",
         "outputs": 1,
@@ -300,17 +637,17 @@
         "y": 180,
         "wires": [
             [
-                "168f96e3.b2dde9",
-                "11ed4fb.f1665b"
+                "e8bbb540.b87c78",
+                "733562f9.173c8c"
             ]
         ]
     },
     {
-        "id": "168f96e3.b2dde9",
+        "id": "e8bbb540.b87c78",
         "type": "ui_gauge",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "",
-        "group": "75d49e9c.8d0ca",
+        "group": "46d5ffaf.bb5fb",
         "order": 4,
         "width": 0,
         "height": 0,
@@ -332,9 +669,9 @@
         "wires": []
     },
     {
-        "id": "11ed4fb.f1665b",
+        "id": "733562f9.173c8c",
         "type": "function",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "showPressedCounter",
         "func": "msg.payload = flow.get('buttonCounter');\nreturn msg;",
         "outputs": 1,
@@ -343,14 +680,15 @@
         "y": 120,
         "wires": [
             [
-                "373bf17f.786d2e"
+                "af20e5d1.aaa868",
+                "c0473df5.c3dd"
             ]
         ]
     },
     {
-        "id": "4b589057.e8034",
+        "id": "836c8a32.40b418",
         "type": "function",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "updateMax",
         "func": "var attempt = msg.payload.attempt;\nvar maxAttempts = flow.get('maxAttempts');\nif (attempt > maxAttempts) {\n    maxAttempts = attempt;\n    flow.set('maxAttempts', maxAttempts)\n    \n}\nmsg.payload = maxAttempts;\nreturn msg;",
         "outputs": 1,
@@ -359,16 +697,16 @@
         "y": 240,
         "wires": [
             [
-                "c78ed2d8.3086"
+                "cd73d87a.871d98"
             ]
         ]
     },
     {
-        "id": "c78ed2d8.3086",
+        "id": "cd73d87a.871d98",
         "type": "ui_gauge",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "",
-        "group": "e8797730.9fe428",
+        "group": "c52497d4.a562f8",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -390,27 +728,27 @@
         "wires": []
     },
     {
-        "id": "f674529.e8239b",
+        "id": "ea6d8b48.fb8ee8",
         "type": "mqtt in",
-        "z": "88d8ac9a.f4eb2",
+        "z": "8ae38333.03726",
         "name": "All MQTT Msgs",
         "topic": "#",
         "qos": "2",
         "datatype": "auto",
-        "broker": "345b4836.d87678",
+        "broker": "97f70e54.67ede",
         "x": 140,
         "y": 120,
         "wires": [
             [
-                "221f720e.73a05e",
-                "11e2a959.8442e7"
+                "7111e6ac.ae3a68",
+                "6c32e821.439838"
             ]
         ]
     },
     {
-        "id": "221f720e.73a05e",
+        "id": "7111e6ac.ae3a68",
         "type": "debug",
-        "z": "88d8ac9a.f4eb2",
+        "z": "8ae38333.03726",
         "name": "",
         "active": true,
         "tosidebar": true,
@@ -423,112 +761,43 @@
         "wires": []
     },
     {
-        "id": "18036157.f707ff",
+        "id": "d74d52d.0475fb",
         "type": "file",
-        "z": "88d8ac9a.f4eb2",
-        "name": "",
-        "filename": "C:\\logs\\game.log",
+        "z": "8ae38333.03726",
+        "name": "Write to file",
+        "filename": "",
         "appendNewline": true,
         "createDir": true,
         "overwriteFile": "false",
         "encoding": "none",
-        "x": 570,
+        "x": 550,
         "y": 160,
         "wires": [
             []
         ]
     },
     {
-        "id": "11e2a959.8442e7",
+        "id": "6c32e821.439838",
         "type": "function",
-        "z": "88d8ac9a.f4eb2",
+        "z": "8ae38333.03726",
         "name": "formatLog",
-        "func": "msg.payload = msg.topic + \"; \" + msg.payload\nreturn msg;",
+        "func": "msg.payload = msg.topic + \"; \" + msg.payload\nlet date = new Date();\nlet strDate = \"game_\" + date.getFullYear();\nlet month = date.getMonth()+1;\nstrDate += \"_\" + (month < 10 ? \"0\" : \"\") +(month);\nstrDate += \"_\" + date.getDate();\nmsg.filename = \"C:\\\\logs\\\\\"+ strDate + \".txt\"\nreturn msg;",
         "outputs": 1,
         "noerr": 0,
         "x": 360,
         "y": 160,
         "wires": [
             [
-                "18036157.f707ff"
+                "d74d52d.0475fb"
             ]
         ]
     },
     {
-        "id": "541a0cf.a8148f4",
-        "type": "file",
-        "z": "88d8ac9a.f4eb2",
-        "name": "clearLog",
-        "filename": "C:\\logs\\game.log",
-        "appendNewline": true,
-        "createDir": false,
-        "overwriteFile": "delete",
-        "encoding": "none",
-        "x": 540,
-        "y": 260,
-        "wires": [
-            []
-        ]
-    },
-    {
-        "id": "c7d3e36d.bd6eb",
-        "type": "inject",
-        "z": "88d8ac9a.f4eb2",
-        "name": "DELETE LOG FILE",
-        "topic": "",
-        "payload": "",
-        "payloadType": "date",
-        "repeat": "",
-        "crontab": "",
-        "once": false,
-        "onceDelay": 0.1,
-        "x": 330,
-        "y": 260,
-        "wires": [
-            [
-                "541a0cf.a8148f4"
-            ]
-        ]
-    },
-    {
-        "id": "fea55fbe.61279",
-        "type": "mqtt in",
-        "z": "30f47300.0ffcce",
-        "name": "MQTT GameStarted",
-        "topic": "/becomeanrtist/GameStarted",
-        "qos": "2",
-        "datatype": "auto",
-        "broker": "345b4836.d87678",
-        "x": 110,
-        "y": 180,
-        "wires": [
-            [
-                "2d7f404b.89fc2"
-            ]
-        ]
-    },
-    {
-        "id": "2d7f404b.89fc2",
-        "type": "json",
-        "z": "30f47300.0ffcce",
-        "name": "parseJSON",
-        "property": "payload",
-        "action": "",
-        "pretty": false,
-        "x": 310,
-        "y": 180,
-        "wires": [
-            [
-                "be3c8974.2d1408"
-            ]
-        ]
-    },
-    {
-        "id": "344a54e8.9e21cc",
+        "id": "26bc36fc.505b9a",
         "type": "ui_chart",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "",
-        "group": "1c7c80bf.c2d05f",
+        "group": "3199b19d.a03e5e",
         "order": 2,
         "width": 0,
         "height": 0,
@@ -566,9 +835,9 @@
         ]
     },
     {
-        "id": "bd4b85c7.feb298",
+        "id": "2e334504.f2ac5a",
         "type": "function",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "score",
         "func": "var timestamp = msg.payload.timestamp;\nvar msgScore = {};\nvar msgWords = {};\nmsgScore.payload = msg.payload.score;\nmsgWords.payload = msg.payload.words_count;\nvar hour = timestamp.substr(timestamp.length-6,2);\nvar ampm = \"AM\"\nif (hour>12) {\n    hour-= 12;\n    ampm = \"PM\"\n}\nvar min = timestamp.substr(timestamp.length-4,2);\nmsgScore.topic = hour + \":\" + min + \" \" + ampm;\nmsgWords.topic = msgScore.topic;\nreturn [msgScore, msgWords];",
         "outputs": 2,
@@ -577,17 +846,17 @@
         "y": 260,
         "wires": [
             [
-                "344a54e8.9e21cc"
+                "26bc36fc.505b9a"
             ],
             [
-                "c88d246b.08b7d8"
+                "40445ac1.9ffdc4"
             ]
         ]
     },
     {
-        "id": "6ca6cfcb.e20db",
+        "id": "f27557f6.01cb28",
         "type": "function",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "word",
         "func": "msg.payload = msg.payload.word\nreturn msg;",
         "outputs": 1,
@@ -596,14 +865,14 @@
         "y": 80,
         "wires": [
             [
-                "e11bbe3b.b6ae9"
+                "325779b7.959256"
             ]
         ]
     },
     {
-        "id": "8077d862.4adbb8",
+        "id": "d36b221e.8752c",
         "type": "function",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "ResetCounters",
         "func": "flow.set('buttonCounter',0);\nflow.set('recognizedCounter',0);\nflow.set('gamesCounter',0);\nflow.set('maxAttempts',0);\nmsg.payload = []\nreturn msg;",
         "outputs": 1,
@@ -612,35 +881,18 @@
         "y": 400,
         "wires": [
             [
-                "c88d246b.08b7d8",
-                "344a54e8.9e21cc",
-                "9407a4d2.3b3d68",
-                "be3c8974.2d1408"
+                "40445ac1.9ffdc4",
+                "26bc36fc.505b9a",
+                "6e0e7b9e.84cdf4"
             ]
         ]
     },
     {
-        "id": "be3c8974.2d1408",
-        "type": "ui_text",
-        "z": "30f47300.0ffcce",
-        "group": "e8797730.9fe428",
-        "order": 3,
-        "width": 0,
-        "height": 0,
-        "name": "",
-        "label": "Last game played",
-        "format": "{{msg.payload.timestamp}}",
-        "layout": "row-spread",
-        "x": 730,
-        "y": 180,
-        "wires": []
-    },
-    {
-        "id": "42ecac1b.9acc64",
+        "id": "12631275.ad3cde",
         "type": "ui_audio",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "",
-        "group": "1c7c80bf.c2d05f",
+        "group": "3199b19d.a03e5e",
         "voice": "en-US",
         "always": true,
         "x": 860,
@@ -648,9 +900,9 @@
         "wires": []
     },
     {
-        "id": "e11bbe3b.b6ae9",
+        "id": "325779b7.959256",
         "type": "delay",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "",
         "pauseType": "delay",
         "timeout": "1.5",
@@ -666,16 +918,16 @@
         "y": 80,
         "wires": [
             [
-                "42ecac1b.9acc64"
+                "12631275.ad3cde"
             ]
         ]
     },
     {
-        "id": "c88d246b.08b7d8",
+        "id": "40445ac1.9ffdc4",
         "type": "ui_chart",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "Words",
-        "group": "1c7c80bf.c2d05f",
+        "group": "3199b19d.a03e5e",
         "order": 3,
         "width": 0,
         "height": 0,
@@ -713,10 +965,10 @@
         ]
     },
     {
-        "id": "c7e62d5b.97019",
+        "id": "e0b31f25.5f577",
         "type": "http request",
-        "z": "30f47300.0ffcce",
-        "name": "",
+        "z": "d60e8f2d.f7bf7",
+        "name": "Update highscore in google docs",
         "method": "GET",
         "ret": "txt",
         "paytoqs": false,
@@ -724,18 +976,18 @@
         "tls": "",
         "proxy": "",
         "authType": "basic",
-        "x": 530,
+        "x": 600,
         "y": 560,
         "wires": [
             []
         ]
     },
     {
-        "id": "9407a4d2.3b3d68",
+        "id": "6e0e7b9e.84cdf4",
         "type": "ui_chart",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "",
-        "group": "1c7c80bf.c2d05f",
+        "group": "3199b19d.a03e5e",
         "order": 1,
         "width": 0,
         "height": 0,
@@ -773,9 +1025,9 @@
         ]
     },
     {
-        "id": "6cb0527f.3733ec",
+        "id": "c5233897.771398",
         "type": "function",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "score",
         "func": "var timestamp = msg.payload.timestamp;\nvar msgScore = {};\nmsgScore.payload = msg.payload.score;\nvar hour = timestamp.substr(timestamp.length-6,2);\nvar ampm = \"AM\"\nif (hour>12) {\n    hour-= 12;\n    ampm = \"PM\"\n}\nvar min = timestamp.substr(timestamp.length-4,2);\nmsgScore.topic = hour + \":\" + min + \" \" + ampm;\nreturn msgScore;",
         "outputs": 1,
@@ -784,14 +1036,14 @@
         "y": 480,
         "wires": [
             [
-                "9407a4d2.3b3d68"
+                "6e0e7b9e.84cdf4"
             ]
         ]
     },
     {
-        "id": "fa76bef.121a94",
+        "id": "7dc22fae.60afd",
         "type": "inject",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "Say Hello",
         "topic": "",
         "payload": "hello",
@@ -804,31 +1056,31 @@
         "y": 20,
         "wires": [
             [
-                "42ecac1b.9acc64"
+                "12631275.ad3cde"
             ]
         ]
     },
     {
-        "id": "70adf4a9.e033ec",
+        "id": "7b6c7987.9ef928",
         "type": "mqtt in",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "MQTT WordSelected",
         "topic": "/becomeanrtist/WordSelected",
         "qos": "2",
         "datatype": "auto",
-        "broker": "345b4836.d87678",
+        "broker": "97f70e54.67ede",
         "x": 120,
         "y": 80,
         "wires": [
             [
-                "f999310a.54f23"
+                "a08d094c.a62b48"
             ]
         ]
     },
     {
-        "id": "f999310a.54f23",
+        "id": "a08d094c.a62b48",
         "type": "json",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "parseJSON",
         "property": "payload",
         "action": "",
@@ -837,31 +1089,31 @@
         "y": 80,
         "wires": [
             [
-                "6ca6cfcb.e20db"
+                "f27557f6.01cb28"
             ]
         ]
     },
     {
-        "id": "12fce123.aa741f",
+        "id": "c650163b.9bc638",
         "type": "mqtt in",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "MQTT GameEnded",
         "topic": "/becomeanrtist/GameEnded",
         "qos": "2",
         "datatype": "auto",
-        "broker": "345b4836.d87678",
+        "broker": "97f70e54.67ede",
         "x": 110,
         "y": 260,
         "wires": [
             [
-                "b9d9013e.39807"
+                "965fb3e1.6edfe"
             ]
         ]
     },
     {
-        "id": "b9d9013e.39807",
+        "id": "965fb3e1.6edfe",
         "type": "json",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "parseJSON",
         "property": "payload",
         "action": "",
@@ -870,31 +1122,31 @@
         "y": 260,
         "wires": [
             [
-                "bd4b85c7.feb298"
+                "2e334504.f2ac5a"
             ]
         ]
     },
     {
-        "id": "494a6d75.5c7554",
+        "id": "e41b9168.441d9",
         "type": "mqtt in",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "MQTT HighScore",
         "topic": "/becomeanrtist/HighScore",
         "qos": "2",
         "datatype": "auto",
-        "broker": "345b4836.d87678",
+        "broker": "97f70e54.67ede",
         "x": 100,
         "y": 480,
         "wires": [
             [
-                "cdd821e3.ab781"
+                "458e0e70.4e9de"
             ]
         ]
     },
     {
-        "id": "cdd821e3.ab781",
+        "id": "458e0e70.4e9de",
         "type": "json",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "parseJSON",
         "property": "payload",
         "action": "",
@@ -903,15 +1155,15 @@
         "y": 480,
         "wires": [
             [
-                "c7e62d5b.97019",
-                "6cb0527f.3733ec"
+                "e0b31f25.5f577",
+                "c5233897.771398"
             ]
         ]
     },
     {
-        "id": "ec797a13.3486f8",
+        "id": "98a97072.e0d5e",
         "type": "inject",
-        "z": "88d8ac9a.f4eb2",
+        "z": "8ae38333.03726",
         "name": "CLEAN DASHBOARD",
         "topic": "",
         "payload": "",
@@ -921,56 +1173,133 @@
         "once": false,
         "onceDelay": 0.1,
         "x": 320,
-        "y": 360,
+        "y": 260,
         "wires": [
             [
-                "e9f717cc.7b7e68"
+                "ef44dfb3.c1cfa"
             ]
         ]
     },
     {
-        "id": "e07f7071.9925e",
+        "id": "ae353ee6.76275",
         "type": "link in",
-        "z": "30f47300.0ffcce",
+        "z": "d60e8f2d.f7bf7",
         "name": "",
         "links": [
-            "e9f717cc.7b7e68"
+            "ef44dfb3.c1cfa"
         ],
         "x": 315,
         "y": 400,
         "wires": [
             [
-                "8077d862.4adbb8"
+                "d36b221e.8752c"
             ]
         ]
     },
     {
-        "id": "e9f717cc.7b7e68",
+        "id": "ef44dfb3.c1cfa",
         "type": "link out",
-        "z": "88d8ac9a.f4eb2",
+        "z": "8ae38333.03726",
         "name": "",
         "links": [
-            "b96b7d3c.8c80a",
-            "e07f7071.9925e"
+            "839a4b86.537a58",
+            "ae353ee6.76275"
         ],
         "x": 495,
-        "y": 360,
+        "y": 260,
         "wires": []
     },
     {
-        "id": "b96b7d3c.8c80a",
+        "id": "839a4b86.537a58",
         "type": "link in",
-        "z": "c5c1153b.e27988",
+        "z": "f3d28362.06a72",
         "name": "",
         "links": [
-            "e9f717cc.7b7e68"
+            "ef44dfb3.c1cfa"
         ],
         "x": 455,
         "y": 360,
         "wires": [
             [
-                "8ffdd8ab.2e28e8"
+                "2bf21c3f.148e14"
             ]
         ]
+    },
+    {
+        "id": "c0473df5.c3dd",
+        "type": "debug",
+        "z": "f3d28362.06a72",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 1200,
+        "y": 120,
+        "wires": []
+    },
+    {
+        "id": "c54db434.764fe8",
+        "type": "debug",
+        "z": "f3d28362.06a72",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 440,
+        "y": 280,
+        "wires": []
+    },
+    {
+        "id": "f09d7f6f.56737",
+        "type": "mqtt in",
+        "z": "f3d28362.06a72",
+        "name": "MQTT GameStarted",
+        "topic": "/becomeanrtist/GameStarted",
+        "qos": "2",
+        "datatype": "auto",
+        "broker": "97f70e54.67ede",
+        "x": 110,
+        "y": 60,
+        "wires": [
+            [
+                "ce2c97f7.5f7e38"
+            ]
+        ]
+    },
+    {
+        "id": "ce2c97f7.5f7e38",
+        "type": "json",
+        "z": "f3d28362.06a72",
+        "name": "parseJSON",
+        "property": "payload",
+        "action": "",
+        "pretty": false,
+        "x": 370,
+        "y": 60,
+        "wires": [
+            [
+                "521304d9.f3d34c"
+            ]
+        ]
+    },
+    {
+        "id": "521304d9.f3d34c",
+        "type": "ui_text",
+        "z": "f3d28362.06a72",
+        "group": "c52497d4.a562f8",
+        "order": 3,
+        "width": 0,
+        "height": 0,
+        "name": "",
+        "label": "Last game played",
+        "format": "{{msg.payload.timestamp}}",
+        "layout": "row-spread",
+        "x": 730,
+        "y": 60,
+        "wires": []
     }
 ]
