@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!--xtools2_universal_type_manager-->
-<!--IBM Rational Software Architect RealTime Edition 10.3.0-->
+<!--HCL RealTime Software Tooling 11.0.0-->
 <?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.uml.msl.model" version="7.0.0"><feature description="" name="com.ibm.xtools.ruml.feature" url="" version="7.0.0"/></signature>?>
-<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="Rational Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
+<?com.ibm.xtools.emf.core.signature <signature id="com.ibm.xtools.mmi.ui.signatures.diagram" version="7.0.0"><feature description="" name="RTist Modeling Platform (com.ibm.xtools.rmp)" url="" version="7.0.0"/></signature>?>
 <xmi:XMI xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:CppPropertySets="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67" xmlns:Default="http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2" xmlns:UMLRealTime="http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" xmlns:notation="http://www.eclipse.org/gmf/runtime/1.0.2/notation" xmlns:rtnotation="http://www.ibm.com/xtools/1.0.0/rtnotation" xmlns:uml="http://www.eclipse.org/uml2/3.0.0/UML" xmlns:umlnotation="http://www.ibm.com/xtools/1.5.3/Umlnotation" xsi:schemaLocation="http:///schemas/CppPropertySets/_5TG7AMk4EeO2m9WtkWjeeQ/67 pathmap://CPP_LANGUAGE_PROFILE/CppPropertySets.epx#_5TYAwMk4EeO2m9WtkWjeeQ?CppPropertySets/CppPropertySets? http:///schemas/Default/_fNm3AAqoEd6-N_NOT9vsCA/2 pathmap://UML2_MSL_PROFILES/Default.epx#_fNwoAAqoEd6-N_NOT9vsCA?Default/Default? http:///schemas/UMLRealTime/_3TUzoHq6Ed2hSeAAWZznoA/119 pathmap://RT_PROPERTIES/UMLRealTime.epx#_3TUzoXq6Ed2hSeAAWZznoA?UMLRealTime/UMLRealTime?">
   <uml:Package xmi:id="_q2STEB1dEemFppq5PtQEow" name="RTApp">
     <eAnnotations xmi:id="_q2STER1dEemFppq5PtQEow" source="uml2.diagrams" references="_q2STEh1dEemFppq5PtQEow">
@@ -1174,7 +1174,7 @@ webServer_out.startImageAnalysis().send();&#xD;
 &#xD;
 currentDrawingFilename = &quot;no-photo&quot;;&#xD;
 RTMessage reply;&#xD;
-camera.takePhoto(false /* isHighscorePhoto */).invoke(&amp;reply);&#xD;
+camera.takePhoto(currentWord).invoke(&amp;reply);&#xD;
 if (reply.isValid()) {&#xD;
 	currentDrawingFilename = *((StdString*) reply.getData());&#xD;
 	// Upload the drawing to the web server so it can be shown in the web app while image recognition runs&#xD;
@@ -1384,9 +1384,9 @@ if (settings.doMQTT()) {&#xD;
           <transition xmi:id="_yYyuIDNJEemdXd9vu5XPZQ" name="uploadPhoto" source="_qYUQkDNJEemdXd9vu5XPZQ" target="_-TmAUB1dEemFppq5PtQEow">
             <effect xmi:type="uml:OpaqueBehavior" xmi:id="_L-8aMDNQEemdXd9vu5XPZQ" name="Effect">
               <language>C++</language>
-              <body>StdString photoFile = &quot;no-photo&quot;;&#xD;
+              <body>StdString photoFile = &quot;no-photo&quot;, empty = &quot;&quot;;&#xD;
 RTMessage reply;&#xD;
-camera.takePhoto(true /* isHighscorePhoto */).invoke(&amp;reply);&#xD;
+camera.takePhoto(empty /*highscore*/).invoke(&amp;reply);&#xD;
 if (reply.isValid()) {&#xD;
 	photoFile = *((StdString*) reply.getData());&#xD;
 }&#xD;
@@ -1617,25 +1617,33 @@ std::shuffle(std::begin(words), std::end(words), std::default_random_engine(seed
               <transition xmi:id="_Vt1Y4CPPEem0UtZqFR6jHw" name="takePhoto" kind="internal" source="_qwY44R19EemFppq5PtQEow" target="_qwY44R19EemFppq5PtQEow">
                 <effect xmi:type="uml:OpaqueBehavior" xmi:id="_e0rMICPQEem0UtZqFR6jHw" name="Effect">
                   <language>C++</language>
-                  <body>bool isHighscorePhoto = *((bool *) rtdata);&#xD;
+                  <body>std::string word = *((std::string*) rtdata);&#xD;
+bool isHighscorePhoto = word.length() == 0;&#xD;
 &#xD;
 // Generate image file name based on current timestamp&#xD;
 std::time_t t = std::time(nullptr);&#xD;
 std::tm* tm = std::localtime(&amp;t);&#xD;
-std::stringstream timestamp;&#xD;
+std::stringstream filename;&#xD;
 if (isHighscorePhoto)&#xD;
-	timestamp &lt;&lt; &quot;hiscore_&quot;;&#xD;
-timestamp &lt;&lt; getCurrentTimeStamp();&#xD;
+	filename &lt;&lt; &quot;hiscore_&quot;;&#xD;
 &#xD;
-std::string filename = &quot;/home/pi/become-an-rtist/camera-snaps/&quot; + timestamp.str() + &quot;.jpg&quot;;&#xD;
+filename &lt;&lt; getCurrentTimeStamp();&#xD;
+&#xD;
+if (!isHighscorePhoto)&#xD;
+	filename &lt;&lt; &quot;_&quot; &lt;&lt; word;&#xD;
+&#xD;
+std::string filepath = &quot;/home/pi/become-an-rtist/camera-snaps/&quot; + filename.str() + &quot;.jpg&quot;;&#xD;
+&#xD;
+std::stringstream command;&#xD;
 // Take a black and white photo with the same size as used for the image recognition training data&#xD;
 // High contrast and as fast as possible (timeout 1)&#xD;
-std::string command = &quot;raspistill --vflip --hflip --width 118 --height 113 --colfx 128:128 --contrast 100 --timeout 1 --output &quot; + filename;&#xD;
+command &lt;&lt; &quot;raspistill --vflip --hflip --width 118 --height 113&quot;;&#xD;
+command &lt;&lt; &quot; --colfx 128:128 --contrast 100 --timeout 1 --output &quot; &lt;&lt; filepath;&#xD;
 &#xD;
-system(command.c_str());&#xD;
+system(command.str().c_str());&#xD;
 &#xD;
 // Reply to caller with the image file name&#xD;
-game.imageFilename(filename).reply();</body>
+game.imageFilename(filepath).reply();</body>
                 </effect>
                 <trigger xmi:id="_XhSTgCPPEem0UtZqFR6jHw" name="" event="_D2PjAB1-EemFppq5PtQEow" port="_AQVzUB1-EemFppq5PtQEow"/>
               </transition>
@@ -1845,9 +1853,7 @@ timerId = timer.informIn(RTTimespec(0,500000000)); // 0.5 s</body>
           <details xmi:id="_AQT-IR1-EemFppq5PtQEow" key="ProtocolRole"/>
         </eAnnotations>
         <ownedOperation xmi:id="_D2R_QB1-EemFppq5PtQEow" name="takePhoto">
-          <ownedParameter xmi:id="_po9zEDNQEemdXd9vu5XPZQ" name="isHiscorePhoto">
-            <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0875RKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/bool?"/>
-          </ownedParameter>
+          <ownedParameter xmi:id="_lJQZoDPBEeqku6KzpKFSWQ" name="word" type="_5TgPcCOQEem0UtZqFR6jHw"/>
         </ownedOperation>
       </packagedElement>
       <packagedElement xmi:type="uml:Interface" xmi:id="_AQT-Ih1-EemFppq5PtQEow" name="CameraEvents~">
