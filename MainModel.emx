@@ -746,11 +746,8 @@
       <ownedAttribute xmi:type="uml:Port" xmi:id="_kPAwECPfEem0UtZqFR6jHw" name="timer" visibility="public" aggregation="composite" isBehavior="true" isService="false">
         <type xmi:type="uml:Collaboration" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/RTClasses.emx#_18QelrIlEduJc5NEaBCMOw?RTClasses/Timing/Timing?"/>
       </ownedAttribute>
-      <ownedAttribute xmi:id="_yXZnECPfEem0UtZqFR6jHw" name="maxTime" visibility="private" isReadOnly="true">
+      <ownedAttribute xmi:id="_yXZnECPfEem0UtZqFR6jHw" name="maxTime" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
-        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_1zxnUCPfEem0UtZqFR6jHw" value="20">
-          <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
-        </defaultValue>
       </ownedAttribute>
       <ownedAttribute xmi:id="_3XD_ACPfEem0UtZqFR6jHw" name="secCount" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_b5qeIMuSEdy4n9Rh8xcU5g?CppPrimitiveDatatypes/unsigned%20int?"/>
@@ -782,6 +779,12 @@
       <ownedAttribute xmi:id="_ukA3sIbJEemBRoXE3LR-Uw" name="settings" visibility="private" type="_Zckj4IbJEemBRoXE3LR-Uw"/>
       <ownedAttribute xmi:id="_HPNX4I9WEemxy7tZ8DNXuw" name="currentWordAttempts" visibility="private">
         <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+      </ownedAttribute>
+      <ownedAttribute xmi:id="_LZmPMDlAEeqXMO8EIKeffA" name="defaultTimeout" visibility="private" isReadOnly="true">
+        <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+        <defaultValue xmi:type="uml:LiteralInteger" xmi:id="_XQ-F0DlAEeqXMO8EIKeffA" value="20">
+          <type xmi:type="uml:PrimitiveType" href="platform:/plugin/com.ibm.xtools.umldt.rt.cpp.core/libraries/CppPrimitiveDatatypes.emx#_f0876hKyEdyaM9S2zG4bgA?CppPrimitiveDatatypes/int?"/>
+        </defaultValue>
       </ownedAttribute>
       <ownedConnector xmi:id="_SpG6YB1-EemFppq5PtQEow" name="CameraEvents~, CameraEvents" kind="assembly">
         <end xmi:id="_SpIIgB1-EemFppq5PtQEow" role="_N5S8UB1-EemFppq5PtQEow"/>
@@ -1135,6 +1138,13 @@
             <entry xmi:type="uml:OpaqueBehavior" xmi:id="_5awVYB2aEemFppq5PtQEow" name="Entry">
               <language>C++</language>
               <body>currentWord = words[wordIndex++];&#xD;
+int reduceTimeout = wordIndex/4;&#xD;
+if (reduceTimeout > 5)&#xD;
+	reduceTimeout = 5;&#xD;
+maxTime = defaultTimeout - reduceTimeout;&#xD;
+if (maxTime &lt; 10) {&#xD;
+	maxTime = 10;&#xD;
+}&#xD;
 if (wordIndex >= words.size()) {&#xD;
 	wordIndex = 0;&#xD;
 	shuffleWords();&#xD;
@@ -1236,6 +1246,9 @@ StdString result = *(StdString*) rtdata;&#xD;
 StdString probStr = result.substr(result.find(&quot;:&quot;) + 1, 4);&#xD;
 try {&#xD;
 	float prob = std::stof(probStr);&#xD;
+	if (settings.isDebug()) {&#xD;
+		std::cout &lt;&lt; &quot;Probability score=&quot; &lt;&lt; prob &lt;&lt; &quot; increment=&quot; &lt;&lt; (50*prob);&#xD;
+	}&#xD;
 	scoreInc += 50 * prob;&#xD;
 }&#xD;
 catch (...)&#xD;
@@ -1246,16 +1259,16 @@ catch (...)&#xD;
 // Append 'current word' property to JSON string&#xD;
 result.insert(rtdata->size() - 1, &quot;, \&quot;currentWord\&quot; : \&quot;&quot; + currentWord + &quot;\&quot;&quot;);&#xD;
 webServer_out.imageSuccessfullyRecognized(result).send();&#xD;
+score += scoreInc;&#xD;
 if (settings.doMQTT()) {&#xD;
 	std::map&lt;std::string, std::string> msg;&#xD;
 	msg[&quot;word&quot;] = currentWord;&#xD;
 	msg[&quot;time_spent&quot;] = std::to_string(secCount);&#xD;
 	msg[&quot;word_score&quot;] = std::to_string(scoreInc);&#xD;
 	msg[&quot;attempt&quot;] = std::to_string(currentWordAttempts);&#xD;
-	msg[&quot;score&quot;] = std::to_string(scoreInc+score);&#xD;
+	msg[&quot;score&quot;] = std::to_string(score);&#xD;
 	publishMessage(&quot;WordCompleted&quot;,getJson(msg));&#xD;
 }&#xD;
-score += scoreInc;&#xD;
 std::cout &lt;&lt; &quot;Score: &quot; &lt;&lt; std::to_string(score) &lt;&lt; std::endl;&#xD;
 webServer_out.incScore(scoreInc).send();&#xD;
 </body>
@@ -1319,7 +1332,7 @@ loadWords();</body>
 shuffleWords();&#xD;
 wordIndex = 0;&#xD;
 webServer_out.setScore(score).send();&#xD;
-&#xD;
+maxTime = defaultTimeout;&#xD;
 if (settings.doMQTT()) {&#xD;
 	std::map&lt;std::string, std::string> msg;&#xD;
 	publishMessage(&quot;GameStarted&quot;, getJson(msg));&#xD;
@@ -1629,8 +1642,10 @@ if (isHighscorePhoto)&#xD;
 &#xD;
 filename &lt;&lt; getCurrentTimeStamp();&#xD;
 &#xD;
-if (!isHighscorePhoto)&#xD;
+if (!isHighscorePhoto) {&#xD;
+	std::replace(word.begin(), word.end(), ' ', '-');&#xD;
 	filename &lt;&lt; &quot;_&quot; &lt;&lt; word;&#xD;
+}&#xD;
 &#xD;
 std::string filepath = &quot;/home/pi/become-an-rtist/camera-snaps/&quot; + filename.str() + &quot;.jpg&quot;;&#xD;
 &#xD;
@@ -2684,7 +2699,7 @@ while (std::getline(input, line)) {&#xD;
   <CppPropertySets:GeneralAttributeProperties xmi:id="_kjWoACOVEem0UtZqFR6jHw" base_Property="_h6XMgCOVEem0UtZqFR6jHw" nativeType="std::vector&lt;std::string>"/>
   <UMLRealTime:RTPort xmi:id="_ZXLSYCO0Eem0UtZqFR6jHw" isWired="false" base_Port="_ZXIPECO0Eem0UtZqFR6jHw"/>
   <CppPropertySets:GeneralCapsuleProperties xmi:id="_aziucCPPEem0UtZqFR6jHw" base_Class="_qwSyQB19EemFppq5PtQEow">
-    <implementationPreface xmi:id="_aziucSPPEem0UtZqFR6jHw" body="#include &lt;stdlib.h>&#xD;&#xA;#include &lt;ctime>&#xD;&#xA;#include &lt;string>&#xD;&#xA;#include &lt;sstream>"/>
+    <implementationPreface xmi:id="_aziucSPPEem0UtZqFR6jHw" body="#include &lt;stdlib.h>&#xD;&#xA;#include &lt;ctime>&#xD;&#xA;#include &lt;string>&#xD;&#xA;#include &lt;sstream>&#xD;&#xA;#include &lt;algorithm>"/>
   </CppPropertySets:GeneralCapsuleProperties>
   <UMLRealTime:OutEvent xmi:id="_HAxKsCPTEem0UtZqFR6jHw" base_CallEvent="_HAuHYCPTEem0UtZqFR6jHw"/>
   <CppPropertySets:GeneralAttributeProperties xmi:id="_73f6wCPTEem0UtZqFR6jHw" base_Property="_73fTsCPTEem0UtZqFR6jHw"/>
