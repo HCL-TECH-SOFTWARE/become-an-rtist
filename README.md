@@ -1,12 +1,12 @@
 # Become an RTist
 ![become an rtist](https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/images/ready.png "Become An RTist")
 
-This is a sketch drawing game built with [HCL RTist](https://www.devops-community.com/realtime-software-tooling-rtist.html). It is intended to run on a Raspberry Pi 3+ (or newer) equipped with a camera and a push button. In addition to the RTist C++ application that runs on the Raspberry Pi, the system also consists of the following applications:
+This is a sketch drawing game built with [DevOps Model RealTime](https://www.hcl-software.com/devops-model-realtime) (formerly known as HCL RTist). It is intended to run on a Raspberry Pi 3+ (or newer) equipped with a camera and a push button. In addition to the Model RealTime generated C++ application that runs on the Raspberry Pi, the system also consists of the following applications:
 * An image recognizer Python script. It runs on the Raspberry Pi as an HTTP server to serve requests for image recognition.
-* A web server implemented in Node JS. The RTist application communicates with it over HTTP. This web server can run on a different machine, for example a laptop that is connected to the same network as the Raspberry Pi.
+* A web server implemented in Node JS. The C++ application communicates with it over HTTP. This web server can run on a different machine, for example a laptop that is connected to the same network as the Raspberry Pi.
 * A web application implemented in JavaScript, HTML and CSS. This runs in a web browser on any computer.
 
-For more information about the game set-up and how it works, see <a href="https://github.com/hcl-pnp-rtist/become-an-rtist/blob/master/BecomeAnRTist.pdf">these slides</a>. Also watch [this video](https://www.youtube.com/watch?v=UPmKu93ESZ8) to get an overview of the game and see it in action.
+For more information about the game set-up and how it works, see <a href="https://github.com/HCL-TECH-SOFTWARE/become-an-rtist/blob/master/BecomeAnRTist.pdf">these slides</a>. Also watch [this video](https://www.youtube.com/watch?v=UPmKu93ESZ8) to get an overview of the game and see it in action.
 
 ## Hardware setup
 A bill of material can be found [here](BOM.md).
@@ -49,7 +49,7 @@ The script now waits for incoming HTTP image recognition requests on port 5555.
 ## Build game application on a computer
 
 ### Install Required Software
-1. [HCL Rtist](https://www.devops-community.com/realtime-software-tooling-rtist.html) or RSARTE
+1. [Model RealTime]([https://www.devops-community.com/realtime-software-tooling-rtist.html](https://www.hcl-software.com/devops-model-realtime))
 2. **On Windows:** [Raspberry Pi cross-compiler](http://gnutoolchains.com/raspberry/)
 
 Make sure that its **bin** folder (with make and g++) has been added to **PATH** variable.
@@ -57,7 +57,7 @@ Make sure that its **bin** folder (with make and g++) has been added to **PATH**
 ### Prepare sources and build the application
 1. The communication with the web server and the Python script uses the [lib-http-server](https://github.com/hcl-pnp-rtist/lib-http-server) library. Clone the project and import it to your workspace.
 
-  `git clone https://github.com/hcl-pnp-rtist/lib-http-server.git`
+  `git clone https://github.com/HCL-TECH-SOFTWARE/lib-http-server.git`
 
 2. [Paho-MQTT](https://www.eclipse.org/paho/downloads.php) 
     1. Get sources
@@ -70,30 +70,31 @@ Make sure that its **bin** folder (with make and g++) has been added to **PATH**
 3. [POCO](https://pocoproject.org/)
     1. You must build the POCO shared libraries for the Raspberry Pi. This can either be done using cmake (see POCO documentation) or you can add the POCO sources to an Eclipse cross-compilation project and build them yourself. 
     2. Only **Foundation** and the **Net** libraries are used.    
-    3. You may use [eclipse project](libs/poco_eclipse_projects.zip) from this repo to build libraries.
-    4. Import it into RTist workspace, configure path to Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings**,    
+    3. You may use the [Eclipse project](libs/poco_eclipse_projects.zip) from this repo to build libraries.
+    4. Import it into your workspace, configure the path to the Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings**,    
     5. Build the projects.
     6. Copy the shared libraries to **/home/pi/become-an-rtist/** on the Raspberry Pi.
     
 4. [WiringPi](http://wiringpi.com/)
     1. You may use [eclipse project](libs/wiringPi.zip) from this repo to build the library.
-    2. Import it into RTist workspace, configure path to Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings, and build project.**
+    2. Import it into your workspace, configure the path to the Raspberry cross-compiler in **project properties -> C/C++ Build -> Settings -> Cross Settings, and build project.**
     3. Build it. It will be built into a static library, so you don't have to copy it to the Raspberry Pi.
     
-5. Build RTist TargetRTS for Raspberry Pi: make a copy of any Linux TargetRTS
-    1. In RTist run **Target RTS Wizard** from **TargetRTS** top menu.
-    2. Select LinuxT.x64-gcc-7.x configuration and **Duplicate** option from **Manage** list.
-    3. Under Create New check **Target Name** and **Libset Name**
-    4. Click **Finish**
-    5. For Windows you can use the file from this repo [libset.mk](libset.mk), copy it to **<RTist_DIR>\rsa_rt\C++\TargetRTS\libset\\<created_libset_name>\libset.mk** 
-    6. Use **Target RTS Wizard again**, select newly created target and **Build** option from **Manage** list.
-    7. Click **Finish** and ensure Target RTS is built successfully.
+5. Build the Model RealTime TargetRTS for Raspberry Pi
+    1. Make a copy of any Linux TargetRTS
+    2. In Model RealTime run **Target RTS Wizard** from the **TargetRTS** top menu.
+    3. Select LinuxT.x64-gcc-12.x configuration and the **Duplicate** option from the **Manage** list.
+    4. Under **Create New** check **Target Name** and **Libset Name**
+    5. Click **Finish**
+    6. For Windows you can use the file from this repo [libset.mk](libset.mk), copy it to **<ModelRealTime_Installation_DIR>\rsa_rt\C++\TargetRTS\libset\\<created_libset_name>\libset.mk** 
+    7. Use **Target RTS Wizard again**, select newly created target and the **Build** option from the **Manage** list.
+    8. Click **Finish** and ensure the TargetRTS is built successfully.
 
 6. Update the TC **rtapp.tcjs** by doing the following.
-    1. Set the property **tc.pocoLoc** to the location of the POCO library. If you imported **Poco_Net** and **Poco_Foundation** projects from this repository it would be the path to your RTist workspace.
+    1. Set the property **tc.pocoLoc** to the location of the POCO library. If you imported **Poco_Net** and **Poco_Foundation** projects from this repository it would be the path to your Model RealTime workspace.
     2. If using **Poco_Net** and **Poco_Foundation** projects open **httpServerLib.tcjs** file in **LibHttpServer** project and modify **tc.inclusionPaths** property by replacing **Net** with **Poco_Net** and **Foundation** with **Poco_Foundation**
     3. Set **tc.taretConfiguration** with the name of Target you created in the previous step.
-    4. Ensure **tc.targetServicesLibrary** is set to TargetRTS path. E.g. **<RTist_dir>\rsa_rt\C++\TargetRTS**
+    4. Ensure **tc.targetServicesLibrary** is set to TargetRTS path. E.g. **<ModelRealTime_Installation_DIR>\rsa_rt\C++\TargetRTS**
     5. Update **tc.inclusionPaths** so it points to WiringPi and Paho MQTT sources.
     6. Update **tc.linkArguments** property to reference the build location of the **POCO**, **WiringPi**, and **PahoMQTT** binaries
     
@@ -121,31 +122,31 @@ Make sure that its **bin** folder (with make and g++) has been added to **PATH**
 
 6. Open [http://localhost:5000/](http://localhost:5000/) in a web browser
 
-## [MQTT Setup](MQTT.md)
+## MQTT Setup
 See [these instructions](MQTT.md) to add a game dashboard updated via MQTT.
 
 ## Start the game application
-The easiest way to start the application on the Pi is to create a **C/C++ Remote Application** run confirugration in RTist
+The easiest way to start the application on the Pi is to create a **C/C++ Remote Application** run configuration in Model RealTime.
 * Make sure the project and executable are set correctly, e.g. to **IoTBecomeAnRTist_target** and **default\executable.EXE**
 * Create a new ssh connection to Raspberry pi and specify the remote path to be **/home/pi/become-an-rtist/executable**
-* In **Commands to execute before application** section add the following
+* In the **Commands to execute before application** section add the following
 
   `sudo -i`
   
   `export LD_LIBRARY_PATH=/home/pi/become-an-rtist`
  
- * In **Arguments** tab add the following arguments
+ * In the **Arguments** tab add the following arguments
   
   `-webhost=192.168.137.1 -webport=5000 -propFile=/home/pi/become-an-rtist/game.properties`
 
 Replace **webhost** with the IP address of the computer that runs the web server. Replace the propFile path with the path on the Pi where you have copied the file [game.properties](game.properties).
 
-* To be able to attach RTist debugger to the appliaction also add **obslisten** argument with a port number, e.g.
+* To be able to attach the Model RealTime debugger to the application also add **obslisten** argument with a port number, e.g.
 
   `-obslisten=12345`
 
 * Run the remote C/C++ application created
 
-* If **obslisten** argument was specified, attach RTist debugger by right clicking on **rtapp** transformation configuration and selecting **Debug As -> Remote realtime application (attach)** from the context menu. Specify Raspberry Pi hostname and **obslisten** port number in the dialog. Resume the application after RTist debugger is attached.
+* If **obslisten** argument was specified, attach the Model RealTime debugger by right clicking on the **rtapp** transformation configuration and selecting **Debug As -> Remote realtime application (attach)** from the context menu. Specify the Raspberry Pi hostname and **obslisten** port number in the dialog. Resume the application after the Model RealTime debugger is attached.
 
 * The web application will show the hiscore list, when the game is ready to play!
