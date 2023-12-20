@@ -8,7 +8,7 @@ Modify [game.properties](game.properties) file on Raspberry Pi by setting
 **MQTT**  to true and to **MQTT_URL** MQTT broker connection URL.
 
 ## Import Node-Red flows
-1. Create a new Node-RED server in **Servers** view of RTist or use an existing one.
+1. Create a new Node-RED server in **Servers** view of Model RealTime or use an existing one.
 2. Start the Node-RED server.
 3. If not done previously, install [node-red-dashboard](https://flows.nodered.org/node/node-red-dashboard) by selecting **Manage palette** from the top menu. In **Install** tab find and install node-red-dashboard.
 4. From the top menu pick **Import->Clipboard** and select [flows.json](node-red\flows.json) file to import.
